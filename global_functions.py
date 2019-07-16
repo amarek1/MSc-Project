@@ -35,3 +35,19 @@ def get_balanced_data(data):
     test_labels = even_data_testing['class']
 
     return train_data, test_data, train_labels, test_labels
+
+# print out confusion matrix and values like precision, recall, f1-score
+def get_model_performance(model, model_name, x_test, y_test):
+    from sklearn.metrics import confusion_matrix, classification_report
+    predictions = model.predict(x_test)
+    r_predictions = [int(round(x)) for x in predictions]
+    cm = confusion_matrix(y_test, r_predictions)
+    print('=============================================')
+    print('\n'+model_name+'\n')
+    print('---------------------------------------------')
+    print('confusion matrix\n')
+    print(cm,'\n')
+    print('---------------------------------------------')
+    print(classification_report(y_test, r_predictions))
+    print('=============================================')
+    return r_predictions
