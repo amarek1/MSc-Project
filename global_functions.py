@@ -1,5 +1,5 @@
 # import importlib.util as import_functions
-# spec = importlib.util.spec_from_file_location('global_functions.py',
+# spec = import_functions.spec_from_file_location('global_functions.py',
 #                                               'C:/Users/amarek/PycharmProjects/data_lab_clean/global_functions.py')
 # catch = import_functions.module_from_spec(spec)
 # spec.loader.exec_module(catch)
