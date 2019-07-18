@@ -7,11 +7,21 @@ from sklearn.model_selection import GridSearchCV
 from global_functions import get_balanced_data
 np.random.seed(7)
 
+# load the data
+file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working directory to MSc Project
+ori_data = pd.read_pickle(file_name)
 
-def get_forest_model(dataset_name='data_creditcard.pkl', balanced=False, model_name='model_forest_unbalanced.pkl'):
-    # load the data
-    file_name = 'data/credit card fraud/'+dataset_name  # set working directory to MSc Project
-    data = pd.read_pickle(file_name)
+# load the data
+file_name = 'data/credit card fraud/data_creditcard_synthpop.pkl'  # set working directory to MSc Project
+syn_data = pd.read_pickle(file_name)
+
+# only extract the fraud transactions
+syn_fraud = syn_data.loc[syn_data.loc[:, 'class'] == 1, :]
+
+data = ori_data.append(syn_fraud, ignore_index=True)
+
+
+def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalanced_synthpop500syn.pkl'):
 
     if balanced == True:
         X_train, X_test, y_train, y_test = get_balanced_data(data)
