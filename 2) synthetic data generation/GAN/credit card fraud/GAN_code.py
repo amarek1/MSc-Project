@@ -21,7 +21,7 @@ data = fraud_data
 def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=5e-3,
                       data_dir='2) synthetic data generation/GAN/credit card fraud/GAN training/adam_',
-                      gen_data_size=492, gen_data_name='GAN_fraud_492.pkl'):
+                      gen_data_size=492, gen_data_name='GAN_fraud_492'):
 
 
     # set up
@@ -78,7 +78,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
 
     # Check using the same functions used during GAN training
 
-    print(CheckAccuracy(x, g_z, col_names, seed=0, with_class=with_class, data_dim=data_dim ) )
+    #print(CheckAccuracy(x, g_z, col_names, seed=0, with_class=with_class, data_dim=data_dim ) )
 
     # PlotData(x, g_z, col_names, seed=5, with_class=False, data_dim=data_dim)
 
@@ -89,7 +89,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
 
     df['class'] = np.ones(gen_data_size, dtype=np.int)
 
-    df.to_pickle('2) synthetic data generation/GAN/credit card fraud/'+gen_data_name)
+    df.to_pickle('2) synthetic data generation/GAN/credit card fraud/'+gen_data_name+'.pkl')
 
     plt.plot(np.transpose([range(0,nb_steps,1)]),disc_loss_generated, label='discriminator loss on fake')
     plt.plot(np.transpose([range(0, nb_steps, 1)]), disc_loss_real, label='discriminator loss on real')
@@ -99,8 +99,15 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     # plt.xticks(np.arange(0,nb_steps, step=log_interval))
-    plt.savefig(gen_data_name+'.png')
+    plt.savefig('2) synthetic data generation/GAN/credit card fraud/'+gen_data_name+'.png')
     plt.show()
+
+    with open('2) synthetic data generation/GAN/credit card fraud/'+gen_data_name+'.txt','w')as a:
+        a.write(data_dir+'\n'+'best xboost step(used for data generation):'+str(best_step_x)+'\n'+
+                'best step for delta losses:'+str(best_step)+'\n'+'base_n_count:'+str(base_n_count)+'\n'+'nb_steps:'+
+                str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'critic_pre_train_steps:'+
+                str(critic_pre_train_steps)+'\n'+'log_interval:'+str(log_interval)+'\n'+'learning_rate:'+
+                str(learning_rate)+'\n'+'gen_data_size'+str(gen_data_size))
 
     return
 
