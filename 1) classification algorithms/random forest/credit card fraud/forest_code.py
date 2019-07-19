@@ -11,6 +11,7 @@ np.random.seed(7)
 file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working directory to MSc Project
 ori_data = pd.read_pickle(file_name)
 
+
 # load the data
 file_name = 'data/credit card fraud/data_creditcard_synthpop.pkl'  # set working directory to MSc Project
 syn_data = pd.read_pickle(file_name)
@@ -21,7 +22,7 @@ syn_fraud = syn_data.loc[syn_data.loc[:, 'class'] == 1, :]
 data = ori_data.append(syn_fraud, ignore_index=True)
 
 
-def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalanced_synthpop500syn.pkl'):
+def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalanced_synthpop_mix_500syn.pkl'):
 
     if balanced == True:
         X_train, X_test, y_train, y_test = get_balanced_data(data)
@@ -58,7 +59,7 @@ def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalan
     rf = RandomForestRegressor()
     # Random search of parameters, using 3 fold cross validation,
     # search across 100 different combinations, and use all available cores
-    rf_random = GridSearchCV(estimator=rf, param_grid=random_grid, cv=3, verbose=2, n_jobs=1)
+    rf_random = GridSearchCV(estimator=rf, param_grid=random_grid, cv=3, verbose=2, n_jobs=6)
     rf_random.fit(X_train, y_train)
     clf = rf_random.best_estimator_
 
