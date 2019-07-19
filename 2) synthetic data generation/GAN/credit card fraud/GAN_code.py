@@ -19,7 +19,7 @@ data = fraud_data
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
 def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
-                      critic_pre_train_steps=100, log_interval=100, learning_rate=5e-3,
+                      log_interval=100, learning_rate=5e-3,
                       data_dir='2) synthetic data generation/GAN/credit card fraud/GAN training/adam_',
                       gen_data_size=492, gen_data_name='GAN_fraud_492'):
 
@@ -31,7 +31,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
     col_names = list(X.columns)
 
     # train the vanilla GAN
-    arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, critic_pre_train_steps, log_interval, learning_rate,
+    arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, log_interval, learning_rate,
                  base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
     #adversarial_training_GAN(arguments, X, col_names)
 
@@ -105,9 +105,8 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
     with open('2) synthetic data generation/GAN/credit card fraud/'+gen_data_name+'.txt','w')as a:
         a.write(data_dir+'\n'+'best xboost step(used for data generation):'+str(best_step_x)+'\n'+
                 'best step for delta losses:'+str(best_step)+'\n'+'base_n_count:'+str(base_n_count)+'\n'+'nb_steps:'+
-                str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'critic_pre_train_steps:'+
-                str(critic_pre_train_steps)+'\n'+'log_interval:'+str(log_interval)+'\n'+'learning_rate:'+
-                str(learning_rate)+'\n'+'gen_data_size'+str(gen_data_size))
+                str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'\n'+'log_interval:'+str(log_interval)+'\n'+
+                'learning_rate:'+str(learning_rate)+'\n'+'gen_data_size'+str(gen_data_size))
 
     return
 
