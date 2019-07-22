@@ -98,7 +98,7 @@ def get_propensity_score(probability_labels, synthetic_data, original_data):
     return propensity_score
 
 
-get_best_hyperparameters(X, Y)
+# get_best_hyperparameters(X, Y)
 probability_labels = get_probability_labels(X, Y)
 the_score = get_propensity_score(probability_labels, syn_fraud, ori_fraud)
 print(the_score)  # the lower the score the better
