@@ -421,7 +421,9 @@ def adversarial_training_WGAN(arguments, train, data_cols, label_cols=[], seed=0
 
     # compile models
 
-    adam = optimizers.Adam(lr=learning_rate, beta_1=0.5, beta_2=0.9)
+    # adam = optimizers.Adam(lr=learning_rate, beta_1=0.5, beta_2=0.9)
+    # adam = optimizers.SGD(lr=learning_rate)
+    adam = optimizers.RMSprop(lr=learning_rate)
 
     discriminator_model.trainable = False
     combined_model.compile(optimizer=adam, loss=[em_loss])
