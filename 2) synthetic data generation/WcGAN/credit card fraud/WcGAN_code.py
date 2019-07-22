@@ -2,119 +2,125 @@ import pandas as pd
 import numpy as np
 import importlib.util
 import pickle
-
-spec = importlib.util.spec_from_file_location("GAN code.py",
-                                              "C:/Users/amarek/PycharmProjects/data_lab/"
-                                              "data generation/GANs/GAN code.py")
-GAN = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(GAN)
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from GAN_global_functions import adversarial_training_WGAN, define_models_GAN, get_data_batch, CheckAccuracy, PlotData
 
 cluster_spec = importlib.util.spec_from_file_location("k means classes.py",
-                                                      "C:/Users/amarek/PycharmProjects/data_lab/"
-                                                      "data generation/GANs/k means classes.py")
+                                                      "C:/Users/amarek/PycharmProjects/MSc Project/"
+                                                      "2) synthetic data generation/cGAN/credit card fraud/"
+                                                      "k means classes.py")
 
 cluster = importlib.util.module_from_spec(cluster_spec)
 cluster_spec.loader.exec_module(cluster)
 
 fraud_w_classes = cluster.fraud_w_classes
-fraud_w_classes = fraud_w_classes.sample(frac=1)[:50000]
+data = fraud_w_classes
 
-rand_dim = 32  # 32 # needs to be ~data_dim
-base_n_count = 128  # 128
+# for different optimizers check line 424 of GAN_global_functions
+# rand_dim needs to be the data dimension
+# nb_steps - add one for logging of the last interval
+# k_d/k_g number of discriminator/generator network updates per adversarial training step
+# critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
+# log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
+def WcGAN_generate_data(data=data, rand_dim=38, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
+                      critic_pre_train_steps=1000, log_interval=100, learning_rate=1e-3,
+                      data_dir='2) synthetic data generation/WcGAN/credit card fraud/WcGAN training/adam04_',
+                      gen_data_size=492, gen_data_name='WcGAN_fraud_492_Adam04'):
 
-nb_steps = 6000 + 1  # 50000 # Add one for logging of the last interval
-batch_size = 256  # 64
 
-k_d = 5  # number of critic network updates per adversarial training step
-k_g = 1  # number of generator network updates per adversarial training step
-critic_pre_train_steps = 100  # 100  # number of steps to pre-train the critic before starting adversarial training
-log_interval = 1000  # interval (in steps) at which to log loss summaries and save plots of image samples to disc
-learning_rate = 1e-3  # 5e-5
-data_dir = 'C:/Users/amarek/PycharmProjects/data_lab/data generation/GANs/models/WcGAN/ori/'
-generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
+    generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
 
-# show = False
-show = False
+    # show = False
+    show = False
+    X = data.drop('class', axis=1)
+    col_names = list(X.columns)
 
-# load the original data
-file_name = 'C:/Users/amarek/PycharmProjects/data_lab/datasets/creditcard_normalised.csv'
-ori_data = pd.read_csv(file_name)
+    # train the vanilla GAN
+    arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, critic_pre_train_steps, log_interval, learning_rate,
+                 base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
 
-fraud_data = ori_data.loc[ori_data['class'] == 1]
-X = fraud_data.drop('class', axis=1)
-col_names = list(X.columns)
+    label_cols = [i for i in fraud_w_classes.columns if 'class' in i]
+    data_cols = [i for i in fraud_w_classes.columns if i not in label_cols]
 
-# train the vanilla GAN
-arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, critic_pre_train_steps, log_interval, learning_rate,
-             base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
+    adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
-label_cols = [i for i in fraud_w_classes.columns if 'class' in i]
-data_cols = [i for i in fraud_w_classes.columns if i not in label_cols]
+    # find the best training step
+    prefix = 'WCGAN'
+    last_step = nb_steps-1
 
-GAN.adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    [combined_loss, disc_loss_generated, disc_loss_real, xgb_losses] = pickle.load(
+        open(data_dir+prefix+'_losses_step_'+str(last_step)+'.pkl', 'rb'))
 
-# find the best step
-data_dir = 'C:/Users/amarek/PycharmProjects/data_lab/data generation/GANs/models/WCGAN/ori/'
-prefix = 'WCGAN'
-step = 6000
+    best_step = list(xgb_losses).index(xgb_losses.min()) * 10
+    print('best step based on xgb loss', best_step, xgb_losses.min())
 
-[combined_loss, disc_loss_generated, disc_loss_real, xgb_losses] = pickle.load(
-    open(data_dir+prefix+'_losses_step_'+str(step)+'.pkl', 'rb'))
+    xgb100 = [xgb_losses[i] for i in range(0, len(xgb_losses), int(log_interval/10))]
+    best_step_x = xgb100.index(min(xgb100)) * log_interval
+    print('best step xgb(based on saved data)', best_step_x, min(xgb100))
 
-best_step = list(xgb_losses).index(xgb_losses.min()) * 10
-print(best_step, xgb_losses.min())
+    # Look for the step with the lowest discriminator loss, and the lowest step saved (every 100)
+    delta_losses = np.array(disc_loss_real) - np.array(disc_loss_generated)
 
-xgb100 = [xgb_losses[i] for i in range(0, len(xgb_losses), 10)]
-best_step = xgb100.index(min(xgb100)) * log_interval
-print(best_step, min(xgb100))
+    best_step = list(delta_losses).index(delta_losses.min())
+    print('best step discrimnator loss', best_step, delta_losses.min())
 
-# Look for the step with the lowest critic loss, and the lowest step saved (every 100)
+    delta100 = [delta_losses[i] for i in range(0, len(delta_losses), log_interval)]
+    best_step = delta100.index(min(delta100)) * log_interval
+    print('best step disc loss(based on saved data)', best_step, min(delta100))
 
-delta_losses = np.array(disc_loss_real) - np.array(disc_loss_generated)
+    # define network models
+    data_dim = len(col_names)
+    label_dim = len(col_names)
+    generator_model, discriminator_model, combined_model = define_models_GAN(rand_dim, data_dim, base_n_count)
+    generator_model.load_weights(data_dir + 'WCGAN_generator_model_weights_step_' + str(best_step_x) + '.h5')
 
-best_step = list(delta_losses).index(delta_losses.min())
-print(best_step, delta_losses.min())
+    with_class = False
+    if label_dim > 0:
+        with_class = True
 
-delta100 = [delta_losses[i] for i in range(0, len(delta_losses), 100)]
-best_step = delta100.index(min(delta100)) * log_interval
-print(best_step, min(delta100))
+    # Now generate some new data
 
-# # define network models
-# data_dim = len(data_cols)
-# label_dim = len(label_cols)
-# generator_model, discriminator_model, combined_model = GAN.define_models_CGAN(rand_dim, data_dim, label_dim,
-#                                                                               base_n_count)
-# generator_model.load_weights('C:/Users/amarek/PycharmProjects/data_lab'
-#                              '/data generation/GANs/models/WcGAN/WCGAN_generator_model_weights_step_5400.h5')
-#
-# with_class = True
-# if label_dim > 0:
-#     with_class = True
-# # Now generate some new data
-#
-# test_size = 3813  # Equal to all of the fraud cases
-# train = cluster.fraud_w_classes
-# x = GAN.get_data_batch(train, test_size, seed=5)
-# z = np.random.normal(size=(test_size, rand_dim))
-# if with_class:
-#     labels = x[:, -label_dim:]
-#     g_z = generator_model.predict([z, labels])
-# else:
-#     g_z = generator_model.predict(z)
-#
-# # Check using the same functions used during GAN training
-#
-# # print(GAN.CheckAccuracy(x, g_z, data_cols, seed=0, with_class=with_class, data_dim=data_dim ) )
-#
-# # GAN.PlotData(x, g_z, col_names, seed=5, with_class=False, data_dim=data_dim)
-#
-# df = pd.DataFrame([g_z[0]], columns=fraud_w_classes.columns)
-# for i in range(1, len(g_z)):
-#     df2 = pd.DataFrame([g_z[i]], columns=fraud_w_classes.columns)
-#     df = df.append(df2, ignore_index=True)
-#
-#
-# df['class'] = np.ones(test_size, dtype=np.int)
-# print(df)
-#
-# df.to_pickle('C:/Users/amarek/PycharmProjects/data_lab/datasets/WcGAN5400_ori.pkl')
+    # generate new data (3813,492)
+    train = data.drop('class', axis=1)
+    x = get_data_batch(train, gen_data_size, seed=5)
+    z = np.random.normal(size=(gen_data_size, rand_dim))
+    g_z = generator_model.predict(z)
+
+    # Check using the same functions used during GAN training
+
+    # print(CheckAccuracy(x, g_z, col_names, seed=0, with_class=with_class, data_dim=data_dim ) )
+
+    # PlotData(x, g_z, col_names, seed=5, with_class=False, data_dim=data_dim)
+
+    df = pd.DataFrame([g_z[0]], columns=col_names)
+    for i in range(1, len(g_z)):
+        df2 = pd.DataFrame([g_z[i]], columns=col_names)
+        df = df.append(df2, ignore_index=True)
+
+    df['class'] = np.ones(gen_data_size, dtype=np.int)
+
+    df.to_pickle('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.pkl')
+
+    plt.plot(np.transpose([range(0,nb_steps,1)]),disc_loss_generated, label='discriminator loss on fake')
+    plt.plot(np.transpose([range(0, nb_steps, 1)]), disc_loss_real, label='discriminator loss on real')
+    plt.plot(np.transpose([range(0,nb_steps,1)]),combined_loss, label='generator loss')
+    plt.legend()
+    plt.title('WcGAN training - Adam optimizer')
+    plt.xlabel('Epochs')
+    plt.ylabel('Loss')
+    # plt.xticks(np.arange(0,nb_steps, step=log_interval))
+    plt.savefig('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.png',
+                bbox_inches='tight')
+    # plt.show()
+
+    with open('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.txt','w')as a:
+        a.write(data_dir+'\n'+'best xboost step(used for data generation):'+str(best_step_x)+' '+str(min(xgb100))+'\n'+
+                'best step for delta losses:'+str(best_step)+' '+str(min(delta100))+'\n'+'base_n_count:'+str(base_n_count)
+                +'\n'+'nb_steps:'+ str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'critic_pre_train_steps:'+
+                str(critic_pre_train_steps)+'\n'+'log_interval:'+str(log_interval)+'\n'+'learning_rate:'+
+                str(learning_rate)+'\n'+'gen_data_size:'+str(gen_data_size))
+
+    return
+
+WcGAN_generate_data()
