@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.utils.multiclass import unique_labels
 from sklearn.metrics import confusion_matrix, classification_report
 from global_functions import get_balanced_data, get_model_performance
-from global_functions import plot_confusion_matrix
+from global_functions import plot_confusion_matrix, cm_analysis
 np.random.seed(7)
 
 # load the data
@@ -44,11 +44,7 @@ balanced_predictions = balanced_model.predict(X_test_balanced)
 get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
 get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
 
-# plot confusion matrix graph
-plot_confusion_matrix(y_test_balanced, balanced_predictions, classes=['normal', 'fraud'], normalize=True,
-                      title='Confusion matrix on balanced dataset')
-plt.show()
 
-plot_confusion_matrix(y_test_unbalanced, unbalanced_predictions, classes=['normal', 'fraud'], normalize=True,
-                      title='Confusion matrix on unbalanced dataset')
-plt.show()
+cm_analysis(y_test_balanced,balanced_predictions,filename='4) final figures/cm_SVM_balanced',labels=[0, 1],
+            ymap=['normal','fraud'],title='SVM performance on balanced data')
+
