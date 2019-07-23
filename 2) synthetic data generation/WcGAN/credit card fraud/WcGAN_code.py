@@ -24,10 +24,10 @@ data = fraud_w_classes
 # k_d/k_g number of discriminator/generator network updates per adversarial training step
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
-def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
+def WcGAN_generate_data(data=data, rand_dim=40, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
-                      data_dir='2) synthetic data generation/WcGAN/credit card fraud/WcGAN training/adam04_',
-                      gen_data_size=492, gen_data_name='WcGAN_fraud_492_Adam04'):
+                      data_dir='2) synthetic data generation/WcGAN/credit card fraud/WcGAN training/adam_l3_',
+                      gen_data_size=492, gen_data_name='WcGAN_fraud_492_Adam_l3_'):
 
 
     generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
@@ -44,7 +44,7 @@ def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 
     label_cols = [i for i in fraud_w_classes.columns if 'class' in i]
     data_cols = [i for i in fraud_w_classes.columns if i not in label_cols]
 
-    # adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
     # find the best training step
     prefix = 'WCGAN'
@@ -101,7 +101,7 @@ def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 
 
     df['class'] = np.ones(gen_data_size, dtype=np.int)
 
-    df.to_pickle('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.pkl')
+    df.to_pickle('2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/'+gen_data_name+'.pkl')
 
     plt.plot(np.transpose([range(0,nb_steps,1)]),disc_loss_generated, label='discriminator loss on fake')
     plt.plot(np.transpose([range(0, nb_steps, 1)]), disc_loss_real, label='discriminator loss on real')
@@ -111,11 +111,11 @@ def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     # plt.xticks(np.arange(0,nb_steps, step=log_interval))
-    plt.savefig('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.png',
+    plt.savefig('2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/'+gen_data_name+'.png',
                 bbox_inches='tight')
     # plt.show()
 
-    with open('2) synthetic data generation/WcGAN/credit card fraud/'+gen_data_name+'.txt','w')as a:
+    with open('2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/'+gen_data_name+'.txt','w')as a:
         a.write(data_dir+'\n'+'best xboost step(used for data generation):'+str(best_step_x)+' '+str(min(xgb100))+'\n'+
                 'best step for delta losses:'+str(best_step)+' '+str(min(delta100))+'\n'+'base_n_count:'+str(base_n_count)
                 +'\n'+'nb_steps:'+ str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'critic_pre_train_steps:'+
