@@ -143,19 +143,21 @@ def PlotData(x, g_z, data_cols, label_cols=[], seed=0, with_class=False, data_di
 
 def generator_network(x, data_dim, base_n_count):
     x = layers.Dense(base_n_count, activation='relu')(x)
-    x = layers.Dense(base_n_count * 2, activation='relu')(x)
+    x = layers.Dense(base_n_count * 8, activation='relu')(x)
     x = layers.Dense(base_n_count * 4, activation='relu')(x)
+    x = layers.Dense(base_n_count*4, activation='relu')(x) # extra
+    x = layers.Dense(base_n_count*2, activation='relu')(x) # extra
     x = layers.Dense(data_dim)(x)
     return x
 
 
 def generator_network_w_label(x, labels, data_dim, label_dim, base_n_count):
     x = layers.concatenate([x, labels])
-    x = layers.Dense(base_n_count * 1, activation='relu')(x)  # 1
-    x = layers.Dense(base_n_count * 2, activation='relu')(x)  # 2
+    x = layers.Dense(base_n_count * 8, activation='relu')(x)  # 1
+    x = layers.Dense(base_n_count * 4, activation='relu')(x)  # 2
     x = layers.Dense(base_n_count * 4, activation='relu')(x)
-    # x = layers.Dense(base_n_count*4, activation='relu')(x) # extra
-    # x = layers.Dense(base_n_count*4, activation='relu')(x) # extra
+    x = layers.Dense(base_n_count*4, activation='relu')(x) # extra
+    x = layers.Dense(base_n_count*2, activation='relu')(x) # extra
     x = layers.Dense(data_dim)(x)
     x = layers.concatenate([x, labels])
     return x
@@ -163,13 +165,23 @@ def generator_network_w_label(x, labels, data_dim, label_dim, base_n_count):
 
 def discriminator_network(x, data_dim, base_n_count):
     x = layers.Dense(base_n_count * 4, activation='relu')(x)
-    # x = layers.Dropout(0.1)(x)
+    x = layers.Dropout(0.1)(x)
     x = layers.Dense(base_n_count * 2, activation='relu')(x)
-    # x = layers.Dropout(0.1)(x)
+    x = layers.Dropout(0.1)(x)
     x = layers.Dense(base_n_count, activation='relu')(x)
-    x = layers.Dense(1, activation='sigmoid')(x)
-    # x = layers.Dense(1)(x)
+    x = layers.Dense(1, activation='linear')(x)
+    x = layers.Dense(1)(x)
     return x
+
+# def discriminator_network(x, data_dim, base_n_count):
+#     x = layers.Dense(base_n_count * 4, activation='relu')(x)
+#     # x = layers.Dropout(0.1)(x)
+#     x = layers.Dense(base_n_count * 2, activation='relu')(x)
+#     # x = layers.Dropout(0.1)(x)
+#     x = layers.Dense(base_n_count, activation='relu')(x)
+#     x = layers.Dense(1, activation='sigmoid')(x)
+#     # x = layers.Dense(1)(x)
+#     return x
 
 
 def critic_network(x, data_dim, base_n_count):
