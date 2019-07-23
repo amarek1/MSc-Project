@@ -27,7 +27,7 @@ X_train_unbalanced, X_test_unbalanced, y_train_unbalanced, y_test_unbalanced = t
 X_train_balanced, X_test_balanced, y_train_balanced, y_test_balanced = get_balanced_data(data)
 
 # unpack unbalanced model
-path = '1) classification algorithms/SVM/credit card fraud/model_SVM_balanced.pkl'
+path = '1) classification algorithms/SVM/credit card fraud/model_SVM_unbalanced.pkl'
 with open(path, 'rb') as file:
     unbalanced_model = pickle.load(file)
 
@@ -46,9 +46,9 @@ get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanc
 
 # plot confusion matrix graph
 plot_confusion_matrix(y_test_balanced, balanced_predictions, classes=['normal', 'fraud'], normalize=True,
-                      title='Confusion matrix balanced')
+                      title='Confusion matrix on balanced dataset')
 plt.show()
 
 plot_confusion_matrix(y_test_unbalanced, unbalanced_predictions, classes=['normal', 'fraud'], normalize=True,
-                      title='Confusion matrix unbalanced')
+                      title='Confusion matrix on unbalanced dataset')
 plt.show()
