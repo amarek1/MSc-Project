@@ -35,14 +35,16 @@ def get_NN_model(lr=0.001, loss='sparse_categorical_crossentropy', metrics=['acc
 
     # compile the model
     model.compile(Adam(lr=lr), loss=loss, metrics=metrics)
-    model = model.fit(X_train, y_train, validation_split=validation_split, batch_size=batch_size,
+    model.fit(X_train, y_train, validation_split=validation_split, batch_size=batch_size,
                                epochs=epochs, shuffle=shuffle, verbose=verbose)
 
     path = '1) classification algorithms/neural networks/credit card fraud/'+model_name
 
-    with open(path, 'wb') as file:
-        pickle.dump(model, file)
-    return
+    model.save(path)
+
+    # with open(path, 'wb') as file:
+    #     pickle.dump(model, file)
+    # return
 
 
 get_NN_model()
