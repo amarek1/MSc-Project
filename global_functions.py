@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 def get_balanced_data(data):
 
     train_data, test_data, train_labels, test_labels = \
-        train_test_split(data, data['class'], test_size=0.2, random_state=1)
+        train_test_split(data, data['class'], test_size=0.25, random_state=1)
 
     # even out the data set -> 1:1 ratio of 0 and 1 classes
     data_training = train_data.sample(frac=1)  # shuffle
@@ -112,7 +112,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     return ax
 
 
-def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(6.5,5), title='Confusion matrix'):
+def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(3.5,3.5), title='Confusion matrix'):
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -146,17 +146,21 @@ def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(6.5,5), ti
         for j in range(ncols):
             c = cm[i, j]
             p = cm_perc[i, j]
+            s = cm_sum[i]
             if i == j:
                 s = cm_sum[i]
                 annot[i, j] = '%.1f%%\n%d/%d' % (p, c, s)
             elif c == 0:
                 annot[i, j] = ''
             else:
-                annot[i, j] = '%.1f%%\n%d' % (p, c)
+                annot[i, j] = '%.1f%%\n%d/%d' % (p, c, s)
     cm = pd.DataFrame(cm, index=labels, columns=labels)
     cm.index.name = 'Actual'
     cm.columns.name = 'Predicted'
     fig, ax = plt.subplots(figsize=figsize)
-    ax.set_title(title)
-    sns.heatmap(cm, annot=annot, fmt='', ax=ax)
+    ax.set_title(title, loc='center', pad=15)
+    sns.heatmap(cm_perc, annot=annot, fmt='', ax=ax, cmap='Blues', xticklabels=ymap, yticklabels=ymap, cbar=False)
+    plt.ylabel('actual')
+    plt.xlabel('predicted')
+    fig.tight_layout()
     plt.savefig(filename)
