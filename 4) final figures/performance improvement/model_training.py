@@ -16,7 +16,7 @@ file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working director
 real_data = pd.read_pickle(file_name)
 
 # load synthetic fraud examples
-file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_5904_Adam.pkl'
+file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_14760_Adam_l1.pkl'
 synthetic_fraud = pd.read_pickle(file_name)
 
 
@@ -110,10 +110,11 @@ def get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder
 #                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
 #                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
 
-nr_normal_training = [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000]
-nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381]
-nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000]
+nr_normal_training = [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000]
+nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381,381]
+nr_synthetic_fraud_training = [0, 200, 400, 600, 800, 1000, 2000, 3000, 4000, 5000,10000,14760]
 for i in range(0, len(nr_normal_training)):
-    get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='real and syn fraud', model_name='m1',
+    get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='real and syn fraud', model_name='WcGAN_fraud_14760_Adam_l1',
                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+
