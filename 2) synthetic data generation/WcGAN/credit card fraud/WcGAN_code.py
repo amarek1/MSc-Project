@@ -27,7 +27,7 @@ data = fraud_w_classes
 def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
                       data_dir='2) synthetic data generation/WcGAN/credit card fraud/WcGAN training/adam_l1_',
-                      gen_data_size=492*12, gen_data_name='WcGAN_fraud_5904_Adam'):
+                      gen_data_size=492*30, gen_data_name='WcGAN_fraud_14760_Adam_l1'):
 
 
     generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
