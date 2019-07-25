@@ -188,13 +188,13 @@ file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/
 fraud_data = pd.read_pickle(file_name)
 
 
-def get_forest_model(data=data, balanced=True, len_training_fraud=0, len_training_original=200000,
+def get_forest_model(data=data, balanced=True, len_training_fraud=0, len_training_original=5000,
                      model_name='ori and syn fraud/model_forest_unbalanced_mix_'+'a'+'.pkl'):
 
     if balanced == True:
         X_train, X_test, y_train, y_test = get_balanced_data_mix(data, len_training_fraud, len_training_original)
         optimized_model = RandomForestRegressor(bootstrap=True, max_depth=10, max_features='auto',
-                                      min_samples_split=20, n_estimators=100)
+                                      min_samples_split=20, n_estimators=100, n_jobs=6)
     else:
         X = data.drop('class', axis=1)
         y = data['class']
@@ -214,5 +214,5 @@ def get_forest_model(data=data, balanced=True, len_training_fraud=0, len_trainin
 
 fraud_data_size = [0,100,200,300,400,500,1000,2000,3000,4000,5000]
 for i in range(0, len(fraud_data_size)):
-    get_forest_model(data=data, balanced=True, len_training_fraud=fraud_data_size[i], len_training_original=200000,
-                     model_name='ori and syn fraud/model_forest_unbalanced_mix_fraud_'+str(fraud_data_size[i])+'.pkl')
+    get_forest_model(data=data, balanced=True, len_training_fraud=fraud_data_size[i], len_training_original=5000,
+                     model_name='ori and syn fraud/model_forest_balanced_mix_fraud_'+str(fraud_data_size[i])+'.pkl')
