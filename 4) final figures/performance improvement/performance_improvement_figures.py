@@ -96,9 +96,9 @@ def plot_performance1(x_axis_steps=[0, 100, 200, 300, 381], report_dict_real=rea
 
 ############################# get adding fraud to real data plots ########################
 
-real_and_syn_report = get_performance_report(folder='real and syn fraud', nr_normal_training =[2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000],
-nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381],
-nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000])
+real_and_syn_report = get_performance_report(model_nr='m1',folder='real and syn fraud', nr_normal_training =[2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000],
+nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381,381],
+nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000,10000])
 
 # plot real and sythetic fraud only plot
 def plot_performance2(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_normal='fraud',
@@ -118,4 +118,32 @@ def plot_performance2(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000
     plt.savefig('4) final figures/performance improvement/models/'+parameter+'_'+keys[0]+'.png')
     plt.close()
 
-plot_performance2()
+# plot_performance2()
+
+# plot real and sythetic fraud only plot
+def plot_performance3(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000,5904], report_dict=real_and_syn_report, fraud_normal='fraud', b='normal',
+                      parameter='recall'):
+
+    y_values = list()
+    keys = list(report_dict.keys())
+    for i in range(0, len(keys)):
+        y_values.append(report_dict[keys[i]][fraud_normal][parameter])
+
+    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
+
+    y_values = list()
+    keys = list(report_dict.keys())
+    for i in range(0, len(keys)):
+        y_values.append(report_dict[keys[i]][b][parameter])
+
+    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
+
+    plt.ylabel(parameter)
+    plt.xlabel('# synthetic fraud data')
+    plt.title('The effect of adding synthetic data to original training data on '+parameter)
+    plt.grid()
+    plt.legend()
+    plt.savefig('4) final figures/performance improvement/models/'+parameter+'_'+keys[len(keys)-1]+'_fraud+normal'+'.png')
+    plt.close()
+
+plot_performance3()
