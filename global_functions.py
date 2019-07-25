@@ -112,7 +112,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     return ax
 
 
-def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(3.5,3.5), title='Confusion matrix'):
+def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(3.5,3.75), title='Confusion matrix'):
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -158,9 +158,44 @@ def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(3.5,3.5), 
     cm.index.name = 'Actual'
     cm.columns.name = 'Predicted'
     fig, ax = plt.subplots(figsize=figsize)
-    ax.set_title(title, loc='center', pad=15)
+    ax.set_title(title, loc='center', pad=15, fontsize=10)
     sns.heatmap(cm_perc, annot=annot, fmt='', ax=ax, cmap='Blues', xticklabels=ymap, yticklabels=ymap, cbar=False)
     plt.ylabel('actual')
     plt.xlabel('predicted')
     fig.tight_layout()
     plt.savefig(filename)
+
+
+def get_data(real_data, synthetic_data, nr_normal_training, nr_fraud_training, nr_synthetic_fraud_training,
+             test_size):
+
+    train_data, test_data, train_labels, test_labels = \
+        train_test_split(real_data, real_data['class'], test_size=test_size, random_state=1)
+
+    # even out the data set -> 1:1 ratio of 0 and 1 classes
+    data_training = train_data.sample(frac=1)  # shuffle
+    data_testing = test_data.sample(frac=1)  # shuffle
+
+    fraud_data_training = data_training.loc[data_training['class'] == 1][:nr_fraud_training]
+    fraud_data_testing = data_testing.loc[data_testing['class'] == 1]
+
+    non_fraud_data_training = data_training.loc[data_training['class'] == 0][:nr_normal_training]
+    non_fraud_data_testing = data_testing.loc[data_testing['class'] == 0][:len(fraud_data_testing)]
+
+    synthetic_data = synthetic_data.sample(frac=1)
+    synthetic_fraud = synthetic_data.loc[synthetic_data['class'] == 1][:nr_synthetic_fraud_training]
+
+    fraud_data_training = pd.concat([fraud_data_training, synthetic_fraud])
+
+    even_data_training = pd.concat([fraud_data_training, non_fraud_data_training])
+    even_data_testing = pd.concat([fraud_data_testing, non_fraud_data_testing])
+
+    even_data_training = even_data_training.sample(frac=1, random_state=42)
+    even_data_testing = even_data_testing.sample(frac=1, random_state=42)
+
+    train_data = even_data_training.drop('class', axis=1)
+    test_data = even_data_testing.drop('class', axis=1)
+    train_labels = even_data_training['class']
+    test_labels = even_data_testing['class']
+
+    return train_data, test_data, train_labels, test_labels
