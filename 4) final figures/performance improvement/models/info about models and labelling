@@ -11,3 +11,4 @@ real_data = pd.read_pickle(file_name)
 #load synthetic fraud examples
 file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_5904_Adam.pkl'
 synthetic_fraud = pd.read_pickle(file_name)
+
