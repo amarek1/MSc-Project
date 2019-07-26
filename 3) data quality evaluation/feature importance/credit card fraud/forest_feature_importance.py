@@ -1,3 +1,4 @@
+# idea from Privacy-preserving generative deep neural networks support clinical data sharing
 import pandas as pd
 import numpy as np
 import pickle
@@ -33,7 +34,7 @@ X = ori_data.drop('class', axis=1)
 y = ori_data['class']
 
 X_train_unbalanced, X_test_unbalanced, y_train_unbalanced, y_test_unbalanced = \
-    train_test_split(X, y, test_size=0.2, random_state=1)
+    train_test_split(X, y, test_size=0.25, random_state=1)
 
 
 def get_feature_importance(model, x_train):
