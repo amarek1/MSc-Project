@@ -41,7 +41,7 @@ def cGAN_generate_data(data=data, rand_dim=33, base_n_count=128, nb_steps=6000 +
     label_cols = [i for i in data.columns if 'class' in i]
     data_cols = [i for i in data.columns if i not in label_cols]
 
-    #adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
 
     # find the best training step
