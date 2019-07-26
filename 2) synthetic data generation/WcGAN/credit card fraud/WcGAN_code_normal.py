@@ -44,7 +44,7 @@ def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 
     label_cols = [i for i in normal_w_classes.columns if 'class' in i]
     data_cols = [i for i in normal_w_classes.columns if i not in label_cols]
 
-    adversarial_training_WGAN(arguments, normal_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    # adversarial_training_WGAN(arguments, normal_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
     # find the best training step
     prefix = 'WCGAN'
