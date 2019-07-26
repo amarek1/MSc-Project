@@ -13,21 +13,21 @@ from sklearn import svm
 np.random.seed(1)
 
 file_name = 'data/credit card fraud/data_creditcard.pkl'
-ori_data = pd.read_pickle(file_name)
+real_data = pd.read_pickle(file_name)
+real_fraud = real_data.loc[real_data['class'] == 1]
 
 # load the synthetic data
-file_name = 'C:/Users/amarek/PycharmProjects/data_lab/datasets/WGAN4500.pkl'
+file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_5904_Adam.pkl'
 syn_fraud = pd.read_pickle(file_name)
-syn_fraud = syn_fraud[:492]
-
-ori_fraud = ori_data.loc[ori_data['class'] == 1][:len(syn_fraud)]
+syn_fraud = syn_fraud[:len(real_fraud)]
 
 
-def add_labels(original_data, synthetic_data):
 
-    # add labels 0 for original and 1 for synthetic
-    data = pd.concat([original_data, synthetic_data], ignore_index=True)
-    o_labels = np.zeros((len(original_data)), dtype=int)
+def add_labels(real_data, synthetic_data):
+
+    # add labels 0 for real and 1 for synthetic
+    data = pd.concat([real_data, synthetic_data], ignore_index=True)
+    o_labels = np.zeros((len(real_data)), dtype=int)
     s_labels = np.ones((len(synthetic_data)), dtype=int)
     labels = np.concatenate([o_labels, s_labels], axis=0)
     data['class'] = labels
@@ -37,7 +37,7 @@ def add_labels(original_data, synthetic_data):
     return x, y
 
 
-X, Y = add_labels(ori_fraud, syn_fraud)
+X, Y = add_labels(real_fraud, syn_fraud)
 
 cv_5 = StratifiedKFold(n_splits=5, random_state=None, shuffle=False)
 scoring = 'accuracy'
@@ -84,10 +84,10 @@ def get_probability_labels(x, y):
     return a
 
 
-def get_propensity_score(probability_labels, synthetic_data, original_data):
+def get_propensity_score(probability_labels, synthetic_data, real_data):
 
     divide_by_n = 1/len(probability_labels)
-    proportion_of_syn = len(synthetic_data)/(len(synthetic_data)+len(original_data))
+    proportion_of_syn = len(synthetic_data)/(len(synthetic_data) + len(real_data))
 
     sum_p_c = 0
     for i in range(0, len(probability_labels)):
@@ -100,5 +100,5 @@ def get_propensity_score(probability_labels, synthetic_data, original_data):
 
 # get_best_hyperparameters(X, Y)
 probability_labels = get_probability_labels(X, Y)
-the_score = get_propensity_score(probability_labels, syn_fraud, ori_fraud)
+the_score = get_propensity_score(probability_labels, syn_fraud, real_fraud)
 print(the_score)  # the lower the score the better
