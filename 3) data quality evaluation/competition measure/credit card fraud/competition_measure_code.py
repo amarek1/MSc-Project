@@ -14,16 +14,18 @@ np.random.seed(1)
 
 
 file_name = 'data/credit card fraud/data_creditcard.pkl'
-ori_data = pd.read_pickle(file_name)
+real_data = pd.read_pickle(file_name)
 
 file_name = 'data/credit card fraud/data_creditcard_synthpop.pkl'
 syn_data = pd.read_pickle(file_name)
 syn_data = syn_data.loc[syn_data['class'] == 0]
+print(len(syn_data))
 
-file_name = 'C:/Users/amarek/Desktop/R/synthpop/syntpop_data_cart_fo.csv'
-syn_data_fraud = pd.read_csv(file_name)
+file_name = 'data/credit card fraud/synthpop_fo_15000.pkl'
+syn_data_fraud = pd.read_pickle(file_name)
+syn_data_fraud = syn_data_fraud[:492]
 
-syn_data = pd.concat([syn_data, syn_data_fraud])
+syn_data = pd.concat([syn_data, syn_data_fraud], sort=True)
 
 
 def get_accuracies(data):
@@ -77,23 +79,23 @@ def get_accuracies(data):
     return accuracy
 
 
-ori_accuracy = get_accuracies(ori_data)
+real_accuracy = get_accuracies(real_data)
 syn_accuracy = get_accuracies(syn_data)
-print('accuracy on original data:',ori_accuracy,'accuracy on synthetic data:',syn_accuracy)
+print('accuracy on real data:', real_accuracy, 'accuracy on synthetic data:', syn_accuracy)
 
-# ori_accuracy = [1,2,1,4,5]
+# real_accuracy = [1,2,1,4,5]
 # syn_accuracy = [1,2,3,4,5]
 
 
-def SRA(ori_score, syn_score):
-    k = len(ori_score)
+def SRA(real_score, syn_score):
+    k = len(real_score)
     a = 1/(k*(k-1))
 
     values = []
-    for i in range(0, len(ori_score)):
-        for j in range(i+1, len(ori_score)):
-            b = (ori_score[i] - ori_score[j]) * (syn_score[i] - syn_score[j])
-            c = (ori_score[j] - ori_score[i]) * (syn_score[j] - syn_score[i])
+    for i in range(0, len(real_score)):
+        for j in range(i+1, len(real_score)):
+            b = (real_score[i] - real_score[j]) * (syn_score[i] - syn_score[j])
+            c = (real_score[j] - real_score[i]) * (syn_score[j] - syn_score[i])
             values.append(b)
             values.append(c)
 
@@ -105,5 +107,5 @@ def SRA(ori_score, syn_score):
     return a*sum(values2)
 
 
-SRA_score = SRA(ori_accuracy, syn_accuracy)
+SRA_score = SRA(real_accuracy, syn_accuracy)
 print('SRA:', SRA_score)  # the closer to 1, the better
