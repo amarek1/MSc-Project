@@ -21,7 +21,7 @@ real_data = pd.read_pickle(file_name)
 # syn_fraud = pd.read_csv(file_name)
 
 # load synthetic fraud examples
-file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_492_Adam.pkl'
+file_name = '2) synthetic data generation/tGAN/credit card fraud/tGAN_fraud_5000.pkl'
 syn_fraud = pd.read_pickle(file_name)
 
 
@@ -189,7 +189,7 @@ def get_scatters(real_data, synthetic_data, datatype, generator, feature_positio
 real_fraud_i = real_fraud + 0.000001  # correct singular matrix error
 syn_fraud_i = syn_fraud + 0.000001
 
-compare_data(real_fraud_i, syn_fraud_i, 'fraud', 'WcGAN_fraud_492_Adam')
+compare_data(real_fraud_i, syn_fraud_i, 'fraud', 'tGAN_fraud_5000')
 
 # real_data = rescale_0_1(real_data)
 # syn_data = rescale_0_1(syn_data)
@@ -198,8 +198,8 @@ compare_data(real_fraud_i, syn_fraud_i, 'fraud', 'WcGAN_fraud_492_Adam')
 #     get_scatters(real_data, syn_data, 'f+nf', 'synthpop_lin_reg', i)
 
 
-real_fraud = rescale_0_1(real_fraud)
-syn_fraud = rescale_0_1(syn_fraud)
-
-for i in range(16, 17):
-    get_scatters(real_fraud, syn_fraud, 'fraud', 'WcGAN_fraud_492_Adam', i)
+# real_fraud = rescale_0_1(real_fraud)
+# syn_fraud = rescale_0_1(syn_fraud)
+#
+# for i in range(16, 17):
+#     get_scatters(real_fraud, syn_fraud, 'fraud', 'WcGAN_fraud_492_Adam', i)
