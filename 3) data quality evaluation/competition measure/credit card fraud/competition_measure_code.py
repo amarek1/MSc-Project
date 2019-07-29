@@ -16,12 +16,11 @@ np.random.seed(1)
 file_name = 'data/credit card fraud/data_creditcard.pkl'
 real_data = pd.read_pickle(file_name)
 
-file_name = 'data/credit card fraud/data_creditcard_synthpop.pkl'
+file_name = '2) synthetic data generation\WcGAN\credit card fraud\WcGAN results\WcGAN_normal_284315_Adam.pkl'
 syn_data = pd.read_pickle(file_name)
 syn_data = syn_data.loc[syn_data['class'] == 0]
-print(len(syn_data))
 
-file_name = 'data/credit card fraud/synthpop_fo_15000.pkl'
+file_name = '2) synthetic data generation\WcGAN\credit card fraud\WcGAN results\WcGAN_fraud_5904_Adam.pkl'
 syn_data_fraud = pd.read_pickle(file_name)
 syn_data_fraud = syn_data_fraud[:492]
 
