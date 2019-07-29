@@ -95,55 +95,136 @@ def plot_performance1(x_axis_steps=[0, 100, 200, 300, 381], report_dict_real=rea
 
 
 ############################# get adding fraud to real data plots ########################
-
-real_and_syn_report = get_performance_report(model_nr='m1',folder='real and syn fraud', nr_normal_training =[2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000],
-nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381,381],
-nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000,10000])
-
 # plot real and sythetic fraud only plot
-def plot_performance2(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_normal='fraud',
-                      parameter='recall'):
-
-    y_values = list()
-    keys = list(report_dict.keys())
-    for i in range(0, len(keys)):
-        y_values.append(report_dict[keys[i]][fraud_normal][parameter])
-
-    plt.plot(x_axis_steps, y_values, marker='o')
-
-    plt.ylabel(parameter)
-    plt.xlabel('# synthetic fraud data')
-    plt.title('The effect of adding synthetic data to original training data on '+parameter)
-    plt.grid()
-    plt.savefig('4) final figures/performance improvement/models/'+parameter+'_'+keys[0]+'.png')
-    plt.close()
+# def plot_performance2(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_normal='fraud',
+#                       parameter='recall'):
+#
+#     y_values = list()
+#     keys = list(report_dict.keys())
+#     for i in range(0, len(keys)):
+#         y_values.append(report_dict[keys[i]][fraud_normal][parameter])
+#
+#     plt.plot(x_axis_steps, y_values, marker='o')
+#
+#     plt.ylabel(parameter)
+#     plt.xlabel('# synthetic fraud data')
+#     plt.title('The effect of adding synthetic data to original training data on '+parameter)
+#     plt.grid()
+#     plt.savefig('4) final figures/performance improvement/models/'+parameter+'_'+keys[0]+'.png')
+#     plt.close()
 
 # plot_performance2()
 
+
+
+
+real_and_syn_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='synthpop',
+                           nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+                           nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+                           nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+
+
 # plot real and sythetic fraud only plot
-def plot_performance3(x_axis_steps=[0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000,5904], report_dict=real_and_syn_report, fraud_normal='fraud', b='normal',
-                      parameter='recall'):
+def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_normal='fraud', b='normal',
+                      parameter='recall', model='GAN'):
 
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][fraud_normal][parameter])
 
+    for x, y in zip(x_axis_steps, y_values):
+        label = "{:.2f}".format(y)
+
+        plt.annotate(label,  # this is the text
+                     (x, y),  # this is the point to label
+                     textcoords="offset points",  # how to position the text
+                     xytext=(0, 2),  # distance from text to points (x,y)
+                     ha='center')
+
     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
+
 
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][b][parameter])
 
+    for x, y in zip(x_axis_steps, y_values):
+        label = "{:.2f}".format(y)
+
+        plt.annotate(label,  # this is the text
+                     (x, y),  # this is the point to label
+                     textcoords="offset points",  # how to position the text
+                     xytext=(0, 2),  # distance from text to points (x,y)
+                     ha='center')
+
     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
+
 
     plt.ylabel(parameter)
     plt.xlabel('# synthetic fraud data')
-    plt.title('The effect of adding synthetic data to original training data on '+parameter)
+    plt.title('The effect of adding '+model+' synthetic training data on '+parameter)
     plt.grid()
     plt.legend()
-    plt.savefig('4) final figures/performance improvement/models/'+parameter+'_'+keys[len(keys)-1]+'_fraud+normal'+'.png')
+    plt.savefig('4) final figures/performance improvement/models/all generators 492/'+parameter+'_'+keys[len(keys)-1]+'.png')
     plt.close()
 
-plot_performance3()
+
+# synthpop_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='synthpop',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=synthpop_report, fraud_normal='fraud', b='normal',
+#                       parameter='f1-score',model='synthpop')
+#
+#
+#
+# GAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='GAN',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=GAN_report, fraud_normal='fraud', b='normal',
+#                       parameter='f1-score', model='GAN')
+#
+#
+#
+# cGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='cGAN',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=cGAN_report, fraud_normal='fraud', b='normal',
+#                       parameter='f1-score', model='cGAN')
+#
+#
+#
+# WGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='WGAN',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=WGAN_report, fraud_normal='fraud', b='normal',
+#                       parameter='f1-score', model='WGAN')
+#
+#
+#
+# WcGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='WcGAN',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=WcGAN_report, fraud_normal='fraud', b='normal',
+#                       parameter='f1-score', model='WcGAN')
+
+
+
+tGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='tGAN',
+                           nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+                           nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+                           nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=tGAN_report, fraud_normal='fraud', b='normal',
+                      parameter='recall', model='tGAN')
