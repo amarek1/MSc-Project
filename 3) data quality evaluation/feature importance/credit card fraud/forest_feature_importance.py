@@ -9,32 +9,30 @@ np.random.seed(7)
 
 
 def unpack_model(model_name):
-    path = 'C:/Users/amarek/PycharmProjects/data_lab/models/decision tree/' + model_name
+    path = '4) final figures/performance improvement/models/feature importance/' + model_name
     with open(path, 'rb') as file:
         model = pickle.load(file)
         return model
 
+real_model = unpack_model('FI_real_213224_381_0_ts0.25.pkl')
+synthpop_model = unpack_model('FI_synthpop_213224_0_381_ts0.25.pkl')
+GAN_model = unpack_model('FI_GAN_fraud_492_213224_0_381_ts0.25.pkl')
+cGAN_model = unpack_model('FI_cGAN_fraud_492_213224_0_381_ts0.25.pkl')
+WGAN_model = unpack_model('FI_WGAN_fraud_492_213224_0_381_ts0.25.pkl')
+WcGAN_model = unpack_model('FI_WcGAN_fraud_492_Adam_213224_0_381_ts0.25.pkl')
+tGAN_model = unpack_model('FI_tGAN_fraud_213224_0_381_ts0.25.pkl')
 
-unbal_model_ori = unpack_model('forest_model_unbal_ori.pkl')
-bal_model_ori = unpack_model('forest_model_bal_ori.pkl')
-unbal_model_mix = unpack_model('forest_model_unbal_mix.pkl')
-bal_model_mix = unpack_model('forest_model_bal_mix.pkl')
-unbal_model_so = unpack_model('forest_model_unbal_so.pkl')
-bal_model_so = unpack_model('forest_model_bal_so.pkl')
-bal_model_mix_vGAN = unpack_model('forest_model_mix_vGAN6000.pkl')
-bal_model_mix_WGAN = unpack_model('forest_model_mix_WGAN4500.pkl')
 
 
 # load the original data
-file_name = 'C:/Users/amarek/PycharmProjects/data_lab/datasets/creditcard_normalised.csv'
-ori_data = pd.read_csv(file_name)
+file_name = 'data/credit card fraud/data_creditcard.pkl'
+real_data = pd.read_pickle(file_name)
 
 # unbalanced data
-X = ori_data.drop('class', axis=1)
-y = ori_data['class']
+X = real_data.drop('class', axis=1)
+y = real_data['class']
 
-X_train_unbalanced, X_test_unbalanced, y_train_unbalanced, y_test_unbalanced = \
-    train_test_split(X, y, test_size=0.25, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
 
 
 def get_feature_importance(model, x_train):
@@ -43,89 +41,66 @@ def get_feature_importance(model, x_train):
     return feature_importance
 
 
-FI_unbal_ori = get_feature_importance(unbal_model_ori, X_train_unbalanced)
-FI_bal_ori = get_feature_importance(bal_model_ori, X_train_unbalanced)
-# FI_unbal_mix = get_feature_importance(unbal_model_mix, X_train_unbalanced)
-# FI_bal_mix = get_feature_importance(bal_model_mix, X_train_unbalanced)
-FI_unbal_so = get_feature_importance(unbal_model_so, X_train_unbalanced)
-FI_bal_so = get_feature_importance(bal_model_so, X_train_unbalanced)
-FI_bal_mix_vGAN = get_feature_importance(bal_model_mix_vGAN, X_train_unbalanced)
-FI_bal_mix_WGAN = get_feature_importance(bal_model_mix_WGAN, X_train_unbalanced)
+FI_real = get_feature_importance(real_model, X_train)
+FI_synthpop = get_feature_importance(synthpop_model, X_train)
+FI_GAN = get_feature_importance(GAN_model, X_train)
+FI_cGAN = get_feature_importance(cGAN_model, X_train)
+FI_WGAN = get_feature_importance(WGAN_model, X_train)
+FI_WcGAN = get_feature_importance(WcGAN_model, X_train)
+FI_tGAN = get_feature_importance(tGAN_model, X_train)
 
-row_names_unbal_ori = list(FI_unbal_ori.index)
-row_names_bal_ori = list(FI_bal_ori.index)
-# row_names_unbal_mix = list(FI_unbal_mix.index)
-# row_names_bal_mix = list(FI_bal_mix.index)
-row_names_unbal_so = list(FI_unbal_so.index)
-row_names_bal_so = list(FI_bal_so.index)
-row_names_bal_mix_vGAN = list(FI_bal_mix_vGAN.index)
-row_names_bal_mix_WGAN = list(FI_bal_mix_WGAN.index)
-
-fig = plt.figure()
-ax1 = fig.add_subplot(111)
-
-ax1.scatter(x=row_names_unbal_ori, y=FI_unbal_ori.loc[:, 'importance'], s=25, c='b', marker='o', label='unbal_ori')
-ax1.scatter(x=row_names_bal_ori, y=FI_bal_ori.loc[:, 'importance'], s=25, c='r', marker='o', label='bal_ori')
-# ax1.scatter(x=row_names_unbal_mix, y=FI_unbal_mix.loc[:, 'importance'], s=25, c='y', marker='o',
-#             label='unbal_mix')
-# ax1.scatter(x=row_names_bal_mix, y=FI_bal_mix.loc[:, 'importance'], s=25, c='g', marker='o',
-#             label='bal_mix')
-ax1.scatter(x=row_names_unbal_so, y=FI_unbal_so.loc[:, 'importance'], s=30, c='b', marker='x',
-            label='unbal_so')
-ax1.scatter(x=row_names_bal_so, y=FI_bal_so.loc[:, 'importance'], s=30, c='r', marker='x',
-            label='bal_so')
+row_names_real = list(FI_real.index)
+row_names_synthpop = list(FI_synthpop.index)
+row_names_GAN = list(FI_GAN.index)
+row_names_cGAN = list(FI_cGAN.index)
+row_names_WGAN = list(FI_WGAN.index)
+row_names_WcGAN = list(FI_WcGAN.index)
+row_names_tGAN = list(FI_tGAN.index)
 
 
+plt.scatter(row_names_real, FI_real.loc[:, 'importance'], s=40, c='r', marker='x', label='real')
+plt.scatter(row_names_synthpop, FI_synthpop.loc[:, 'importance'], s=25, c='forestgreen', marker='o', label='synthpop')
+plt.scatter(row_names_GAN, FI_GAN.loc[:, 'importance'], s=25, c='gold', marker='o', label='GAN')
+plt.scatter(row_names_cGAN, FI_cGAN.loc[:, 'importance'], s=25, c='darkorange', marker='o', label='cGAN')
+plt.scatter(row_names_WGAN, FI_WGAN.loc[:, 'importance'], s=25, c='grey', marker='o', label='WGAN')
+plt.scatter(row_names_tGAN, FI_tGAN.loc[:, 'importance'], s=25, c='violet', marker='o', label='tGAN')
+plt.scatter(row_names_WcGAN, FI_WcGAN.loc[:, 'importance'], s=25, c='dodgerblue', marker='o', label='WcGAN')
 
-plt.xlabel('features')
-plt.ylabel('importance score (x$10^-2$)')
+
+plt.xlabel('features', fontsize=10)
+plt.ylabel('importance score (x$10^-2$)', fontsize=10)
 plt.legend(loc='upper right')
-plt.xticks(fontsize=10, rotation=90)
+plt.xticks(fontsize=8, rotation=80)
 plt.title('Random forest feature importance')
 plt.grid()
-plt.show()
+plt.tight_layout()
+plt.savefig('3) data quality evaluation/feature importance/credit card fraud/FI_plot.png')
 
 
-# assess the similarity of feature importance distribution
+# calculate overall score
 
 
-merged_FI_unbal = pd.concat([FI_unbal_ori, FI_unbal_so], axis=1, sort=True)
-merged_FI_bal = pd.concat([FI_bal_ori, FI_bal_so], axis=1, sort=True)
+dist_synthpop = float(sum(abs(FI_real.values-FI_synthpop.values)/FI_real.values)/len(FI_real.values))
+dist_GAN = float(sum(abs(FI_real.values-FI_GAN.values)/FI_real.values)/len(FI_real.values))
+dist_cGAN = float(sum(abs(FI_real.values-FI_cGAN.values)/FI_real.values)/len(FI_real.values))
+dist_WGAN = float(sum(abs(FI_real.values-FI_WGAN.values)/FI_real.values)/len(FI_real.values))
+dist_WcGAN = float(sum(abs(FI_real.values-FI_WcGAN.values)/FI_real.values)/len(FI_real.values))
+dist_tGAN = float(sum(abs(FI_real.values-FI_tGAN.values)/FI_real.values)/len(FI_real.values))
 
 
-# fig = plt.figure()
-# plt.suptitle("How Pearson's correlation coefficient works - how far are the points from the line")
-# ax1 = fig.add_subplot(211)
-# ax1.scatter(merged_FI_bal.iloc[:, 0], merged_FI_bal.iloc[:, 1], s=25, c='b', marker='o', label='unbal_ori')
-# plt.title('balanced')
-# plt.xlabel('original feature importance score')
-# plt.ylabel('synthetic feature importance score')
-#
-# ax2 = fig.add_subplot(212)
-# ax2.scatter(merged_FI_unbal.iloc[:, 0], merged_FI_unbal.iloc[:, 1], s=25, c='b', marker='o', label='unbal_ori')
-# plt.title('unbalanced')
-# plt.xlabel('original feature importance score')
-# plt.ylabel('synthetic feature importance score')
-# plt.tight_layout()
-# plt.show()
-
-
-# print('the averaged distance for the syn and ori data(unbalanced):', sum(abs(FI_unbal_ori.values-FI_unbal_so.values)))
-# print('the averaged distance for the syn and ori data(balanced):', sum(abs(FI_bal_ori.values-FI_bal_so.values)))
-#
-# # dist_unbal = float(sum(abs(FI_unbal_ori.values-FI_unbal_so.values)))
-# # dist_bal = float(sum(abs(FI_bal_ori.values-FI_bal_so.values)))
-#
-# dist_unbal = float(sum(abs(FI_unbal_ori.values-FI_unbal_so.values)/FI_unbal_ori.values))
-# dist_bal = float(sum(abs(FI_bal_ori.values-FI_bal_so.values)/FI_bal_ori.values))
-# print(FI_unbal_ori.values-FI_unbal_so.values)
-# print((FI_unbal_ori.values-FI_unbal_so.values)/FI_unbal_ori.values)
-#
-# fig = plt.figure()
-# x = np.arange(2)
-# distance = [dist_unbal, dist_bal]
-# plt.title('Normalised distance between original and synthetic feature importance')
-# plt.ylabel('distance')
-# plt.bar(x, distance)
-# plt.xticks(x, ('unbalanced model', 'balanced model'))
-# plt.show()
+fig = plt.figure()
+x = np.arange(6)
+distance = [dist_synthpop, dist_GAN, dist_cGAN, dist_WGAN, dist_WcGAN, dist_tGAN]
+plt.title('Distance between real and synthetic feature importance scores')
+plt.ylabel('normalised distance')
+plt.xlabel('data generator')
+a = plt.bar(x, distance)
+plt.xticks(x, ('synthpop', 'GAN', 'cGAN', 'WGAN', 'WcGAN', 'tGAN'))
+plt.tight_layout()
+a[0].set_color('forestgreen')
+a[1].set_color('gold')
+a[2].set_color('darkorange')
+a[3].set_color('grey')
+a[4].set_color('dodgerblue')
+a[5].set_color('violet')
+plt.savefig('3) data quality evaluation/feature importance/credit card fraud/FI_score_normalised.png')
