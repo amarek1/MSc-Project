@@ -26,7 +26,7 @@ data = fraud_w_classes
 def cGAN_generate_data(data=data, rand_dim=33, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
                       data_dir='2) synthetic data generation/cGAN/credit card fraud/cGAN training/adam_',
-                      gen_data_size=492, gen_data_name='cGAN_fraud_492'):
+                      gen_data_size=492*12, gen_data_name='cGAN_fraud_5904'):
 
 
     generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
@@ -41,7 +41,7 @@ def cGAN_generate_data(data=data, rand_dim=33, base_n_count=128, nb_steps=6000 +
     label_cols = [i for i in data.columns if 'class' in i]
     data_cols = [i for i in data.columns if i not in label_cols]
 
-    adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    # adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
 
     # find the best training step
