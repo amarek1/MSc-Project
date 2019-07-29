@@ -98,7 +98,7 @@ def cGAN_generate_data(data=data, rand_dim=34, base_n_count=128, nb_steps=6000 +
         df2 = pd.DataFrame([g_z[i]], columns=col_names)
         df = df.append(df2, ignore_index=True)
 
-    df['class'] = np.ones(gen_data_size, dtype=np.int)
+    df['class'] = np.zeros(gen_data_size, dtype=np.int)
 
     df.to_pickle('2) synthetic data generation/CGAN/credit card fraud/'+gen_data_name+'.pkl')
 
