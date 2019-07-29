@@ -24,7 +24,7 @@ data = normal_w_classes
 # k_d/k_g number of discriminator/generator network updates per adversarial training step
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
-def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
+def WcGAN_generate_data(data=data, rand_dim=40, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
                       data_dir='2) synthetic data generation/WcGAN/credit card fraud/WcGAN training/normal_',
                       gen_data_size=len(data), gen_data_name='WcGAN_normal_284315_Adam'):
@@ -99,7 +99,7 @@ def WcGAN_generate_data(data=data, rand_dim=39, base_n_count=128, nb_steps=6000 
         df2 = pd.DataFrame([g_z[i]], columns=col_names)
         df = df.append(df2, ignore_index=True)
 
-    df['class'] = np.ones(gen_data_size, dtype=np.int)
+    df['class'] = np.zeros(gen_data_size, dtype=np.int)
 
     df.to_pickle('2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/'+gen_data_name+'.pkl')
 
