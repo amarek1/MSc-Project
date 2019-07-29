@@ -20,8 +20,8 @@ data = fraud_data
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
 def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
                       log_interval=100, learning_rate=5e-3,critic_pre_train_steps=5,
-                      data_dir='2) synthetic data generation/GAN/credit card fraud/GAN training/delete_',
-                      gen_data_size=492, gen_data_name='GAN_fraud_492'):
+                      data_dir='2) synthetic data generation/GAN/credit card fraud/GAN training/adam_',
+                      gen_data_size=492*12, gen_data_name='GAN_fraud_5904'):
 
 
     # set up
@@ -33,7 +33,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
     # train the vanilla GAN
     arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, log_interval, learning_rate, critic_pre_train_steps,
                  base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
-    adversarial_training_GAN(arguments, X, col_names)
+    # adversarial_training_GAN(arguments, X, col_names)
 
     # find the best training step
     prefix = 'GAN'
