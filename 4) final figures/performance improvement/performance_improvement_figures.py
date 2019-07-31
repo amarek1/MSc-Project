@@ -167,7 +167,7 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
     plt.title('The effect of adding '+model+' synthetic training data on '+parameter)
     plt.grid()
     plt.legend()
-    plt.savefig('4) final figures/performance improvement/models/all generators 492/'+parameter+'_'+keys[len(keys)-1]+'.png')
+    plt.savefig('4) final figures/performance improvement/models/control duplicate fraud/'+parameter+'_'+keys[len(keys)-1]+'.png')
     plt.close()
 
 
@@ -220,11 +220,19 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
 #                       parameter='f1-score', model='WcGAN')
 
 
+#
+# tGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='tGAN',
+#                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+#                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+#                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=tGAN_report, fraud_normal='fraud', b='normal',
+#                       parameter='recall', model='tGAN')
 
-tGAN_report = get_performance_report(folder='all generators 492', model_nr='m1', model_type='tGAN',
+duplicate_report = get_performance_report(folder='control duplicate fraud', model_nr='rf', model_type='real_duplicated',
                            nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
                            nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
                            nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
 
-plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=tGAN_report, fraud_normal='fraud', b='normal',
-                      parameter='recall', model='tGAN')
+plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=duplicate_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='duplicate_fraud')
