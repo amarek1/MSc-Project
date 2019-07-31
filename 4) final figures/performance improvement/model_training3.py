@@ -15,9 +15,29 @@ np.random.seed(7)
 file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working directory to MSc Project
 real_data = pd.read_pickle(file_name)
 
-# load synthetic fraud examples
-file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_492_Adam.pkl'
-synthetic_fraud = pd.read_pickle(file_name)
+# # load synthetic fraud examples
+# file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_492_Adam.pkl'
+# synthetic_fraud = pd.read_pickle(file_name)
+
+train_data, test_data, train_labels, test_labels = train_test_split(real_data, real_data['class'], test_size=0.25, random_state=1)
+
+syn1 = train_data.loc[train_data['class']==1]
+syn2 = train_data.loc[train_data['class']==1]
+syn3 = train_data.loc[train_data['class']==1]
+syn4 = train_data.loc[train_data['class']==1]
+syn5 = train_data.loc[train_data['class']==1]
+syn6 = train_data.loc[train_data['class']==1]
+syn7 = train_data.loc[train_data['class']==1]
+syn8 = train_data.loc[train_data['class']==1]
+syn9 = train_data.loc[train_data['class']==1]
+syn10 = train_data.loc[train_data['class']==1]
+syn11 = train_data.loc[train_data['class']==1]
+syn12 = train_data.loc[train_data['class']==1]
+syn13 = train_data.loc[train_data['class']==1]
+syn14 = train_data.loc[train_data['class']==1]
+
+
+synthetic_fraud = pd.concat([syn1,syn2,syn3,syn4,syn5,syn6,syn7,syn8,syn9,syn10,syn11,syn12,syn13,syn14])
 
 
 ####################### functions ######################################
@@ -78,12 +98,12 @@ def get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder
 
 ####################### get models ######################################
 
-nr_normal_training = [213224]
-nr_fraud_training = [0]
-nr_synthetic_fraud_training = [381]
+nr_normal_training = [5381, 5381, 5381, 5381, 5381, 5381, 5381]
+nr_fraud_training = [381, 381, 381, 381, 381, 381, 381]
+nr_synthetic_fraud_training = [0, 500, 1000, 2000, 3000, 4000, 5000]
 for i in range(0, len(nr_normal_training)):
-    get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='feature importance', model_name='FI',
-                     model_type='WcGAN_fraud_492_Adam', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+    get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='control duplicate fraud', model_name='rf',
+                     model_type='real_duplicated', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
 
 # nr_normal_training = [213224, 213224, 213224, 213224, 213224]
