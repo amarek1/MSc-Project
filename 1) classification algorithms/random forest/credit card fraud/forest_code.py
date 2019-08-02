@@ -24,14 +24,14 @@ syn_data = pd.read_pickle(file_name)
 data = ori_data
 
 
-def get_forest_model(data=data, balanced=False, model_name='delete.pkl'):
+def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalanced_ori.pkl'):
 
     if balanced == True:
         X_train, X_test, y_train, y_test = get_balanced_data(data)
     else:
         X = data.drop('class', axis=1)
         y = data['class']
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
 
     # Number of trees in random forest
     n_estimators = [10, 100]  # [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
