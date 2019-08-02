@@ -12,7 +12,7 @@ file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working director
 data = pd.read_pickle(file_name)
 
 train_data, test_data, train_labels, test_labels = \
-    train_test_split(data, data['class'], test_size=0.2, random_state=1)
+    train_test_split(data, data['class'], test_size=0.25, random_state=1)
 
 # even out the data set -> 1:1 ratio of 0 and 1 classes
 data_training = train_data.sample(frac=1)  # shuffle
