@@ -18,7 +18,7 @@ data = pd.read_pickle(file_name)
 X = data.drop('class', axis=1)
 y = data['class']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
 
 
 def get_NN_model(lr=0.001, loss='sparse_categorical_crossentropy', metrics=['accuracy'],
