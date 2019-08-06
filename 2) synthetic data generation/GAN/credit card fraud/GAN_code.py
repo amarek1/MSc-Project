@@ -8,8 +8,8 @@ from GAN_global_functions import adversarial_training_GAN, define_models_GAN, ge
 
 # load the data
 file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working directory to MSc Project
-ori_data = pd.read_pickle(file_name)
-fraud_data = ori_data.loc[ori_data['class'] == 1]
+real_data = pd.read_pickle(file_name)
+fraud_data = real_data.loc[real_data['class'] == 1]
 data = fraud_data
 
 
