@@ -6,27 +6,27 @@ import pandas as pd
 from tgan.model import TGANModel
 import pickle
 
-file_name = 'data/credit card fraud/data_creditcard.pkl'
-ori_data = pd.read_pickle(file_name)
-fraud_data = ori_data.loc[ori_data['class'] == 1]
+file_name = 'data/customer churn/customer churn modified.pkl'
+real_data = pd.read_pickle(file_name)
+fraud_data = real_data.loc[real_data['class'] == 1]
 
-continuous_columns = [*range(0, len(ori_data.columns)-1)]
+continuous_columns = [*range(0, len(real_data.columns) - 1)]
 
-tgan = TGANModel(continuous_columns, output='output', max_epoch=1, steps_per_epoch=6000, save_checkpoints=True,
+tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/customer churn/churn/', max_epoch=1, steps_per_epoch=6000, save_checkpoints=True,
                  restore_session=True, batch_size=256, z_dim=200, noise=0.2, l2norm=0.00001, learning_rate=0.001,
                  num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer')
 
-# tgan.fit(fraud_data)
-# model_path = 'output/tGAN_fraud_512.pkl'
-# tgan.save(model_path, force=True) #force=True to overwrite
+tgan.fit(fraud_data)
+model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model.pkl'
+tgan.save(model_path, force=True) #force=True to overwrite
 
-model_path = '2) synthetic data generation/tGAN/credit card fraud/tGAN_fraud_model.pkl'
+model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model.pkl'
 loaded_tgan = TGANModel.load(model_path)
 
 num_samples = 5000
 samples = loaded_tgan.sample(num_samples)
 
-samples.to_pickle('2) synthetic data generation/tGAN/credit card fraud/tGAN_fraud_5000.pkl')
+samples.to_pickle('2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl')
 
 
 # #!usr/bin/env python
