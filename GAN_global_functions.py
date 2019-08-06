@@ -46,18 +46,18 @@ def SimpleAccuracy(y_pred, y_true):
 
 
 def get_data_batch(train, batch_size, seed=0):
-    # # random sampling - some samples will have excessively low or high sampling, but easy to implement
-    # np.random.seed(seed)
-    # x = train.loc[ np.random.choice(train.index, batch_size) ].values
+    # random sampling - some samples will have excessively low or high sampling, but easy to implement
+    np.random.seed(seed)
+    x = train.loc[ np.random.choice(train.index, batch_size) ].values
 
-    # iterate through shuffled indices, so every sample gets covered evenly
-    start_i = (batch_size * seed) % len(train)
-    stop_i = start_i + batch_size
-    shuffle_seed = (batch_size * seed) // len(train)
-    np.random.seed(shuffle_seed)
-    train_ix = np.random.choice(list(train.index), replace=False, size=len(train))  # wasteful to shuffle every time
-    train_ix = list(train_ix) + list(train_ix)  # duplicate to cover ranges past the end of the set
-    x = train.loc[train_ix[start_i: stop_i]].values
+    # # iterate through shuffled indices, so every sample gets covered evenly
+    # start_i = (batch_size * seed) % len(train)
+    # stop_i = start_i + batch_size
+    # shuffle_seed = (batch_size * seed) // len(train)
+    # np.random.seed(shuffle_seed)
+    # train_ix = np.random.choice(list(train.index), replace=False, size=len(train))  # wasteful to shuffle every time
+    # train_ix = list(train_ix) + list(train_ix)  # duplicate to cover ranges past the end of the set
+    # x = train.loc[train_ix[start_i: stop_i]].values
 
     return np.reshape(x, (batch_size, -1))
 
