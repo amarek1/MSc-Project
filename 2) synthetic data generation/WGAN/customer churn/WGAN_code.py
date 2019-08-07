@@ -21,7 +21,7 @@ data = fraud_data
 def WGAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
                       data_dir='2) synthetic data generation/WGAN/customer churn/WGAN training/churn_',
-                      gen_data_size=5000, gen_data_name='WGAN_churn_5000'):
+                      gen_data_size=5000, gen_data_name='WGAN_churn_5000_2'):
 
 
     generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
