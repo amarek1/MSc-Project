@@ -9,7 +9,7 @@ np.random.seed(7)
 
 
 def unpack_model(model_name):
-    path = '4) final figures/performance improvement/models/feature importance/' + model_name
+    path = '4) final figures/performance improvement/models/feature importance/credit card fraud/' + model_name
     with open(path, 'rb') as file:
         model = pickle.load(file)
         return model
@@ -79,13 +79,20 @@ plt.savefig('3) data quality evaluation/feature importance/credit card fraud/FI_
 
 # calculate overall score
 
-
+FI_real = FI_real+0.001
 dist_synthpop = float(sum(abs(FI_real.values-FI_synthpop.values)/FI_real.values)/len(FI_real.values))
 dist_GAN = float(sum(abs(FI_real.values-FI_GAN.values)/FI_real.values)/len(FI_real.values))
 dist_cGAN = float(sum(abs(FI_real.values-FI_cGAN.values)/FI_real.values)/len(FI_real.values))
 dist_WGAN = float(sum(abs(FI_real.values-FI_WGAN.values)/FI_real.values)/len(FI_real.values))
 dist_WcGAN = float(sum(abs(FI_real.values-FI_WcGAN.values)/FI_real.values)/len(FI_real.values))
 dist_tGAN = float(sum(abs(FI_real.values-FI_tGAN.values)/FI_real.values)/len(FI_real.values))
+
+# dist_synthpop = float(sum(abs(FI_real.values-FI_synthpop.values))/len(FI_real.values))
+# dist_GAN = float(sum(abs(FI_real.values-FI_GAN.values))/len(FI_real.values))
+# dist_cGAN = float(sum(abs(FI_real.values-FI_cGAN.values))/len(FI_real.values))
+# dist_WGAN = float(sum(abs(FI_real.values-FI_WGAN.values))/len(FI_real.values))
+# dist_WcGAN = float(sum(abs(FI_real.values-FI_WcGAN.values))/len(FI_real.values))
+# dist_tGAN = float(sum(abs(FI_real.values-FI_tGAN.values))/len(FI_real.values))
 
 
 fig = plt.figure()
