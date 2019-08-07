@@ -14,7 +14,7 @@ score_tGAN = 0.23
 fig = plt.figure()
 x = np.arange(6)
 distance = [score_synthpop, score_GAN, score_cGAN, score_WGAN, score_WcGAN, score_tGAN]
-plt.title('Synthetic ranking agreement results')
+plt.title('Synthetic ranking agreement results for fraud dataset')
 plt.ylabel('Score')
 plt.xlabel('data generator')
 a = plt.bar(x, distance)
