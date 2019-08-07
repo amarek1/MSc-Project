@@ -17,7 +17,7 @@ real_data = pd.read_pickle(file_name)
 real_fraud = real_data.loc[real_data['class'] == 1]
 
 # load the synthetic data
-file_name = '2) synthetic data generation/GAN/customer churn/GAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'
 syn_fraud = pd.read_pickle(file_name)
 syn_fraud = syn_fraud[:len(real_fraud)]
 
