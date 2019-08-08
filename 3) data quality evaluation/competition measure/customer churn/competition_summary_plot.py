@@ -7,11 +7,11 @@ import scipy.stats
 np.random.seed(7)
 
 score_synthpop = 0.8
-score_GAN = 0
+score_GAN = 0.1
 score_cGAN = 0
 score_WGAN = 0.6
 score_WcGAN = 0.6
-score_tGAN = 0.4
+score_tGAN = 0.7
 
 
 fig = plt.figure()
