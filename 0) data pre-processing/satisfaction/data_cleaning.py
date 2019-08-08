@@ -18,8 +18,7 @@ for col in data.columns:
 data.drop(remove, axis=1, inplace=True)
 
 # remove ID
-data.drop(['ID'], axis=1)
-print(len(data.columns))
+data = data.drop(['ID'], axis=1)
 
 # remove duplicate columns
 remove_dup = []
@@ -27,8 +26,34 @@ cols = data.columns
 for i in range(0,len(cols)-1):
     a = data[cols[i]].values
     for j in range(i+1, len(cols)):
-        b = data[cols[j].values]
+        b = data[cols[j]].values
         if np.array_equal(a, b):
             remove_dup.append(cols[j])
 
-print(len(remove_dup))
+# include columns with mostly zeros
+remove_dup += ['num_var13_medio', 'saldo_medio_var13_medio_ult1']
+
+data.drop(remove_dup, axis=1, inplace=True)
+
+# check for NANs - no NaNs
+data.columns[data.isna().any()].tolist()
+
+
+# determine binary/categorical columns (0 or 1)
+categorical = []
+for col in data.columns:
+    if data[col].max() == 1 and data[col].min() == 0:
+        categorical.append(col)
+
+# rename TARGET to class for consistency
+data = data.rename(columns={'TARGET':'class'})
+
+data.to_pickle('data/satisfaction/satisfaction clean.pkl')
+data.to_csv('data/satisfaction/satisfaction clean.csv')
+
+# seperate data into satisfied (0) and not satisfied (1)
+normal_data = data[data['class']==0]
+normal_data.to_csv('data/satisfaction/satisfaction normal.csv')
+
+notsat_data = data[data['class']==1]
+notsat_data.to_csv('data/satisfaction/satisfaction notsat.csv')
