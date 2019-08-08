@@ -178,61 +178,61 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
 #
 # plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=synthpop_report, fraud_normal='fraud', b='normal',
 #                       parameter='recall',model='synthpop')
-#
-#
-#
-# GAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='GAN',
-#                                     nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-#                                     nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-#                                     nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-#
-# plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=GAN_report, fraud_normal='fraud', b='normal',
-#                       parameter='recall', model='GAN')
-#
-#
-#
-# cGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='cGAN',
-#                                      nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-#                                      nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-#                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-#
-# plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=cGAN_report, fraud_normal='fraud', b='normal',
-#                       parameter='recall', model='cGAN')
-#
-#
-#
-# WGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='WGAN',
-#                                      nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-#                                      nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-#                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-#
-# plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=WGAN_report, fraud_normal='fraud', b='normal',
-#                       parameter='recall', model='WGAN')
-#
-#
-#
-# WcGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='WcGAN',
-#                                       nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-#                                       nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-#                                       nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-#
-# plot_performance3(x_axis_steps=[00, 500, 1000, 1500, 2000, 2500], report_dict=WcGAN_report, fraud_normal='fraud', b='normal',
-#                       parameter='recall', model='WcGAN')
-#
-#
-#
-# tGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='tGAN',
-#                                      nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-#                                      nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-#                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-#
-# plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=tGAN_report, fraud_normal='fraud', b='normal',
-#                       parameter='recall', model='tGAN')
 
-duplicate_report = get_performance_report(folder='control duplicate churn', model_nr='rf', model_type='real_duplicated',
-                                        nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-                                        nr_fraud_training = [1435, 1435, 1435, 1435, 1435, 1435],
-                                        nr_synthetic_fraud_training = [0, 500, 1000, 1500, 2000, 2500])
 
-plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=duplicate_report, fraud_normal='fraud', b='normal',
-                      parameter='precision', model='duplicate_fraud')
+
+GAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='GAN',
+                                    nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+                                    nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
+                                    nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=GAN_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='GAN')
+
+
+
+cGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='cGAN',
+                                     nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+                                     nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
+                                     nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=cGAN_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='cGAN')
+
+
+
+WGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='WGAN',
+                                     nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+                                     nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
+                                     nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=WGAN_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='WGAN')
+
+
+
+WcGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='WcGAN',
+                                      nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+                                      nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
+                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
+
+plot_performance3(x_axis_steps=[00, 500, 1000, 1500, 2000, 2500], report_dict=WcGAN_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='WcGAN')
+
+
+
+tGAN_report = get_performance_report(folder='all generators/customer churn', model_nr='m1', model_type='tGAN',
+                                     nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+                                     nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
+                                     nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=tGAN_report, fraud_normal='fraud', b='normal',
+                      parameter='f1-score', model='tGAN')
+
+# duplicate_report = get_performance_report(folder='control duplicate churn', model_nr='rf', model_type='real_duplicated',
+#                                         nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
+#                                         nr_fraud_training = [1435, 1435, 1435, 1435, 1435, 1435],
+#                                         nr_synthetic_fraud_training = [0, 500, 1000, 1500, 2000, 2500])
+#
+# plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=duplicate_report, fraud_normal='fraud', b='normal',
+#                       parameter='precision', model='duplicate_fraud')
