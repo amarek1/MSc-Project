@@ -7,7 +7,7 @@ real_cols = real_data.columns
 print('real: ',len(real_cols))
 
 # load the data
-file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'  # set working directory to MSc Project
+file_name = '2) synthetic data generation/tGAN/customer churn/normal/tGAN_normal_5174.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 # data = data.drop(columns=['Unnamed: 0', 'X'])
 # fraud_data = data.loc[data['class'] == 1]
