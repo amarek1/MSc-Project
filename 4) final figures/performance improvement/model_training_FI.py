@@ -18,7 +18,7 @@ file_name = 'data/customer churn/customer churn modified.pkl'  # set working dir
 real_data = pd.read_pickle(file_name)
 
 # load synthetic fraud examples
-file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/WcGAN/customer churn/WcGAN results/WcGAN_churn_5000_2.pkl'
 synthetic_fraud = pd.read_pickle(file_name)
 
 
@@ -85,7 +85,7 @@ nr_fraud_training = [0]
 nr_synthetic_fraud_training = [1435]
 for i in range(0, len(nr_normal_training)):
     get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='feature importance/customer churn', model_name='FI',
-                     model_type='tGAN_churn', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     model_type='WcGAN_churn', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
 
 # nr_normal_training = [213224, 213224, 213224, 213224, 213224]
