@@ -17,12 +17,12 @@ file_name = 'data/customer churn/customer churn modified.pkl'
 real_data = pd.read_pickle(file_name)
 
 
-file_name = 'data/customer churn/synthpop_churn_normal_5174'
+file_name = '2) synthetic data generation/tGAN/customer churn/normal/tGAN_normal_5174.pkl'
 syn_data_normal = pd.read_pickle(file_name)
 syn_data_normal = syn_data_normal.loc[syn_data_normal['class'] == 0]
 
 
-file_name = 'data/customer churn/synthpop_churn_fraud_5000.pkl'
+file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'
 syn_data_fraud = pd.read_pickle(file_name)
 syn_data_fraud = syn_data_fraud[:1869]
 
