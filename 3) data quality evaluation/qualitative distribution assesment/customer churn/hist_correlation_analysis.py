@@ -21,10 +21,14 @@ real_data = pd.read_pickle(file_name)
 # syn_fraud = pd.read_csv(file_name)
 
 # load synthetic fraud examples
-file_name = '2) synthetic data generation/WcGAN/customer churn/WcGAN results/WcGAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'
 syn_fraud = pd.read_pickle(file_name)
 
-data_name = 'WcGAN_churn_5000'
+syn_fraud = syn_fraud.astype('float64')
+print(syn_fraud.dtypes)
+syn_fraud.to_pickle(file_name)
+
+data_name = 'tGAN_churn_5000'
 
 real_fraud = real_data.loc[real_data.loc[:, 'class'] == 1, :]
 
