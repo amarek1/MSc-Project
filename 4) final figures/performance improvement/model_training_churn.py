@@ -19,16 +19,16 @@ real_data = pd.read_pickle(file_name)
 file_name = 'data/customer churn/synthpop_churn_fraud_5000.pkl'
 synthpop_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/GAN/customer churn/GAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/GAN/customer churn/GAN_churn_5000_2.pkl'
 GAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/cGAN/customer churn/cGAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/cGAN/customer churn/cGAN_churn_5000_2.pkl'
 cGAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/WGAN/customer churn/WGAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/WGAN/customer churn/WGAN_churn_5000_2.pkl'
 WGAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/WcGAN/customer churn/WcGAN results/WcGAN_churn_5000.pkl'
+file_name = '2) synthetic data generation/WcGAN/customer churn/WcGAN results/WcGAN_churn_5000_2.pkl'
 WcGAN_fraud = pd.read_pickle(file_name)
 
 file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_5000.pkl'
@@ -147,40 +147,3 @@ for i in range(0, len(nr_normal_training)):
                      model_type='tGAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
 print('tGAN done')
-
-
-
-
-#
-# nr_normal_training = [213224, 213224, 213224, 213224, 213224]
-# nr_fraud_training = [0,0,0,0,0]
-# nr_synthetic_fraud_training = [0, 100, 200, 300, 381]
-# for i in range(0, len(nr_normal_training)):
-#     get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='syn fraud only', model_name='m1',
-#                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
-#                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
-#
-# nr_normal_training = [213224, 213224, 213224, 213224, 213224, 213224, 213224, 213224, 213224, 213224, 213224]
-# nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381]
-# nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000]
-# for i in range(0, len(nr_normal_training)):
-#     get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='real and syn fraud', model_name='m1',
-#                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
-#                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
-#
-# nr_normal_training = [381,481,581,681,781,881,1381,2381,3381,4381,5381]
-# nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381]
-# nr_synthetic_fraud_training = [0, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000]
-# for i in range(0, len(nr_normal_training)):
-#     get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='real and syn fraud', model_name='m1',
-#                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
-#                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
-#
-# nr_normal_training = [2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000]
-# nr_fraud_training = [381,381,381,381,381,381,381,381,381,381,381,381]
-# nr_synthetic_fraud_training = [0, 200, 400, 600, 800, 1000, 2000, 3000, 4000, 5000,10000,14760]
-# for i in range(0, len(nr_normal_training)):
-#     get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='real and syn fraud', model_name='WcGAN_fraud_14760_Adam_l1',
-#                      model_type='rf', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
-#                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
-
