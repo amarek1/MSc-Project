@@ -33,7 +33,7 @@ def get_SVM_model(data=data, kernel='linear', gamma=0.0001, C=100, probability=T
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
 
     # Create SVM classifer object
-    clf = svm.SVC(kernel=kernel, gamma=gamma, C=C, probability=probability, verbose=verbose, cache_size=1500)
+    clf = svm.SVC(kernel=kernel, gamma=gamma, C=C, probability=probability, verbose=verbose, cache_size=600)
 
     # Train SVM classifer
     model = clf.fit(X_train, y_train)
