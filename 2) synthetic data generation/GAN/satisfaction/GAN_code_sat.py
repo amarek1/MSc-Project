@@ -20,7 +20,7 @@ data = churn_data
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
 def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
                       log_interval=100, learning_rate=5e-5,critic_pre_train_steps=100,
-                      data_dir='2) synthetic data generation/GAN/satisfaction/GAN training/sat_',
+                      data_dir='2) synthetic data generation/GAN/satisfaction/GAN training/sat_1_',
                       gen_data_size=5000, gen_data_name='GAN_sat_5000'):
 
 
