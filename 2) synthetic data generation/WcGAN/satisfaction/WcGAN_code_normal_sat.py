@@ -24,9 +24,9 @@ data = normal_w_classes
 # k_d/k_g number of discriminator/generator network updates per adversarial training step
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
-def WcGAN_generate_data(data=data, rand_dim=43, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
+def WcGAN_generate_data(data=data, rand_dim=44, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
-                      data_dir='2) synthetic data generation/WcGAN/satisfaction/WcGAN training/sat_normal_',
+                      data_dir='2) synthetic data generation/WcGAN/satisfaction/WcGAN training/sat_0_',
                       gen_data_size=len(data), gen_data_name='WcGAN_normal_73012'):
 
 
@@ -100,6 +100,26 @@ def WcGAN_generate_data(data=data, rand_dim=43, base_n_count=128, nb_steps=6000 
         df = df.append(df2, ignore_index=True)
 
     df['class'] = np.zeros(gen_data_size, dtype=np.int)
+
+    # round up the float to 0 or 1
+    df[['ind_var1_0', 'ind_var1', 'ind_var5_0', 'ind_var5', 'ind_var6_0', 'ind_var6', 'ind_var8_0', 'ind_var8',
+        'ind_var12_0', 'ind_var12', 'ind_var13_0', 'ind_var13_corto_0', 'ind_var13_corto', 'ind_var13_largo_0',
+        'ind_var13_largo', 'ind_var13_medio_0', 'ind_var13', 'ind_var14_0', 'ind_var14', 'ind_var17_0', 'ind_var17',
+        'ind_var18_0', 'ind_var19', 'ind_var20_0', 'ind_var20', 'ind_var24_0', 'ind_var24', 'ind_var25_cte',
+        'ind_var26_0', 'ind_var26_cte', 'ind_var25_0', 'ind_var30_0', 'ind_var30', 'ind_var31_0', 'ind_var31',
+        'ind_var32_cte', 'ind_var32_0', 'ind_var33_0', 'ind_var33', 'ind_var34_0', 'ind_var37_cte', 'ind_var37_0',
+        'ind_var39_0', 'ind_var40_0', 'ind_var40', 'ind_var41_0', 'ind_var44_0', 'ind_var44', 'ind_var7_emit_ult1',
+        'ind_var7_recib_ult1', 'ind_var10_ult1', 'ind_var10cte_ult1', 'ind_var9_cte_ult1', 'ind_var9_ult1',
+        'ind_var43_emit_ult1', 'ind_var43_recib_ult1', 'class']] = \
+        abs(df[['ind_var1_0', 'ind_var1', 'ind_var5_0', 'ind_var5', 'ind_var6_0', 'ind_var6', 'ind_var8_0', 'ind_var8',
+        'ind_var12_0', 'ind_var12', 'ind_var13_0', 'ind_var13_corto_0', 'ind_var13_corto', 'ind_var13_largo_0',
+        'ind_var13_largo', 'ind_var13_medio_0', 'ind_var13', 'ind_var14_0', 'ind_var14', 'ind_var17_0', 'ind_var17',
+        'ind_var18_0', 'ind_var19', 'ind_var20_0', 'ind_var20', 'ind_var24_0', 'ind_var24', 'ind_var25_cte',
+        'ind_var26_0', 'ind_var26_cte', 'ind_var25_0', 'ind_var30_0', 'ind_var30', 'ind_var31_0', 'ind_var31',
+        'ind_var32_cte', 'ind_var32_0', 'ind_var33_0', 'ind_var33', 'ind_var34_0', 'ind_var37_cte', 'ind_var37_0',
+        'ind_var39_0', 'ind_var40_0', 'ind_var40', 'ind_var41_0', 'ind_var44_0', 'ind_var44', 'ind_var7_emit_ult1',
+        'ind_var7_recib_ult1', 'ind_var10_ult1', 'ind_var10cte_ult1', 'ind_var9_cte_ult1', 'ind_var9_ult1',
+        'ind_var43_emit_ult1', 'ind_var43_recib_ult1', 'class']].round(0))
 
     df.to_pickle('2) synthetic data generation/WcGAN/satisfaction/WcGAN results/'+gen_data_name+'.pkl')
 
