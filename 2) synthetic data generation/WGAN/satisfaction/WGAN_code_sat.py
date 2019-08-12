@@ -20,7 +20,7 @@ data = fraud_data
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
 def WGAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=5, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-3,
-                      data_dir='2) synthetic data generation/WGAN/satisfaction/WGAN training/sat_',
+                      data_dir='2) synthetic data generation/WGAN/satisfaction/WGAN training/sat_1_',
                       gen_data_size=5000, gen_data_name='WGAN_sat_5000'):
 
 
@@ -34,7 +34,7 @@ def WGAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 +
     arguments = [rand_dim, nb_steps, batch_size, k_d, k_g, critic_pre_train_steps, log_interval, learning_rate,
                  base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
 
-    # adversarial_training_WGAN(arguments, X, col_names)
+    adversarial_training_WGAN(arguments, X, col_names)
 
 
     prefix = 'WGAN'
