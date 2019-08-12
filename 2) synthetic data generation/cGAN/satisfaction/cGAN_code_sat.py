@@ -23,10 +23,10 @@ data = fraud_w_classes
 # k_d/k_g number of discriminator/generator network updates per adversarial training step
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
-def cGAN_generate_data(data=data, rand_dim=48, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=1, k_g=1,
+def cGAN_generate_data(data=data, rand_dim=49, base_n_count=128, nb_steps=6000 + 1, batch_size=256, k_d=1, k_g=1,
                       critic_pre_train_steps=100, log_interval=100, learning_rate=1e-5,
                       data_dir='2) synthetic data generation/cGAN/satisfaction/cGAN training/sat_1_',
-                      gen_data_size=1, gen_data_name='cGAN_sat_5000'):
+                      gen_data_size=5000, gen_data_name='cGAN_sat_5000'):
 
 
     generator_model_path, discriminator_model_path, loss_pickle_path = None, None, None
@@ -41,7 +41,7 @@ def cGAN_generate_data(data=data, rand_dim=48, base_n_count=128, nb_steps=6000 +
     label_cols = [i for i in data.columns if 'class' in i]
     data_cols = [i for i in data.columns if i not in label_cols]
 
-    adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    #adversarial_training_GAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
 
     # find the best training step
