@@ -42,13 +42,18 @@ unbalanced_predictions = [int(round(x)) for x in unbalanced_predictions]
 balanced_predictions = balanced_model.predict(X_test_balanced)
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
-# # print the confusion matrix, precision, recall, etc.
-# get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced,'RF')
-# get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced,'RF')
+
+# print the confusion matrix, precision, recall, etc.
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'RF','satisfaction dataset')
+plt.savefig('1) classification algorithms/assess model performance/satisfaction/figures/PRcurve_rf_unbalanced_churn.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced, 'RF','satisfaction dataset')
+plt.savefig('1) classification algorithms/assess model performance/satisfaction/figures/PRcurve_rf_balanced_churn.png')
+plt.close()
 
 
 cm_analysis(y_test_balanced, balanced_predictions, filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_rf_balanced_sat',labels=[0, 1],
-            ymap=['normal','fraud'],title='RF performance on balanced data\nsatisfaction dataset')
+            ymap=['normal','not happy'],title='RF performance on balanced data\nsatisfaction dataset')
 
 cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_rf_unbalanced_sat',labels=[0, 1],
-            ymap=['normal','fraud'],title='RF performance on unbalanced data\nsatisfaction dataset')
+            ymap=['normal','not happy'],title='RF performance on unbalanced data\nsatisfaction dataset')
