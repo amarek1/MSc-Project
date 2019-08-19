@@ -20,21 +20,21 @@ continuous_columns = [x for x in fraud_data.columns if x not in ['ind_var1_0', '
         'ind_var7_recib_ult1', 'ind_var10_ult1', 'ind_var10cte_ult1', 'ind_var9_cte_ult1', 'ind_var9_ult1',
         'ind_var43_emit_ult1', 'ind_var43_recib_ult1', 'class']]
 
-tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/satisfaction/normal/', max_epoch=1,
+tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/satisfaction/delete/', max_epoch=1,
                  steps_per_epoch=6000, save_checkpoints=True,
                  restore_session=True, batch_size=256, z_dim=200, noise=0.2, l2norm=0.00001, learning_rate=0.001,
                  num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer')
 
 tgan.fit(fraud_data)
-model_path = '2) synthetic data generation/tGAN/satisfaction/normal/tGAN_normal_model.pkl'
-tgan.save(model_path, force=True) #force=True to overwrite
+model_path = '2) synthetic data generation/tGAN/satisfaction/delete/tGAN_normal_model6000.pkl'
+tgan.save(model_path, force=False) #force=True to overwrite
 
-model_path = '2) synthetic data generation/tGAN/satisfaction/normal/tGAN_normal_model.pkl'
+model_path = '2) synthetic data generation/tGAN/satisfaction/delete/tGAN_normal_model6000.pkl'
 loaded_tgan = TGANModel.load(model_path)
 
 num_samples = len(fraud_data)
 samples = loaded_tgan.sample(num_samples)
-samples.to_pickle('2) synthetic data generation/tGAN/satisfaction/normal/tGAN_normal_sat_73012.pkl')
+samples.to_pickle('2) synthetic data generation/tGAN/satisfaction/delete/tGAN_normal_sat_73012_6000.pkl')
 
 
 # #!usr/bin/env python
