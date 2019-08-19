@@ -11,7 +11,7 @@ file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory 
 real_data = pd.read_pickle(file_name)
 churn_data = real_data.loc[real_data['class'] == 1]
 data = churn_data
-
+print(data)
 
 # rand_dim needs to be the data dimension
 # nb_steps - add one for logging of the last interval
