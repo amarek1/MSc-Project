@@ -49,13 +49,17 @@ balanced_predictions = balanced_predictions[:,1]
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 
-# # print the confusion matrix, precision, recall, etc.
-# get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-# get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+# print the confusion matrix, precision, recall, etc.
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'NN','fraud dataset')
+plt.savefig('1) classification algorithms/assess model performance/credit card fraud/figures/PRcurve_nn_unbalanced_fraud.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced,'NN','fraud dataset')
+plt.savefig('1) classification algorithms/assess model performance/credit card fraud/figures/PRcurve_nn_balanced_fraud.png')
+plt.close()
 
 
-cm_analysis(y_test_balanced,balanced_predictions,filename='4) final figures/general performance of classifiers/credit card fraud/cm_NN_balanced_fraud.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on balanced data')
+cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/credit card fraud/figures/cm_nn_balanced_fraud.png',labels=[0, 1],
+            ymap=['normal','fraud'],title='NN performance on balanced data\nfraud dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='4) final figures/general performance of classifiers/credit card fraud/cm_NN_unbalanced_fraud.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on unbalanced data')
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/credit card fraud/figures/cm_nn_unbalanced_fraud.png',labels=[0, 1],
+            ymap=['normal','fraud'],title='NN performance on unbalanced data\nfraud dataset')
