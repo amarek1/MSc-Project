@@ -25,12 +25,13 @@ def get_NN_model(lr=0.001, loss='sparse_categorical_crossentropy', metrics=['acc
                  validation_split=0.2, batch_size=25, epochs=20, shuffle=True, verbose=2,
                  model_name='model_NN_unbalanced.pkl'):
 
-    # create the neural net
+    # build the neural net
     n_inputs = X_train.shape[1]
     model = Sequential()
     model.add(Dense(n_inputs, input_dim=n_inputs, activation='relu'))
     model.add(Dense(32, activation='relu'))
     model.add(Dense(2, activation='softmax'))
+
     # model.summary()
 
     # compile the model
