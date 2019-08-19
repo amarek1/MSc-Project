@@ -8,7 +8,7 @@ from sklearn import svm
 numpy.random.seed(7)
 
 # load the data
-file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 
