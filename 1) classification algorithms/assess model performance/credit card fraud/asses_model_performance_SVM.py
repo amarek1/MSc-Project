@@ -43,12 +43,16 @@ balanced_predictions = balanced_model.predict(X_test_balanced)
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 # print the confusion matrix, precision, recall, etc.
-get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'SVM', 'fraud dataset')
+plt.savefig('1) classification algorithms/assess model performance/credit card fraud/figures/PRcurve_svm_unbalanced_fraud.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced,'SVM', 'fraud dataset')
+plt.savefig('1) classification algorithms/assess model performance/credit card fraud/figures/PRcurve_svm_balanced_fraud.png')
+plt.close()
 
 
-cm_analysis(y_test_balanced,balanced_predictions,filename='4) final figures/general performance of classifiers/credit card fraud/cm_SVM_balanced_fraud.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='SVM performance on balanced data')
+cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/credit card fraud/figures/cm_SVM_balanced_fraud.png',labels=[0, 1],
+            ymap=['normal','fraud'],title='SVM performance on balanced data\nfraud dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='4) final figures/general performance of classifiers/credit card fraud/cm_SVM_unbalanced_fraud.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='SVM performance on unbalanced data')
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/credit card fraud/figures/cm_SVM_unbalanced_fraud.png',labels=[0, 1],
+            ymap=['normal','fraud'],title='SVM performance on unbalanced data\nfraud dataset')
