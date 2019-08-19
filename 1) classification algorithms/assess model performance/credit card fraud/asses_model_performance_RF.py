@@ -42,9 +42,12 @@ balanced_predictions = balanced_model.predict(X_test_balanced)
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 # print the confusion matrix, precision, recall, etc.
-get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
-
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'RF')
+plt.savefig('4) final figures/general performance of classifiers/credit card fraud/PRcurve_rf_unbalanced_fraud.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced,'RF')
+plt.savefig('4) final figures/general performance of classifiers/credit card fraud/PRcurve_rf_balanced_fraud.png')
+plt.close()
 
 cm_analysis(y_test_balanced, balanced_predictions, filename='4) final figures/general performance of classifiers/credit card fraud/cm_rf_balanced_fraud.png',labels=[0, 1],
             ymap=['normal','fraud'],title='RF performance on balanced data')
