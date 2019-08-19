@@ -41,7 +41,7 @@ def get_model_performance(model, model_name, x_test, y_test, classifier_name, da
     from sklearn.metrics import average_precision_score
     from sklearn.metrics import confusion_matrix, classification_report
     predictions = model.predict(x_test)
-    predictions = predictions[:, 1]  # uncode when running neural network assessment
+    # predictions = predictions[:, 1]  # uncode when running neural network assessment
     r_predictions = [int(round(x)) for x in predictions]
     cm = confusion_matrix(y_test, r_predictions)
     print('=============================================')
