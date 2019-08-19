@@ -8,7 +8,7 @@ from global_functions import get_balanced_data
 numpy.random.seed(7)
 
 # load the data
-file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 # # cross-validation and parameter optimisation
@@ -26,7 +26,7 @@ def get_SVM_model(data=data, kernel='rbf', gamma=0.0001, C=1000, probability=Tru
     X_train, X_test, y_train, y_test = get_balanced_data(data)
 
     # Create SVM classifer object
-    clf = svm.SVC(kernel=kernel, gamma=gamma, C=C, probability=probability)
+    clf = svm.SVC(kernel=kernel, gamma=gamma, C=C, probability=probability, cache_size=600)
 
     # Train SVM classifer
     model = clf.fit(X_train, y_train)
