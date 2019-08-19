@@ -37,10 +37,11 @@ def get_balanced_data(data):
     return train_data, test_data, train_labels, test_labels
 
 # print out confusion matrix and values like precision, recall, f1-score
-def get_model_performance(model, model_name, x_test, y_test, classifier_name):
+def get_model_performance(model, model_name, x_test, y_test, classifier_name, dataset):
     from sklearn.metrics import average_precision_score
     from sklearn.metrics import confusion_matrix, classification_report
     predictions = model.predict(x_test)
+    predictions = predictions[:, 1]  # uncode when running neural network assessment
     r_predictions = [int(round(x)) for x in predictions]
     cm = confusion_matrix(y_test, r_predictions)
     print('=============================================')
@@ -69,16 +70,16 @@ def get_model_performance(model, model_name, x_test, y_test, classifier_name):
     step_kwargs = ({'step': 'post'}
                    if 'step' in signature(plt.fill_between).parameters
                    else {})
-    plt.step(recall, precision, color='dodgerblue', alpha=1,
+    plt.step(recall, precision, color='lightskyblue', alpha=1,
              where='post')
-    plt.fill_between(recall, precision, alpha=0.8, color='dodgerblue', **step_kwargs)
+    plt.fill_between(recall, precision, alpha=0.8, color='lightskyblue', **step_kwargs)
 
     plt.xlabel('Recall')
     plt.ylabel('Precision')
     plt.ylim([0.0, 1.05])
     plt.xlim([0.0, 1.0])
     # score is average precision-recall score
-    plt.title('Precision-Recall curve for '+model_name+' '+classifier_name+' model')
+    plt.title('Precision-Recall curve for '+model_name+' '+classifier_name+' model'+'\n'+dataset)
     plt.text(0.1, 0.1, 'Average precision\nrecall score={0:0.2f}'.format(
         average_precision), fontsize=12)
     return r_predictions
