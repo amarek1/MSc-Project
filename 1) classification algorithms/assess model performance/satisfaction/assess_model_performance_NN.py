@@ -59,13 +59,17 @@ balanced_predictions = balanced_predictions[:,1]
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 
-# # print the confusion matrix, precision, recall, etc.
-# get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-# get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+# print the confusion matrix, precision, recall, etc.
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'NN','satisfaction dataset')
+plt.savefig('1) classification algorithms/assess model performance/satisfaction/figures/PRcurve_nn_unbalanced_churn.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced, 'NN','satisfaction dataset')
+plt.savefig('1) classification algorithms/assess model performance/satisfaction/figures/PRcurve_nn_balanced_churn.png')
+plt.close()
 
 
 cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_nn_balanced_sat.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on balanced data\nsatisfaction dataset')
+            ymap=['normal','not happy'],title='NN performance on balanced data\nsatisfaction dataset')
 
 cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_nn_unbalanced_sat.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on unbalanced data\nsatisfaction dataset')
+            ymap=['normal','not happy'],title='NN performance on unbalanced data\nsatisfaction dataset')
