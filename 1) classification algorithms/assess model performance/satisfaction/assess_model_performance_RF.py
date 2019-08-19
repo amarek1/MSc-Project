@@ -11,7 +11,7 @@ from global_functions import plot_confusion_matrix, cm_analysis
 np.random.seed(7)
 
 # load the data
-file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 # unbalanced data
@@ -19,18 +19,20 @@ X = data.drop('class',axis=1)
 y = data['class']
 X_train_unbalanced, X_test_unbalanced, y_train_unbalanced, y_test_unbalanced = train_test_split(X, y, test_size=0.25,
                                                                                                 random_state=1)
+print(y)
+print(y_test_unbalanced)
 
 # balanced data
 # even out the data set -> 1:1 ratio of fraud and non fraud
 X_train_balanced, X_test_balanced, y_train_balanced, y_test_balanced = get_balanced_data(data)
 
 # unpack unbalanced model
-path = '1) classification algorithms/random forest/customer churn/model_forest_unbalanced_churn.pkl'
+path = '1) classification algorithms/random forest/satisfaction/model_forest_unbalanced_sat.pkl'
 with open(path, 'rb') as file:
     unbalanced_model = pickle.load(file)
 
 # unpack balanced model
-path = '1) classification algorithms/random forest/customer churn/model_forest_balanced_churn.pkl'
+path = '1) classification algorithms/random forest/satisfaction/model_forest_balanced_sat.pkl'
 with open(path, 'rb') as file:
     balanced_model = pickle.load(file)
 
@@ -40,13 +42,13 @@ unbalanced_predictions = [int(round(x)) for x in unbalanced_predictions]
 balanced_predictions = balanced_model.predict(X_test_balanced)
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
-# print the confusion matrix, precision, recall, etc.
-get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+# # print the confusion matrix, precision, recall, etc.
+# get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced,'RF')
+# get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced,'RF')
 
 
-cm_analysis(y_test_balanced, balanced_predictions, filename='4) final figures/general performance of classifiers/customer churn/cm_rf_balanced_churn',labels=[0, 1],
-            ymap=['normal','fraud'],title='RF performance on balanced data')
+cm_analysis(y_test_balanced, balanced_predictions, filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_rf_balanced_sat',labels=[0, 1],
+            ymap=['normal','fraud'],title='RF performance on balanced data\nsatisfaction dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='4) final figures/general performance of classifiers/customer churn/cm_rf_unbalanced_churn',labels=[0, 1],
-            ymap=['normal','fraud'],title='RF performance on unbalanced data')
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/satisfaction/figures/cm_rf_unbalanced_sat',labels=[0, 1],
+            ymap=['normal','fraud'],title='RF performance on unbalanced data\nsatisfaction dataset')
