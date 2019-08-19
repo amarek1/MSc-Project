@@ -12,7 +12,7 @@ import numpy
 numpy.random.seed(7)
 
 # load the data
-file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 X = data.drop('class', axis=1)
@@ -22,13 +22,15 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 
 
 def get_NN_model(lr=0.001, loss='sparse_categorical_crossentropy', metrics=['accuracy'],
-                 validation_split=0.2, batch_size=25, epochs=20, shuffle=True, verbose=2,
+                 validation_split=0.25, batch_size=25, epochs=20, shuffle=True, verbose=2,
                  model_name='model_NN_unbalanced_sat.pkl'):
 
     # create the neural net
     n_inputs = X_train.shape[1]
     model = Sequential()
     model.add(Dense(n_inputs, input_dim=n_inputs, activation='relu'))
+    model.add(Dense(32, activation='relu'))
+    model.add(Dense(64, activation='relu'))
     model.add(Dense(32, activation='relu'))
     model.add(Dense(2, activation='softmax'))
     # model.summary()
