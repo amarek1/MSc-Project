@@ -15,6 +15,7 @@ np.random.seed(7)
 file_name = 'data/customer churn/customer churn modified.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
+
 # unbalanced data
 X = data.drop('class',axis=1)
 y = data['class']
@@ -49,13 +50,17 @@ balanced_predictions = balanced_predictions[:,1]
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 
-# # print the confusion matrix, precision, recall, etc.
-# get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-# get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+# print the confusion matrix, precision, recall, etc.
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'NN','churn dataset')
+plt.savefig('1) classification algorithms/assess model performance/customer churn/figures/PRcurve_nn_unbalanced_churn.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced, 'NN','churn dataset')
+plt.savefig('1) classification algorithms/assess model performance/customer churn/figures/PRcurve_nn_balanced_churn.png')
+plt.close()
 
 
-cm_analysis(y_test_balanced,balanced_predictions,filename='4) final figures/general performance of classifiers/customer churn/cm_nn_balanced_churn.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on balanced data')
+cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/customer churn/figures/cm_nn_balanced_churn.png',labels=[0, 1],
+            ymap=['normal','churn'],title='NN performance on balanced data\nchurn dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='4) final figures/general performance of classifiers/customer churn/cm_nn_unbalanced_churn.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='NN performance on unbalanced data')
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/customer churn/figures/cm_nn_unbalanced_churn.png',labels=[0, 1],
+            ymap=['normal','churn'],title='NN performance on unbalanced data\nchurn dataset')
