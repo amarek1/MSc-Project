@@ -37,7 +37,8 @@ def get_balanced_data(data):
     return train_data, test_data, train_labels, test_labels
 
 # print out confusion matrix and values like precision, recall, f1-score
-def get_model_performance(model, model_name, x_test, y_test):
+def get_model_performance(model, model_name, x_test, y_test, classifier_name):
+    from sklearn.metrics import average_precision_score
     from sklearn.metrics import confusion_matrix, classification_report
     predictions = model.predict(x_test)
     r_predictions = [int(round(x)) for x in predictions]
@@ -48,8 +49,38 @@ def get_model_performance(model, model_name, x_test, y_test):
     print('confusion matrix\n')
     print(cm,'\n')
     print('---------------------------------------------')
-    print(classification_report(y_test, r_predictions))
+    a = classification_report(y_test, r_predictions, labels=[0,1], digits=5, output_dict=True)
+    print(a)
+    print('precision:', a['1']['precision'])
+    print('recall:', a['1']['recall'])
+    print('f1-score:', a['1']['f1-score'])
     print('=============================================')
+    average_precision = average_precision_score(y_test, r_predictions)
+    print('Average precision-recall score: {0:0.2f}'.format(
+        average_precision))
+
+    from sklearn.metrics import precision_recall_curve
+    import matplotlib.pyplot as plt
+    from inspect import signature
+
+    precision, recall, _ = precision_recall_curve(y_test, r_predictions)
+
+    # In matplotlib < 1.5, plt.fill_between does not have a 'step' argument
+    step_kwargs = ({'step': 'post'}
+                   if 'step' in signature(plt.fill_between).parameters
+                   else {})
+    plt.step(recall, precision, color='dodgerblue', alpha=1,
+             where='post')
+    plt.fill_between(recall, precision, alpha=0.8, color='dodgerblue', **step_kwargs)
+
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.ylim([0.0, 1.05])
+    plt.xlim([0.0, 1.0])
+    # score is average precision-recall score
+    plt.title('Precision-Recall curve for '+model_name+' '+classifier_name+' model')
+    plt.text(0.1, 0.1, 'Average precision\nrecall score={0:0.2f}'.format(
+        average_precision), fontsize=12)
     return r_predictions
 
 
