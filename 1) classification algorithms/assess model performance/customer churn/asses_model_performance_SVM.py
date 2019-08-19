@@ -43,12 +43,16 @@ balanced_predictions = balanced_model.predict(X_test_balanced)
 balanced_predictions = [int(round(x)) for x in balanced_predictions]
 
 # print the confusion matrix, precision, recall, etc.
-get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced)
-get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced)
+get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'SVM','churn dataset')
+plt.savefig('1) classification algorithms/assess model performance/customer churn/figures/PRcurve_svm_unbalanced_churn.png')
+plt.close()
+get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced, 'SVM','churn dataset')
+plt.savefig('1) classification algorithms/assess model performance/customer churn/figures/PRcurve_svm_balanced_churn.png')
+plt.close()
 
 
-cm_analysis(y_test_balanced,balanced_predictions,filename='4) final figures/general performance of classifiers/customer churn/cm_svm_balanced_churn.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='SVM performance on balanced data')
+cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/customer churn/figures/cm_svm_balanced_churn.png',labels=[0, 1],
+            ymap=['normal','churn'],title='SVM performance on balanced data\nchurn dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='4) final figures/general performance of classifiers/customer churn/cm_svm_unbalanced_churn.png',labels=[0, 1],
-            ymap=['normal','fraud'],title='SVM performance on unbalanced data')
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/customer churn/figures/cm_svm_unbalanced_churn.png',labels=[0, 1],
+            ymap=['normal','churn'],title='SVM performance on unbalanced data\nchurn dataset')
