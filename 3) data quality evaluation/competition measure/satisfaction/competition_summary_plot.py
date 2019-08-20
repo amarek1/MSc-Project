@@ -6,12 +6,12 @@ from sklearn.model_selection import train_test_split
 import scipy.stats
 np.random.seed(7)
 
-score_synthpop =
-score_GAN =
-score_cGAN =
-score_WGAN =
-score_WcGAN =
-score_tGAN =
+score_synthpop = 0.8
+score_GAN = 0.4
+score_cGAN = 0.3
+score_WGAN = 0.2
+score_WcGAN = 0.1
+score_tGAN = 0.8
 
 
 fig = plt.figure()
