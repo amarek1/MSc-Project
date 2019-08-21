@@ -26,7 +26,7 @@ X_train_unbalanced, X_test_unbalanced, y_train_unbalanced, y_test_unbalanced = t
 X_train_balanced, X_test_balanced, y_train_balanced, y_test_balanced = get_balanced_data(data)
 
 # unpack unbalanced model
-path = '1) classification algorithms/random forest/home credit/model_forest_unbalanced_home.pkl'
+path = '1) classification algorithms/random forest/home credit/model_forest_balanced_home.pkl'
 with open(path, 'rb') as file:
     unbalanced_model = pickle.load(file)
 
