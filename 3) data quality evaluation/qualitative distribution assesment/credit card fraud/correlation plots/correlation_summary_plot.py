@@ -14,7 +14,7 @@ score_tGAN = 0.101
 fig = plt.figure()
 x = np.arange(6)
 distance = [score_synthpop, score_GAN, score_cGAN, score_WGAN, score_WcGAN, score_tGAN]
-plt.title('Correlation mean difference')
+plt.title('Correlation mean difference for fraud dataset')
 plt.ylabel('Score')
 plt.xlabel('data generator')
 a = plt.bar(x, distance)
