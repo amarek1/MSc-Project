@@ -43,9 +43,9 @@ def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalan
     # Number of features to consider at every split
     #max_features = ['auto']  # ['auto', 'sqrt']
     # Maximum number of levels in tree
-    max_depth = [3, 5, 10]  # [int(x) for x in np.linspace(10, 110, num = 11)]
+    max_depth = [3,  10]  # [int(x) for x in np.linspace(10, 110, num = 11)]
     # Minimum number of samples required to split a node
-    min_samples_split = [2, 10, 20]
+    min_samples_split = [2, 10]
     #criterion = ['gini', 'entropy']
     # Minimum number of samples required at each leaf node
     # min_samples_leaf = [1, 2]
