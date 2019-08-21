@@ -1,17 +1,7 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from dtreeplt import dtreeplt
-import pickle
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.utils.multiclass import unique_labels
-from sklearn.metrics import confusion_matrix, classification_report
-from global_functions import get_model_performance
-from global_functions import plot_confusion_matrix, cm_analysis
+from global_functions import cm_analysis
 import pickle
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
 from global_functions import get_data
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
@@ -25,6 +15,10 @@ data = pd.read_pickle(file_name)
 # even out the data set -> 1:1 ratio of fraud and non fraud
 X_train, X_test, y_train, y_test = get_data(real_data=data, synthetic_data=data,
                     nr_normal_training=381, nr_fraud_training=381, nr_synthetic_fraud_training=0, test_size=0.25)
+
+
+
+############################# open models and get classification reports ########################
 
 
 def get_performance_report(dataset='credit card fraud', model_nr='rf', model_type='control_fraud', nr_normal_training=[213224],
@@ -47,15 +41,16 @@ def get_performance_report(dataset='credit card fraud', model_nr='rf', model_typ
                                        target_names=['normal', 'fraud'], digits=2, output_dict=True)
         report_dict[model_name] = report
 
+        # plot confusion matrix
         cm_analysis(y_test, model_predictions, filename='4) performance improvement/' + dataset + '/control/figures/confusion matrices/cm_' + model_name + '.png',
-                    labels=[0, 1], ymap=['normal', 'fraud'], title='Model trained on:\n#normal:'+str(nr_normal_training[i])+' #fraud:'+str(nr_fraud_training[i])+'\n'+'  #synthetic fraud:'+str(nr_synthetic_fraud_training[i]))
+                    labels=[0, 1], ymap=['normal', 'fraud'], title='RF model trained on\n#normal:'+str(nr_normal_training[i])+' #fraud:'+str(nr_fraud_training[i])+'\n'+'  #duplicated fraud:'+str(nr_synthetic_fraud_training[i]))
         plt.close()
     return report_dict
 
 
 
 
-############################# get adding fraud to real data plots ########################
+############################# extract performance parameters and plot########################
 
 
 
@@ -66,13 +61,13 @@ real_and_syn_report = get_performance_report(dataset='credit card fraud', model_
 
 
 # plot real and sythetic fraud only plot
-def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_normal='fraud', b='normal',
+def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=real_and_syn_report, fraud_par='fraud', normal_par='normal',
                       parameter='recall', model='GAN'):
 
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
-        y_values.append(report_dict[keys[i]][fraud_normal][parameter])
+        y_values.append(report_dict[keys[i]][fraud_par][parameter])
 
     for x, y in zip(x_axis_steps, y_values):
         label = "{:.2f}".format(y)
@@ -89,7 +84,7 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
-        y_values.append(report_dict[keys[i]][b][parameter])
+        y_values.append(report_dict[keys[i]][normal_par][parameter])
 
     for x, y in zip(x_axis_steps, y_values):
         label = "{:.2f}".format(y)
@@ -104,18 +99,35 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
 
 
     plt.ylabel(parameter)
-    plt.xlabel('# synthetic fraud data')
-    plt.title('The effect of adding '+model+' synthetic training data on '+parameter)
+    plt.xlabel('# duplicated fraud data')
+    plt.title('The effect of adding duplicated fraud data on '+parameter)
     plt.grid()
     plt.legend()
-    plt.savefig('4) final figures/performance improvement/models/control duplicate fraud/'+parameter+'_'+keys[len(keys)-1]+'.png')
+    plt.savefig('4) performance improvement/credit card fraud/control/figures/plots/'+parameter+'_'+keys[len(keys)-1]+'.png')
     plt.close()
 
+###################################### run the functions ###################################
 
-duplicate_report = get_performance_report(dataset='control duplicate fraud', model_nr='rf', model_type='real_duplicated',
-                                          nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
-                                          nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
-                                          nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+control_report = get_performance_report(dataset='credit card fraud', model_nr='rf', model_type='control_fraud',
+                                        nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+                                        nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+                                        nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
 
-plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=duplicate_report, fraud_normal='fraud', b='normal',
-                      parameter='f1-score', model='duplicate_fraud')
+plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=control_report, fraud_par='fraud', normal_par='normal',
+                  parameter='f1-score', model='control_fraud')
+
+control_report = get_performance_report(dataset='credit card fraud', model_nr='rf', model_type='control_fraud',
+                                        nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+                                        nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+                                        nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=control_report, fraud_par='fraud', normal_par='normal',
+                  parameter='recall', model='control_fraud')
+
+control_report = get_performance_report(dataset='credit card fraud', model_nr='rf', model_type='control_fraud',
+                                        nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
+                                        nr_fraud_training=[381, 381, 381, 381, 381, 381, 381],
+                                        nr_synthetic_fraud_training=[0, 500, 1000, 2000, 3000, 4000, 5000])
+
+plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=control_report, fraud_par='fraud', normal_par='normal',
+                  parameter='precision', model='control_fraud')
