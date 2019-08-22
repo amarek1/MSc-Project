@@ -114,7 +114,7 @@ app_train = pd.read_pickle('data/home credit/application_train.pkl')
 
 # replace nan with 0
 print(len(app_train),len(app_train.columns))
-app_train = app_train.dropna(thresh=119)
+app_train = app_train.dropna(thresh=122)
 print(len(app_train),len(app_train.columns))
 app_train = app_train.dropna(axis='columns')
 print(len(app_train),len(app_train.columns))
@@ -129,14 +129,14 @@ app_train['TARGET'] = target
 
 data=app_train
 # rescale columns which ar enot categorical or within -1 and 1 range
-# to_rescale = []
-# for col in data.columns:
-#     if data[col].max() > 1 or data[col].min() < -1:
-#         to_rescale.append(col)
-#
-# rob_scaler = RobustScaler()
-# for i in to_rescale:
-#     data[i] = rob_scaler.fit_transform(data[i].values.reshape(-1,1))
+to_rescale = []
+for col in data.columns:
+    if data[col].max() > 1 or data[col].min() < -1:
+        to_rescale.append(col)
+
+rob_scaler = RobustScaler()
+for i in to_rescale:
+    data[i] = rob_scaler.fit_transform(data[i].values.reshape(-1,1))
 
 data = data.astype('float64')
 # rename TARGET to class for consistency
@@ -145,5 +145,7 @@ data = data.rename(columns={'TARGET':'class'})
 print(len(data),len(data.columns))
 print('class0',len(data.loc[data['class'] == 0]),'class1',len(data.loc[data['class'] == 1]))
 data['class'] = data['class'].astype('int')
-
+data = pd.get_dummies(data)
+print(len(data),len(data.columns))
+print(data.dtypes)
 data.to_pickle('data/home credit/home_clean.pkl')
