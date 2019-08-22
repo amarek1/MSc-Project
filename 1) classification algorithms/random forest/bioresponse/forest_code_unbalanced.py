@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 #from global_functions import get_balanced_data
 np.random.seed(7)
+
 def get_balanced_data(data):
 
     train_data, test_data, train_labels, test_labels = \
