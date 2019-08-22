@@ -4,7 +4,12 @@ import pickle
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
+#from global_functions import get_balanced_data
 np.random.seed(7)
+
+# load the data
+file_name = 'data/bioresponse/bio_clean.pkl'   # set working directory to MSc Project
+ori_data = pd.read_pickle(file_name)
 
 def get_balanced_data(data):
 
@@ -34,11 +39,6 @@ def get_balanced_data(data):
 
     return train_data, test_data, train_labels, test_labels
 
-# load the data
-file_name = 'data/bioresponse/bio_clean.pkl'   # set working directory to MSc Project
-ori_data = pd.read_pickle(file_name)
-
-
 # # load the data
 # file_name = 'data/credit card fraud/data_creditcard_synthpop.pkl'  # set working directory to MSc Project
 # syn_data = pd.read_pickle(file_name)
@@ -67,9 +67,9 @@ def get_forest_model(data=data, balanced=False, model_name='model_forest_balance
     # Number of features to consider at every split
     #max_features = ['auto']  # ['auto', 'sqrt']
     # Maximum number of levels in tree
-    max_depth = [3, 5, 10, 25]  # [int(x) for x in np.linspace(10, 110, num = 11)]
+    max_depth = [3, 5, 10]  # [int(x) for x in np.linspace(10, 110, num = 11)]
     # Minimum number of samples required to split a node
-    min_samples_split = [2, 10, 20]
+    min_samples_split = [2, 10]
     #criterion = ['gini', 'entropy']
     # Minimum number of samples required at each leaf node
     # min_samples_leaf = [1, 2]
