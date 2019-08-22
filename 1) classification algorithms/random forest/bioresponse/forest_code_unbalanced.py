@@ -4,7 +4,6 @@ import pickle
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
-#from global_functions import get_balanced_data
 np.random.seed(7)
 
 def get_balanced_data(data):
@@ -34,6 +33,7 @@ def get_balanced_data(data):
     test_labels = even_data_testing['class']
 
     return train_data, test_data, train_labels, test_labels
+
 # load the data
 file_name = 'data/bioresponse/bio_clean.pkl'   # set working directory to MSc Project
 ori_data = pd.read_pickle(file_name)
