@@ -99,7 +99,7 @@ def cGAN_generate_data(data=data, rand_dim=35, base_n_count=128, nb_steps=6000 +
 
     df['class'] = np.ones(gen_data_size, dtype=np.int)
 
-    df.to_pickle('2) synthetic data generation/CGAN/bioresponse/'+gen_data_name+'.pkl')
+    df.to_pickle('2) synthetic data generation/cGAN/bioresponse/'+gen_data_name+'.pkl')
 
     plt.plot(np.transpose([range(0,nb_steps,1)]),disc_loss_generated, label='discriminator loss on fake')
     plt.plot(np.transpose([range(0, nb_steps, 1)]), disc_loss_real, label='discriminator loss on real')
@@ -109,10 +109,10 @@ def cGAN_generate_data(data=data, rand_dim=35, base_n_count=128, nb_steps=6000 +
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     # plt.xticks(np.arange(0,nb_steps, step=log_interval))
-    plt.savefig('2) synthetic data generation/CGAN/bioresponse/'+gen_data_name+'.png')
+    plt.savefig('2) synthetic data generation/cGAN/bioresponse/'+gen_data_name+'.png')
     plt.show()
 
-    with open('2) synthetic data generation/CGAN/bioresponse/'+gen_data_name+'.txt','w')as a:
+    with open('2) synthetic data generation/cGAN/bioresponse/'+gen_data_name+'.txt','w')as a:
         a.write(data_dir+'\n'+'best xboost step(used for data generation):'+str(best_step_x)+'\n'+
                 'best step for delta losses:'+str(best_step)+'\n'+'base_n_count:'+str(base_n_count)+'\n'+'nb_steps:'+
                 str(nb_steps)+'\n'+'batch_size:'+str(batch_size)+'\n'+'critic_pre_train_steps:'+
