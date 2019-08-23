@@ -8,7 +8,6 @@ from GAN_global_functions import adversarial_training_GAN, define_models_GAN, ge
 
 
 cluster_spec = importlib.util.spec_from_file_location("k means classes.py",
-                                                      "C:/Users/amarek/PycharmProjects/MSc Project/"
                                                       "2) synthetic data generation/cGAN/bioresponse/"
                                                       "k means classes_normal.py")
 
