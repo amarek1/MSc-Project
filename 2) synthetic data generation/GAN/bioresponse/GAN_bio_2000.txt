@@ -1,0 +1,10 @@
+2) synthetic data generation/GAN/bioresponse/GAN training/sat_1_
+best xboost step(used for data generation):800
+best step for delta losses:100
+base_n_count:128
+nb_steps:6001
+batch_size:128
+
+log_interval:100
+learning_rate:5e-05
+gen_data_size2000
