@@ -10,7 +10,14 @@ file_name = 'data/bioresponse/bio_clean.pkl'
 real_data = pd.read_pickle(file_name)
 fraud_data = real_data.loc[real_data['class'] == 1]
 
-continuous_columns = list(range(0,(len(fraud_data.columns)-1))) #[3,6,7]
+# find continuous columns based on an assumption that continous have more than 4 unique values
+continuous = []
+for col in real_data.columns:
+    if real_data[col].nunique() > 4:
+        continuous.append(col)
+
+continuous_columns = continuous
+
 
 tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/bioresponse/1/', max_epoch=1, steps_per_epoch=6000, save_checkpoints=True,
                  restore_session=True, batch_size=256, z_dim=200, noise=0.2, l2norm=0.00001, learning_rate=0.001,
