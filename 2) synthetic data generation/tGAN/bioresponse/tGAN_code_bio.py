@@ -6,12 +6,12 @@ import pandas as pd
 from tgan.model import TGANModel
 import pickle
 
-file_name = 'data/bioresponse/bio_clean.pkl'
+file_name = 'data/bioresponse/bio_short.pkl'
 real_data = pd.read_pickle(file_name)
 fraud_data = real_data.loc[real_data['class'] == 1]
 
 # cols = real_data.columns
-# cols = cols[0:10]
+# cols = cols[0:1000]
 # real_data = real_data[cols]
 
 # find continuous columns based on an assumption that continous have more than 4 unique values
@@ -28,16 +28,16 @@ tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/b
                  num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer')
 
 tgan.fit(fraud_data)
-model_path = '2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_model_0_500.pkl'
+model_path = '2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_model_0.pkl'
 tgan.save(model_path, force=True) #force=True to overwrite
 
-model_path = '2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_model_0_500.pkl'
+model_path = '2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_model_0.pkl'
 loaded_tgan = TGANModel.load(model_path)
 
 num_samples = 3000
 samples = loaded_tgan.sample(num_samples)
 
-samples.to_pickle('2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_3000_0_500.pkl')
+samples.to_pickle('2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_3000.pkl')
 
 
 # #!usr/bin/env python
