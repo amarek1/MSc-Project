@@ -5,7 +5,7 @@ data, continuous_columns = load_demo_data('census')
 
 from tgan.model import TGANModel
 
-tgan = TGANModel(continuous_columns,gpu='0')
+tgan = TGANModel(continuous_columns,gpu=0)
 
 tgan.fit(data)
 
