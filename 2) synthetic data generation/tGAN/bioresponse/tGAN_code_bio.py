@@ -545,7 +545,7 @@ class TGANModel:
     """
 
     def __init__(
-        self, continuous_columns, output='output', gpu=0, max_epoch=5, steps_per_epoch=10000,
+        self, continuous_columns, output='output', gpu='\gpu:0', max_epoch=5, steps_per_epoch=10000,
         save_checkpoints=True, restore_session=True, batch_size=200, z_dim=200, noise=0.2,
         l2norm=0.00001, learning_rate=0.001, num_gen_rnn=100, num_gen_feature=100,
         num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer',
