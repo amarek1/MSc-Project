@@ -11,7 +11,7 @@ import numpy
 numpy.random.seed(7)
 
 # load the data
-file_name = 'data/bioresponse/bio_clean.pkl'  # set working directory to MSc Project
+file_name = 'data/bioresponse/bio_short.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 X_train, X_test, y_train, y_test = get_balanced_data(data)
@@ -19,7 +19,7 @@ X_train, X_test, y_train, y_test = get_balanced_data(data)
 
 def get_NN_model(data=data, lr=0.001, loss='sparse_categorical_crossentropy', metrics=['accuracy'],
                  validation_split=0.25, batch_size=25, epochs=20, shuffle=True, verbose=2,
-                 model_name='model_NN_balanced_bio.pkl'):
+                 model_name='model_NN_balanced_bio_short.pkl'):
 
     # create the neural net
     n_inputs = X_train.shape[1]
