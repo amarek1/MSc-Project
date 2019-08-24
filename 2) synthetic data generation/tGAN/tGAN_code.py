@@ -17,16 +17,16 @@ tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/c
                  num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer')
 
 tgan.fit(fraud_data)
-model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model2.pkl'
+model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model_delete.pkl'
 tgan.save(model_path, force=True) #force=True to overwrite
 
-model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model2.pkl'
+model_path = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_model_delete.pkl'
 loaded_tgan = TGANModel.load(model_path)
 
 num_samples = 5000
 samples = loaded_tgan.sample(num_samples)
 
-samples.to_pickle('2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_50002.pkl')
+samples.to_pickle('2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_delete.pkl')
 
 
 # #!usr/bin/env python
