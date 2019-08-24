@@ -26,6 +26,7 @@ import tensorflow as tf
 from tensorpack import (
     BatchData, BatchNorm, Dropout, FullyConnected, InputDesc, ModelDescBase, ModelSaver,
     PredictConfig, QueueInput, SaverRestore, SimpleDatasetPredictor)
+from tensorpack.utils import logger
 from tensorpack.tfutils.scope_utils import auto_reuse_variable_scope
 from tensorpack.tfutils.summary import add_moving_summary
 from tensorpack.utils.argtools import memoized
