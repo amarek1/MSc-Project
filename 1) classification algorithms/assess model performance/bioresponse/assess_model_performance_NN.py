@@ -13,7 +13,7 @@ from sklearn.preprocessing import RobustScaler
 np.random.seed(7)
 
 # load the data
-file_name = 'data/bioresponse/bio_clean.pkl'  # set working directory to MSc Project
+file_name = 'data/bioresponse/bio_short.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 # unbalanced data
@@ -38,13 +38,13 @@ X_train_balanced = scaler.transform(X_train_balanced)
 X_test_balanced = scaler.transform(X_test_balanced)
 
 # unpack unbalanced model
-path1 = '1) classification algorithms/neural networks/bioresponse/model_NN_unbalanced_bio.pkl'
+path1 = '1) classification algorithms/neural networks/bioresponse/model_NN_unbalanced_bio_short.pkl'
 # with open(path, 'rb') as file:
 #     unbalanced_model = pickle.load(file)
 unbalanced_model = load_model(path1)
 
 # unpack balanced model
-path2 = '1) classification algorithms/neural networks/bioresponse/model_NN_balanced_bio.pkl'
+path2 = '1) classification algorithms/neural networks/bioresponse/model_NN_balanced_bio_short.pkl'
 # with open(path, 'rb') as file:
 #     balanced_model = pickle.load(file)
 balanced_model = load_model(path2)
@@ -63,16 +63,16 @@ print('labels predicted')
 
 # print the confusion matrix, precision, recall, etc.
 get_model_performance(unbalanced_model, 'unbalanced', X_test_unbalanced, y_test_unbalanced, 'NN','bioresponse dataset')
-plt.savefig('1) classification algorithms/assess model performance/bioresponse/figures/PRcurve_nn_unbalanced_bio.png')
+plt.savefig('1) classification algorithms/assess model performance/bioresponse/figures/PRcurve_nn_unbalanced_bio_short.png')
 plt.close()
 get_model_performance(balanced_model, 'balanced', X_test_balanced, y_test_balanced, 'NN','bioresponse dataset')
-plt.savefig('1) classification algorithms/assess model performance/bioresponse/figures/PRcurve_nn_balanced_bio.png')
+plt.savefig('1) classification algorithms/assess model performance/bioresponse/figures/PRcurve_nn_balanced_bio_short.png')
 plt.close()
 print('PR curve ready')
 
-cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/bioresponse/figures/cm_nn_balanced_bio.png',labels=[0, 1],
+cm_analysis(y_test_balanced,balanced_predictions,filename='1) classification algorithms/assess model performance/bioresponse/figures/cm_nn_balanced_bio_short.png',labels=[0, 1],
             ymap=['response','no response'],title='NN performance on balanced data\nbioresponse dataset')
 
-cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/bioresponse/figures/cm_nn_unbalanced_bio.png',labels=[0, 1],
+cm_analysis(y_test_unbalanced,unbalanced_predictions,filename='1) classification algorithms/assess model performance/bioresponse/figures/cm_nn_unbalanced_bio_short.png',labels=[0, 1],
             ymap=['response','no response'],title='NN performance on unbalanced data\nbioresponse dataset')
 print('confusion matrix ready')
