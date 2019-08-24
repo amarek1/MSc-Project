@@ -19,7 +19,7 @@ continuous_columns = continuous
 
 tgan = TGANModel(continuous_columns, output='2) synthetic data generation/tGAN/bioresponse/0/', max_epoch=1, steps_per_epoch=6000, save_checkpoints=True,
                  restore_session=True, batch_size=256, z_dim=200, noise=0.2, l2norm=0.00001, learning_rate=0.001,
-                 num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer', gpu=list('NVIDIA Tesla K80'))
+                 num_gen_rnn=100, num_gen_feature=100, num_dis_layers=1, num_dis_hidden=100, optimizer='AdamOptimizer', gpu='koty')
 
 tgan.fit(fraud_data)
 model_path = '2) synthetic data generation/tGAN/bioresponse/0/tGAN_bio_0_model.pkl'
