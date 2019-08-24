@@ -8,7 +8,7 @@ from sklearn.model_selection import GridSearchCV
 np.random.seed(7)
 
 # load the data
-file_name = 'data/bioresponse/bio_clean.pkl'   # set working directory to MSc Project
+file_name = 'data/bioresponse/bio_short.pkl'   # set working directory to MSc Project
 ori_data = pd.read_pickle(file_name)
 
 def get_balanced_data(data):
@@ -53,7 +53,7 @@ data = ori_data
 
 # for balanced model: {'bootstrap': True, 'max_depth': 5, 'min_samples_split': 10, 'n_estimators': 100}
 # for unbalanced model:{'bootstrap': True, 'max_depth': 5, 'min_samples_split': 10, 'n_estimators': 100}
-def get_forest_model(data=data, balanced=False, model_name='model_forest_balanced_bio.pkl'):
+def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalanced_bio_short.pkl'):
 
     if balanced == True:
         X_train, X_test, y_train, y_test = get_balanced_data(data)
