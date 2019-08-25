@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from tgan.model import TGANModel
 
-file_name = 'data/bioresponse/bio_short.pkl'
+file_name = 'data/bioresponse/bio_short_266.pkl'
 ori_data = pd.read_pickle(file_name)
 fraud_data = ori_data.loc[ori_data['class'] == 0]
 
