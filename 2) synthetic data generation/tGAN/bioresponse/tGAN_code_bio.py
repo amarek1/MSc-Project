@@ -6,7 +6,7 @@ import pandas as pd
 from tgan.model import TGANModel
 import pickle
 
-file_name = 'data/bioresponse/bio_short.pkl'
+file_name = 'data/bioresponse/bio_short_266.pkl'
 real_data = pd.read_pickle(file_name)
 fraud_data = real_data.loc[real_data['class'] == 1]
 
