@@ -32,10 +32,11 @@ import numpy as np
 import tensorflow as tf
 from tensorpack import (
     BatchData, BatchNorm, Dropout, FullyConnected, InputDesc, ModelDescBase, ModelSaver,
-    PredictConfig, QueueInput, SaverRestore, SimpleDatasetPredictor, logger)
+    PredictConfig, QueueInput, SaverRestore, SimpleDatasetPredictor)
 from tensorpack.tfutils.scope_utils import auto_reuse_variable_scope
 from tensorpack.tfutils.summary import add_moving_summary
 from tensorpack.utils.argtools import memoized
+from tensorpack.utils import logger
 
 from tgan.data import Preprocessor, RandomZData, TGANDataFlow
 from tgan.trainer import GANTrainer
