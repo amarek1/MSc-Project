@@ -783,6 +783,8 @@ continuous_columns = continuous
 tgan = TGANModel(continuous_columns=continuous, output='2) synthetic data generation/tGAN/bioresponse/1/', gpu='0', max_epoch=1, steps_per_epoch=6000, save_checkpoints=False,
                  restore_session=False, batch_size=256, z_dim=200, noise=0.2, l2norm=0.00001, learning_rate=0.001,
                  num_gen_rnn=100, num_gen_feature=100, num_dis_layers=2, num_dis_hidden=100, optimizer='AdamOptimizer')
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"]='0'
 
 tgan.fit(fraud_data)
 model_path = '2) synthetic data generation/tGAN/bioresponse/1/tGAN_bio_1_model_0.pkl'
