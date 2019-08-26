@@ -1,7 +1,7 @@
 import pandas as pd
 import pickle
 
-data = pd.read_pickle('data/bioresponse/bio_short.pkl')
+data = pd.read_pickle('data/bioresponse/bio_clean.pkl')
 
 data0 = data.loc[data['class']==0]
 data1 = data.loc[data['class']==1]
