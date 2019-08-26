@@ -5,7 +5,9 @@ import numpy as np
 import pandas as pd
 from tgan.model import TGANModel
 import pickle
-
+import os
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
+os.environ["CUDA_VISIBLE_DEVICES"]='0'
 file_name = 'data/bioresponse/bio_short_266.pkl'
 real_data = pd.read_pickle(file_name)
 fraud_data = real_data.loc[real_data['class'] == 1]
