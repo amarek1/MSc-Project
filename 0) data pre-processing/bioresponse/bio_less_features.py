@@ -32,10 +32,10 @@ FI = get_feature_importance(real_model, X_train)
 row_list = list(FI.index.values)
 
 # save only column names for features which contribute to random forest training
-cols_to_keep = row_list[:400]
+cols_to_keep = row_list[:265]
 cols_to_keep.append('class')
 
 data = real_data[cols_to_keep]
 print(data)
 
-data.to_pickle('data/bioresponse/bio_short.pkl')
+data.to_pickle('data/bioresponse/bio_short_266.pkl')
