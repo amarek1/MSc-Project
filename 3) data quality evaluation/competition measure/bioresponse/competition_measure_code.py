@@ -28,10 +28,10 @@ syn_data_fraud = syn_data_fraud[:350]
 syn_data = pd.concat([syn_data_normal, syn_data_fraud], sort=False)
 
 
-
 def get_accuracies(data):
 
     X_train, X_test, y_train, y_test = get_balanced_data(data)
+    print(X_train)
 
     seed = 1
     rfc = RandomForestClassifier(bootstrap=True, max_depth=10, max_features='auto', min_samples_leaf=2,
