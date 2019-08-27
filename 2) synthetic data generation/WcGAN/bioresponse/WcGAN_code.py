@@ -23,7 +23,7 @@ data = fraud_w_classes
 # k_d/k_g number of discriminator/generator network updates per adversarial training step
 # critic_pre_train_steps - number of steps to pre-train the critic before starting adversarial training
 # log_interval -  interval (in steps) at which to log loss summaries and save plots of image samples to disc
-def WcGAN_generate_data(data=data, rand_dim=42, base_n_count=256, nb_steps=5000 + 1, batch_size=128, k_d=5, k_g=1,
+def WcGAN_generate_data(data=data, rand_dim=43, base_n_count=256, nb_steps=5000 + 1, batch_size=128, k_d=5, k_g=1,
                       critic_pre_train_steps=200, log_interval=100, learning_rate=1e-4,
                       data_dir='2) synthetic data generation/WcGAN/bioresponse/WcGAN training/bio_1_v2',
                       gen_data_size=3000, gen_data_name='WcGAN_bio_1_v2_3000'):
@@ -43,7 +43,7 @@ def WcGAN_generate_data(data=data, rand_dim=42, base_n_count=256, nb_steps=5000 
     label_cols = [i for i in fraud_w_classes.columns if 'class' in i]
     data_cols = [i for i in fraud_w_classes.columns if i not in label_cols]
 
-    adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
+    #adversarial_training_WGAN(arguments, fraud_w_classes, data_cols=data_cols, label_cols=label_cols)  # CGAN
 
     # find the best training step
     prefix = 'WCGAN'
