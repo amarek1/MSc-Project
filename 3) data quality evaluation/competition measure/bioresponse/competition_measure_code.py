@@ -27,11 +27,12 @@ syn_data_fraud = syn_data_fraud[:350]
 
 syn_data = pd.concat([syn_data_normal, syn_data_fraud], sort=False)
 
+print(syn_data)
+
 
 def get_accuracies(data):
 
     X_train, X_test, y_train, y_test = get_balanced_data(data)
-    print(X_train)
 
     seed = 1
     rfc = RandomForestClassifier(bootstrap=True, max_depth=10, max_features='auto', min_samples_leaf=2,
@@ -80,33 +81,33 @@ def get_accuracies(data):
     return accuracy
 
 
-real_accuracy = get_accuracies(real_data)
+#real_accuracy = get_accuracies(real_data)
 syn_accuracy = get_accuracies(syn_data)
-print('accuracy on real data:', real_accuracy, 'accuracy on synthetic data:', syn_accuracy)
-
-# real_accuracy = [1,2,1,4,5]
-# syn_accuracy = [1,2,3,4,5]
-
-
-def SRA(real_score, syn_score):
-    k = len(real_score)
-    a = 1/(k*(k-1))
-
-    values = []
-    for i in range(0, len(real_score)):
-        for j in range(i+1, len(real_score)):
-            b = (real_score[i] - real_score[j]) * (syn_score[i] - syn_score[j])
-            c = (real_score[j] - real_score[i]) * (syn_score[j] - syn_score[i])
-            values.append(b)
-            values.append(c)
-
-    values2 = []
-    for i in range(0, len(values)):
-        if values[i] > 0:
-            values2.append(1)
-
-    return a*sum(values2)
-
-
-SRA_score = SRA(real_accuracy, syn_accuracy)
-print('======================== SRA:', SRA_score)  # the closer to 1, the better
+# print('accuracy on real data:', real_accuracy, 'accuracy on synthetic data:', syn_accuracy)
+#
+# # real_accuracy = [1,2,1,4,5]
+# # syn_accuracy = [1,2,3,4,5]
+#
+#
+# def SRA(real_score, syn_score):
+#     k = len(real_score)
+#     a = 1/(k*(k-1))
+#
+#     values = []
+#     for i in range(0, len(real_score)):
+#         for j in range(i+1, len(real_score)):
+#             b = (real_score[i] - real_score[j]) * (syn_score[i] - syn_score[j])
+#             c = (real_score[j] - real_score[i]) * (syn_score[j] - syn_score[i])
+#             values.append(b)
+#             values.append(c)
+#
+#     values2 = []
+#     for i in range(0, len(values)):
+#         if values[i] > 0:
+#             values2.append(1)
+#
+#     return a*sum(values2)
+#
+#
+# SRA_score = SRA(real_accuracy, syn_accuracy)
+# print('======================== SRA:', SRA_score)  # the closer to 1, the better
