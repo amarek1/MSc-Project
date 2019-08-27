@@ -16,12 +16,12 @@ np.random.seed(1)
 file_name = 'data/bioresponse/bio_clean.pkl'
 real_data = pd.read_pickle(file_name)
 
-file_name = 'data/bioresponse/synthpop_bio_0_5000.pkl'
+file_name = '2) synthetic data generation/WcGAN/bioresponse/WcGAN results/WcGAN_bio_0_3000.pkl'
 syn_data_normal = pd.read_pickle(file_name)
 syn_data_normal = syn_data_normal.loc[syn_data_normal['class'] == 0][:2034]
 
 
-file_name = 'data/bioresponse/synthpop_bio_1_5000.pkl'
+file_name = '2) synthetic data generation/WcGAN/bioresponse/WcGAN results/WcGAN_bio_1_3000.pkl'
 syn_data_fraud = pd.read_pickle(file_name)
 syn_data_fraud = syn_data_fraud[:350]
 
