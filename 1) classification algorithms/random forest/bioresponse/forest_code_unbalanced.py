@@ -63,13 +63,13 @@ def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalan
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
 
     # Number of trees in random forest
-    n_estimators = [10, 50, 100]  # [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+    n_estimators = [100, 200, 500]  # [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
     # Number of features to consider at every split
     #max_features = ['auto']  # ['auto', 'sqrt']
     # Maximum number of levels in tree
-    max_depth = [3, 5, 10]  # [int(x) for x in np.linspace(10, 110, num = 11)]
+    max_depth = [5]  # [int(x) for x in np.linspace(10, 110, num = 11)]
     # Minimum number of samples required to split a node
-    min_samples_split = [2, 10]
+    min_samples_split = [2]
     #criterion = ['gini', 'entropy']
     # Minimum number of samples required at each leaf node
     # min_samples_leaf = [1, 2]
@@ -90,7 +90,7 @@ def get_forest_model(data=data, balanced=False, model_name='model_forest_unbalan
     rf = RandomForestRegressor()
     # Random search of parameters, using 3 fold cross validation,
     # search across 100 different combinations, and use all available cores
-    rf_random = GridSearchCV(estimator=rf, param_grid=random_grid, cv=3, verbose=2, n_jobs=7)
+    rf_random = GridSearchCV(estimator=rf, param_grid=random_grid, cv=3, verbose=2, n_jobs=6)
     rf_random.fit(X_train, y_train)
     clf = rf_random.best_estimator_
     print(rf_random.best_params_)
