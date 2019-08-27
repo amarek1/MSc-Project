@@ -588,7 +588,6 @@ class TGANModel:
         self.optimizer = optimizer
 
         if gpu:
-            os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
             print("CUDA_VISIBLE_DEVICES::::::::::::::::::::::::::::::::::::::::::::::::::::::::" + str(gpu))
             os.environ['CUDA_VISIBLE_DEVICES'] = gpu
             print("CUDA_VISIBLE_DEVICES after os::::::::::::::::::::::::::::::::::::::::::::::::::::::::" + str(gpu))
