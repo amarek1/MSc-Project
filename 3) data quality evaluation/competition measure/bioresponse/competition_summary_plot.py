@@ -6,11 +6,11 @@ from sklearn.model_selection import train_test_split
 import scipy.stats
 np.random.seed(7)
 
-score_synthpop = 1
-score_GAN = 0.8
-score_cGAN = 0.9
-score_WGAN = 1
-score_WcGAN = 1
+score_synthpop = 0.4
+score_GAN = 0
+score_cGAN = 0
+score_WGAN = 0
+score_WcGAN =0
 score_tGAN = 0
 
 
@@ -23,6 +23,7 @@ plt.xlabel('data generator')
 a = plt.bar(x, distance)
 plt.xticks(x, ('synthpop', 'GAN', 'cGAN', 'WGAN', 'WcGAN', 'tGAN'))
 plt.tight_layout()
+plt.ylim((0,1))
 a[0].set_color('yellowgreen')#('lightseagreen')
 a[1].set_color('gold')
 a[2].set_color('darkorange')
