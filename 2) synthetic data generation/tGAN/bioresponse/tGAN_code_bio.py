@@ -6,14 +6,14 @@ import pandas as pd
 from tgan.model import TGANModel
 import pickle
 import os
-file_name = 'data/bioresponse/bio_short_266.pkl'
+file_name = 'data/bioresponse/bio_clean.pkl'
 real_data = pd.read_pickle(file_name)
 fraud_data = real_data.loc[real_data['class'] == 1]
 
-cols = real_data.columns
-cols = cols[0:10]
-real_data = real_data[cols]
-fraud_data = real_data
+# cols = real_data.columns
+# cols = cols[0:10]
+# real_data = real_data[cols]
+# fraud_data = real_data
 
 # find continuous columns based on an assumption that continous have more than 4 unique values
 continuous = []
