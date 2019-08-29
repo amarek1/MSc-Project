@@ -13,7 +13,7 @@ np.random.seed(7)
 ###################### load the data ####################################
 
 # load the real data
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
 real_data = pd.read_pickle(file_name)
 
 train_data, test_data, train_labels, test_labels = train_test_split(real_data, real_data['class'], test_size=0.25, random_state=1)
