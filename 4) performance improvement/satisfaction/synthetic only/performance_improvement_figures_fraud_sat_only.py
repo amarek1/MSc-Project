@@ -107,7 +107,7 @@ synthpop_report = get_performance_report(dataset='satisfaction', model_nr='rf', 
                                         nr_synthetic_fraud_training = [0, 1000, 2000, 3008])
 
 plot_performance3(x_axis_steps=[0, 1000, 2000, 3008], report_dict=synthpop_report, fraud_par='class1', normal_par='class0',
-                  parameter='recall', model='synthpop_so')
+                  parameter='f1-score', model='synthpop_so')
 
 
 
