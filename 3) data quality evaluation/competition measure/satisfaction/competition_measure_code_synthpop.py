@@ -13,16 +13,16 @@ from global_functions import get_balanced_data
 np.random.seed(1)
 
 
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'
+file_name = 'data/satisfaction/satisfaction clean.pkl'
 real_data = pd.read_pickle(file_name)
 
 
-file_name = 'data/satisfaction/synthpop_nsat_73012.pkl'
+file_name = 'data/satisfaction/synthpop_sat_class0.pkl'
 syn_data_normal = pd.read_pickle(file_name)
 syn_data_normal = syn_data_normal.loc[syn_data_normal['class'] == 0]
 
 
-file_name = 'data/satisfaction/synthpop_sat_5000.pkl'
+file_name = 'data/satisfaction/synthpop_sat_class1.pkl'
 syn_data_fraud = pd.read_pickle(file_name)
 syn_data_fraud = syn_data_fraud[:3008]
 
