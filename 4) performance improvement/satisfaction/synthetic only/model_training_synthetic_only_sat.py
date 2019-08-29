@@ -19,19 +19,19 @@ real_data = pd.read_pickle(file_name)
 file_name = 'data/satisfaction/synthpop_sat_class1.pkl'
 synthpop_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/GAN/satisfaction/GAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/GAN/satisfaction/GAN_sat_class1.pkl'
 GAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_class1.pkl'
 cGAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/WGAN/satisfaction/WGAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/WGAN/satisfaction/WGAN_sat_class1.pkl'
 WGAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/WcGAN/satisfaction/WcGAN results/WcGAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/WcGAN/satisfaction/WcGAN results/WcGAN_sat_class1.pkl'
 WcGAN_fraud = pd.read_pickle(file_name)
 
-file_name = '2) synthetic data generation/tGAN/satisfaction/churn/tGAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/tGAN/satisfaction/churn/tGAN_sat_class1.pkl'
 tGAN_fraud = pd.read_pickle(file_name)
 
 ####################### functions ######################################
