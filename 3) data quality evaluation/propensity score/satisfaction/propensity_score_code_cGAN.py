@@ -12,12 +12,12 @@ from sklearn.metrics import accuracy_score
 from sklearn import svm
 np.random.seed(1)
 
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'
+file_name = 'data/satisfaction/satisfaction clean.pkl'
 real_data = pd.read_pickle(file_name)
 real_fraud = real_data.loc[real_data['class'] == 1]
 
 # load the synthetic data
-file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_5000.pkl'
+file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_class1.pkl'
 syn_fraud = pd.read_pickle(file_name)
 syn_fraud = syn_fraud[:len(real_fraud)]
 
