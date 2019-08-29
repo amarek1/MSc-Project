@@ -33,7 +33,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
     # train the vanilla GAN
     arguments = [rand_dim, nb_steps, batch_size, k_d, k_g,critic_pre_train_steps, log_interval, learning_rate,
                  base_n_count, data_dir, generator_model_path, discriminator_model_path, loss_pickle_path, show]
-    adversarial_training_GAN(arguments, X, col_names)
+    #adversarial_training_GAN(arguments, X, col_names)
 
     # find the best training step
     prefix = 'GAN'
@@ -109,7 +109,7 @@ def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 
         'ind_var7_recib_ult1', 'ind_var10_ult1', 'ind_var10cte_ult1', 'ind_var9_cte_ult1', 'ind_var9_ult1',
         'ind_var43_emit_ult1', 'ind_var43_recib_ult1', 'class']].round(0))
 
-    df.to_pickle('2) synthetic data generation/GAN/customer churn/'+gen_data_name+'.pkl')
+    df.to_pickle('2) synthetic data generation/GAN/satisfaction/'+gen_data_name+'.pkl')
 
     plt.plot(np.transpose([range(0,nb_steps,1)]),disc_loss_generated, label='discriminator loss on fake')
     plt.plot(np.transpose([range(0, nb_steps, 1)]), disc_loss_real, label='discriminator loss on real')
