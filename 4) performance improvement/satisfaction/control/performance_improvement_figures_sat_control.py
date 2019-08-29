@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 np.random.seed(7)
 
 # load the data
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'
+file_name = 'data/satisfaction/satisfaction clean.pkl'
 data = pd.read_pickle(file_name)
 
 # get same train:test split as when training the model
