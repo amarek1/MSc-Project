@@ -12,17 +12,15 @@ np.random.seed(7)
 ###################### load the data ####################################
 
 # load the real data
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
 real_data = pd.read_pickle(file_name)
-print(real_data.describe())
 
 # load synthetic fraud examples
-file_name = 'data/satisfaction/synthpop_sat_5000.pkl'
+file_name = 'data/satisfaction/synthpop_sat_class1.pkl'
 synthpop_fraud = pd.read_pickle(file_name)
 
 file_name = '2) synthetic data generation/GAN/satisfaction/GAN_sat_5000.pkl'
 GAN_fraud = pd.read_pickle(file_name)
-print(GAN_fraud.describe())
 
 file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_5000.pkl'
 cGAN_fraud = pd.read_pickle(file_name)
