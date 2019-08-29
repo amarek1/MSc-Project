@@ -12,13 +12,31 @@ np.random.seed(7)
 ###################### load the data ####################################
 
 # load the real data
-file_name = 'data/satisfaction/satisfaction clean_scaled.pkl'  # set working directory to MSc Project
+file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory to MSc Project
 real_data = pd.read_pickle(file_name)
 
 # load synthetic fraud examples
-file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_5000.pkl'
-synthetic_fraud = pd.read_pickle(file_name)
+file_name = 'data/satisfaction/synthpop_sat_class1.pkl'
+synthpop = pd.read_pickle(file_name)
 
+# load synthetic fraud examples
+file_name = '2) synthetic data generation/GAN/satisfaction/GAN_sat_class1.pkl'
+GAN = pd.read_pickle(file_name)
+
+# load synthetic fraud examples
+file_name = '2) synthetic data generation/cGAN/satisfaction/cGAN_sat_class1.pkl'
+cGAN = pd.read_pickle(file_name)
+
+# load synthetic fraud examples
+file_name = '2) synthetic data generation/WGAN/satisfaction/WGAN_sat_class1.pkl'
+WGAN = pd.read_pickle(file_name)
+
+# load synthetic fraud examples
+file_name = '2) synthetic data generation/WcGAN/satisfaction/WcGAN results/WcGAN_sat_class1.pkl'
+WcGAN = pd.read_pickle(file_name)
+
+file_name = '2) synthetic data generation/tGAN/satisfaction/churn/tGAN_sat_class1.pkl'
+tGAN = pd.read_pickle(file_name)
 
 ####################### functions ######################################
 
@@ -57,7 +75,7 @@ def get_data(real_data, synthetic_data, nr_normal_training, nr_fraud_training, n
     return train_data, test_data, train_labels, test_labels
 
 
-def get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='customer churn', model_name='m1',
+def get_forest_model(real_data=real_data, synthetic_data=GAN, folder='customer churn', model_name='m1',
                      model_type='rf', nr_normal_training=3847, nr_fraud_training=1435, nr_synthetic_fraud_training=0,
                      test_size=0.25):
 
@@ -82,6 +100,53 @@ nr_normal_training = [73012]
 nr_fraud_training = [0]
 nr_synthetic_fraud_training = [3008]
 for i in range(0, len(nr_normal_training)):
-    get_forest_model(real_data=real_data, synthetic_data=synthetic_fraud, folder='models/satisfaction', model_name='FI',
+    get_forest_model(real_data=real_data, synthetic_data=synthpop, folder='models/satisfaction', model_name='FI',
+                     model_type='synthpop', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('synthpop done')
+
+nr_normal_training = [73012]
+nr_fraud_training = [0]
+nr_synthetic_fraud_training = [3008]
+for i in range(0, len(nr_normal_training)):
+    get_forest_model(real_data=real_data, synthetic_data=GAN, folder='models/satisfaction', model_name='FI',
+                     model_type='GAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('GAN done')
+
+nr_normal_training = [73012]
+nr_fraud_training = [0]
+nr_synthetic_fraud_training = [3008]
+for i in range(0, len(nr_normal_training)):
+    get_forest_model(real_data=real_data, synthetic_data=cGAN, folder='models/satisfaction', model_name='FI',
                      model_type='cGAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
                      nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('cGAN done')
+
+nr_normal_training = [73012]
+nr_fraud_training = [0]
+nr_synthetic_fraud_training = [3008]
+for i in range(0, len(nr_normal_training)):
+    get_forest_model(real_data=real_data, synthetic_data=WGAN, folder='models/satisfaction', model_name='FI',
+                     model_type='WGAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('WGAN done')
+
+nr_normal_training = [73012]
+nr_fraud_training = [0]
+nr_synthetic_fraud_training = [3008]
+for i in range(0, len(nr_normal_training)):
+    get_forest_model(real_data=real_data, synthetic_data=WcGAN, folder='models/satisfaction', model_name='FI',
+                     model_type='WcGAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('WcGAN done')
+
+nr_normal_training = [73012]
+nr_fraud_training = [0]
+nr_synthetic_fraud_training = [3008]
+for i in range(0, len(nr_normal_training)):
+    get_forest_model(real_data=real_data, synthetic_data=tGAN, folder='models/satisfaction', model_name='FI',
+                     model_type='tGAN', nr_normal_training=nr_normal_training[i], nr_fraud_training=nr_fraud_training[i],
+                     nr_synthetic_fraud_training=nr_synthetic_fraud_training[i], test_size=0.25)
+print('tGAN done')
+
