@@ -11,7 +11,7 @@ file_name = 'data/satisfaction/satisfaction clean.pkl'  # set working directory 
 real_data = pd.read_pickle(file_name)
 churn_data = real_data.loc[real_data['class'] == 1]
 data = churn_data
-print(data)
+
 
 # rand_dim needs to be the data dimension
 # nb_steps - add one for logging of the last interval
@@ -21,7 +21,7 @@ print(data)
 def GAN_generate_data(data=data, rand_dim=32, base_n_count=128, nb_steps=6000 + 1, batch_size=128, k_d=1, k_g=1,
                       log_interval=100, learning_rate=5e-5,critic_pre_train_steps=100,
                       data_dir='2) synthetic data generation/GAN/satisfaction/GAN training/sat_1_',
-                      gen_data_size=5000, gen_data_name='GAN_sat_5000'):
+                      gen_data_size=5000, gen_data_name='GAN_sat_class1'):
 
 
     # set up
