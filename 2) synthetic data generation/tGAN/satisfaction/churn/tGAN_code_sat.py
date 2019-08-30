@@ -7,8 +7,12 @@ import pandas as pd
 from tgan.model import TGANModel
 import pickle
 
-file_name = 'data/satisfaction/satisfaction clean.pkl'
-real_data = pd.read_pickle(file_name)
+# file_name = 'data/satisfaction/satisfaction clean.pkl'
+# real_data = pd.read_pickle(file_name)
+a = pd.read_pickle('data/satisfaction/sat part1.pkl')
+b = pd.read_pickle('data/satisfaction/sat part2.pkl')
+real_data = pd.concat([a,b])
+
 fraud_data = real_data.loc[real_data['class'] == 1]
 
 # use only columns which are not in the list of categorical columns -> are continous
