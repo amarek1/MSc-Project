@@ -1,0 +1,102 @@
+[32m[0829 15:35:18 @logger.py:90][0m Argv: 2) synthetic data generation/tGAN/bioresponse/tGAN_code_bio.py
+[32m[0829 15:35:18 @model_utils.py:67][0m [36mList of Trainable Variables: 
+[0mname                              shape           #elements
+--------------------------------  ------------  -----------
+gen/LSTM/go:0                     [1, 100]              100
+gen/LSTM/lstm_cell/kernel:0       [500, 400]         200000
+gen/LSTM/lstm_cell/bias:0         [400]                 400
+gen/LSTM/00/FC/W:0                [100, 100]          10000
+gen/LSTM/00/FC/b:0                [100]                 100
+gen/LSTM/00/FC2/W:0               [100, 2]              200
+gen/LSTM/00/FC2/b:0               [2]                     2
+gen/LSTM/00/FC3/W:0               [2, 100]              200
+gen/LSTM/00/FC3/b:0               [100]                 100
+gen/LSTM/00/attw:0                [1, 1, 1]               1
+gen/LSTM/01/FC/W:0                [100, 100]          10000
+gen/LSTM/01/FC/b:0                [100]                 100
+gen/LSTM/01/FC2/W:0               [100, 2327]        232700
+gen/LSTM/01/FC2/b:0               [2327]               2327
+gen/LSTM/01/FC3/W:0               [2327, 100]        232700
+gen/LSTM/01/FC3/b:0               [100]                 100
+gen/LSTM/01/attw:0                [2, 1, 1]               2
+gen/LSTM/02/FC/W:0                [100, 100]          10000
+gen/LSTM/02/FC/b:0                [100]                 100
+gen/LSTM/02/FC2/W:0               [100, 1026]        102600
+gen/LSTM/02/FC2/b:0               [1026]               1026
+gen/LSTM/02/FC3/W:0               [1026, 100]        102600
+gen/LSTM/02/FC3/b:0               [100]                 100
+gen/LSTM/02/attw:0                [3, 1, 1]               3
+gen/LSTM/03/FC/W:0                [100, 100]          10000
+gen/LSTM/03/FC/b:0                [100]                 100
+gen/LSTM/03/FC2/W:0               [100, 1097]        109700
+gen/LSTM/03/FC2/b:0               [1097]               1097
+gen/LSTM/03/FC3/W:0               [1097, 100]        109700
+gen/LSTM/03/FC3/b:0               [100]                 100
+gen/LSTM/03/attw:0                [4, 1, 1]               4
+gen/LSTM/04/FC/W:0                [100, 100]          10000
+gen/LSTM/04/FC/b:0                [100]                 100
+gen/LSTM/04/FC2/W:0               [100, 9]              900
+gen/LSTM/04/FC2/b:0               [9]                     9
+gen/LSTM/04/FC3/W:0               [9, 100]              900
+gen/LSTM/04/FC3/b:0               [100]                 100
+gen/LSTM/04/attw:0                [5, 1, 1]               5
+gen/LSTM/05/FC/W:0                [100, 100]          10000
+gen/LSTM/05/FC/b:0                [100]                 100
+gen/LSTM/05/FC2/W:0               [100, 1626]        162600
+gen/LSTM/05/FC2/b:0               [1626]               1626
+gen/LSTM/05/FC3/W:0               [1626, 100]        162600
+gen/LSTM/05/FC3/b:0               [100]                 100
+gen/LSTM/05/attw:0                [6, 1, 1]               6
+gen/LSTM/06/FC/W:0                [100, 100]          10000
+gen/LSTM/06/FC/b:0                [100]                 100
+gen/LSTM/06/FC2/W:0               [100, 2354]        235400
+gen/LSTM/06/FC2/b:0               [2354]               2354
+gen/LSTM/06/FC3/W:0               [2354, 100]        235400
+gen/LSTM/06/FC3/b:0               [100]                 100
+gen/LSTM/06/attw:0                [7, 1, 1]               7
+gen/LSTM/07/FC/W:0                [100, 100]          10000
+gen/LSTM/07/FC/b:0                [100]                 100
+gen/LSTM/07/FC2/W:0               [100, 2306]        230600
+gen/LSTM/07/FC2/b:0               [2306]               2306
+gen/LSTM/07/FC3/W:0               [2306, 100]        230600
+gen/LSTM/07/FC3/b:0               [100]                 100
+gen/LSTM/07/attw:0                [8, 1, 1]               8
+gen/LSTM/08/FC/W:0                [100, 100]          10000
+gen/LSTM/08/FC/b:0                [100]                 100
+gen/LSTM/08/FC2/W:0               [100, 43]            4300
+gen/LSTM/08/FC2/b:0               [43]                   43
+gen/LSTM/08/FC3/W:0               [43, 100]            4300
+gen/LSTM/08/FC3/b:0               [100]                 100
+gen/LSTM/08/attw:0                [9, 1, 1]               9
+gen/LSTM/09/FC/W:0                [100, 100]          10000
+gen/LSTM/09/FC/b:0                [100]                 100
+gen/LSTM/09/FC2/W:0               [100, 1129]        112900
+gen/LSTM/09/FC2/b:0               [1129]               1129
+gen/LSTM/09/FC3/W:0               [1129, 100]        112900
+gen/LSTM/09/FC3/b:0               [100]                 100
+gen/LSTM/09/attw:0                [10, 1, 1]             10
+discrim/dis_fc0/fc/W:0            [11919, 100]      1191900
+discrim/dis_fc0/fc/b:0            [100]                 100
+discrim/dis_fc0/fc_diversity/W:0  [100, 100]          10000
+discrim/dis_fc0/fc_diversity/b:0  [100]                 100
+discrim/dis_fc0/bn/beta:0         [110]                 110
+discrim/dis_fc1/fc/W:0            [110, 100]          11000
+discrim/dis_fc1/fc/b:0            [100]                 100
+discrim/dis_fc1/fc_diversity/W:0  [100, 100]          10000
+discrim/dis_fc1/fc_diversity/b:0  [100]                 100
+discrim/dis_fc1/bn/beta:0         [110]                 110
+discrim/dis_fc_top/W:0            [110, 1]              110
+discrim/dis_fc_top/b:0            [1]                     1[36m
+Number of trainable variables: 85
+Number of parameters (elements): 3921905
+Storage space needed for all trainable variables: 14.96MB[0m
+[32m[0829 15:35:18 @base.py:209][0m Setup callbacks graph ...
+[32m[0829 15:35:18 @summary.py:46][0m [MovingAverageSummary] 6 operations in collection 'MOVING_SUMMARY_OPS' will be run with session hooks.
+[32m[0829 15:35:18 @summary.py:93][0m Summarizing collection 'summaries' of size 9.
+[32m[0829 15:35:18 @graph.py:98][0m Applying collection UPDATE_OPS of 8 ops.
+[32m[0829 15:35:19 @base.py:230][0m Creating the session ...
+[32m[0829 15:35:24 @base.py:236][0m Initializing the session ...
+[32m[0829 15:35:24 @base.py:243][0m Graph Finalized.
+[32m[0829 15:35:24 @concurrency.py:38][0m Starting EnqueueThread QueueInput/input_queue ...
+[32m[0829 15:35:24 @base.py:275][0m Start Epoch 1 ...
+[32m[0829 15:36:15 @base.py:293][0m Detected Ctrl-C and exiting main loop.

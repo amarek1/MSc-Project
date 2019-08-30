@@ -1,0 +1,349 @@
+[32m[0824 18:05:58 @logger.py:90][0m Argv: 2) synthetic data generation/tGAN/tGAN_try_GPU.py
+[32m[0824 18:05:58 @model_utils.py:67][0m [36mList of Trainable Variables: 
+[0mname                              shape         #elements
+--------------------------------  ----------  -----------
+gen/LSTM/go:0                     [1, 100]            100
+gen/LSTM/lstm_cell/kernel:0       [500, 400]       200000
+gen/LSTM/lstm_cell/bias:0         [400]               400
+gen/LSTM/00/FC/W:0                [100, 100]        10000
+gen/LSTM/00/FC/b:0                [100]               100
+gen/LSTM/00/FC2/W:0               [100, 1]            100
+gen/LSTM/00/FC2/b:0               [1]                   1
+gen/LSTM/00/attw:0                [1, 1, 1]             1
+gen/LSTM/01/FC/W:0                [100, 100]        10000
+gen/LSTM/01/FC/b:0                [100]               100
+gen/LSTM/01/FC2/W:0               [100, 5]            500
+gen/LSTM/01/FC2/b:0               [5]                   5
+gen/LSTM/01/FC3/W:0               [5, 100]            500
+gen/LSTM/01/FC3/b:0               [100]               100
+gen/LSTM/01/attw:0                [2, 1, 1]             2
+gen/LSTM/02/FC/W:0                [100, 100]        10000
+gen/LSTM/02/FC/b:0                [100]               100
+gen/LSTM/02/FC2/W:0               [100, 9]            900
+gen/LSTM/02/FC2/b:0               [9]                   9
+gen/LSTM/02/FC3/W:0               [9, 100]            900
+gen/LSTM/02/FC3/b:0               [100]               100
+gen/LSTM/02/attw:0                [3, 1, 1]             3
+gen/LSTM/03/FC/W:0                [100, 100]        10000
+gen/LSTM/03/FC/b:0                [100]               100
+gen/LSTM/03/FC2/W:0               [100, 52]          5200
+gen/LSTM/03/FC2/b:0               [52]                 52
+gen/LSTM/03/FC3/W:0               [52, 100]          5200
+gen/LSTM/03/FC3/b:0               [100]               100
+gen/LSTM/03/attw:0                [4, 1, 1]             4
+gen/LSTM/04/FC/W:0                [100, 100]        10000
+gen/LSTM/04/FC/b:0                [100]               100
+gen/LSTM/04/FC2/W:0               [100, 47]          4700
+gen/LSTM/04/FC2/b:0               [47]                 47
+gen/LSTM/04/FC3/W:0               [47, 100]          4700
+gen/LSTM/04/FC3/b:0               [100]               100
+gen/LSTM/04/attw:0                [5, 1, 1]             5
+gen/LSTM/05/FC/W:0                [100, 100]        10000
+gen/LSTM/05/FC/b:0                [100]               100
+gen/LSTM/05/FC2/W:0               [100, 17]          1700
+gen/LSTM/05/FC2/b:0               [17]                 17
+gen/LSTM/05/FC3/W:0               [17, 100]          1700
+gen/LSTM/05/FC3/b:0               [100]               100
+gen/LSTM/05/attw:0                [6, 1, 1]             6
+gen/LSTM/06/FC/W:0                [100, 100]        10000
+gen/LSTM/06/FC/b:0                [100]               100
+gen/LSTM/06/FC2/W:0               [100, 1]            100
+gen/LSTM/06/FC2/b:0               [1]                   1
+gen/LSTM/06/attw:0                [7, 1, 1]             7
+gen/LSTM/07/FC/W:0                [100, 100]        10000
+gen/LSTM/07/FC/b:0                [100]               100
+gen/LSTM/07/FC2/W:0               [100, 5]            500
+gen/LSTM/07/FC2/b:0               [5]                   5
+gen/LSTM/07/FC3/W:0               [5, 100]            500
+gen/LSTM/07/FC3/b:0               [100]               100
+gen/LSTM/07/attw:0                [8, 1, 1]             8
+gen/LSTM/08/FC/W:0                [100, 100]        10000
+gen/LSTM/08/FC/b:0                [100]               100
+gen/LSTM/08/FC2/W:0               [100, 3]            300
+gen/LSTM/08/FC2/b:0               [3]                   3
+gen/LSTM/08/FC3/W:0               [3, 100]            300
+gen/LSTM/08/FC3/b:0               [100]               100
+gen/LSTM/08/attw:0                [9, 1, 1]             9
+gen/LSTM/09/FC/W:0                [100, 100]        10000
+gen/LSTM/09/FC/b:0                [100]               100
+gen/LSTM/09/FC2/W:0               [100, 7]            700
+gen/LSTM/09/FC2/b:0               [7]                   7
+gen/LSTM/09/FC3/W:0               [7, 100]            700
+gen/LSTM/09/FC3/b:0               [100]               100
+gen/LSTM/09/attw:0                [10, 1, 1]           10
+gen/LSTM/10/FC/W:0                [100, 100]        10000
+gen/LSTM/10/FC/b:0                [100]               100
+gen/LSTM/10/FC2/W:0               [100, 24]          2400
+gen/LSTM/10/FC2/b:0               [24]                 24
+gen/LSTM/10/FC3/W:0               [24, 100]          2400
+gen/LSTM/10/FC3/b:0               [100]               100
+gen/LSTM/10/attw:0                [11, 1, 1]           11
+gen/LSTM/11/FC/W:0                [100, 100]        10000
+gen/LSTM/11/FC/b:0                [100]               100
+gen/LSTM/11/FC2/W:0               [100, 15]          1500
+gen/LSTM/11/FC2/b:0               [15]                 15
+gen/LSTM/11/FC3/W:0               [15, 100]          1500
+gen/LSTM/11/FC3/b:0               [100]               100
+gen/LSTM/11/attw:0                [12, 1, 1]           12
+gen/LSTM/12/FC/W:0                [100, 100]        10000
+gen/LSTM/12/FC/b:0                [100]               100
+gen/LSTM/12/FC2/W:0               [100, 5]            500
+gen/LSTM/12/FC2/b:0               [5]                   5
+gen/LSTM/12/FC3/W:0               [5, 100]            500
+gen/LSTM/12/FC3/b:0               [100]               100
+gen/LSTM/12/attw:0                [13, 1, 1]           13
+gen/LSTM/13/FC/W:0                [100, 100]        10000
+gen/LSTM/13/FC/b:0                [100]               100
+gen/LSTM/13/FC2/W:0               [100, 10]          1000
+gen/LSTM/13/FC2/b:0               [10]                 10
+gen/LSTM/13/FC3/W:0               [10, 100]          1000
+gen/LSTM/13/FC3/b:0               [100]               100
+gen/LSTM/13/attw:0                [14, 1, 1]           14
+gen/LSTM/14/FC/W:0                [100, 100]        10000
+gen/LSTM/14/FC/b:0                [100]               100
+gen/LSTM/14/FC2/W:0               [100, 2]            200
+gen/LSTM/14/FC2/b:0               [2]                   2
+gen/LSTM/14/FC3/W:0               [2, 100]            200
+gen/LSTM/14/FC3/b:0               [100]               100
+gen/LSTM/14/attw:0                [15, 1, 1]           15
+gen/LSTM/15/FC/W:0                [100, 100]        10000
+gen/LSTM/15/FC/b:0                [100]               100
+gen/LSTM/15/FC2/W:0               [100, 3]            300
+gen/LSTM/15/FC2/b:0               [3]                   3
+gen/LSTM/15/FC3/W:0               [3, 100]            300
+gen/LSTM/15/FC3/b:0               [100]               100
+gen/LSTM/15/attw:0                [16, 1, 1]           16
+gen/LSTM/16/FC/W:0                [100, 100]        10000
+gen/LSTM/16/FC/b:0                [100]               100
+gen/LSTM/16/FC2/W:0               [100, 6]            600
+gen/LSTM/16/FC2/b:0               [6]                   6
+gen/LSTM/16/FC3/W:0               [6, 100]            600
+gen/LSTM/16/FC3/b:0               [100]               100
+gen/LSTM/16/attw:0                [17, 1, 1]           17
+gen/LSTM/17/FC/W:0                [100, 100]        10000
+gen/LSTM/17/FC/b:0                [100]               100
+gen/LSTM/17/FC2/W:0               [100, 8]            800
+gen/LSTM/17/FC2/b:0               [8]                   8
+gen/LSTM/17/FC3/W:0               [8, 100]            800
+gen/LSTM/17/FC3/b:0               [100]               100
+gen/LSTM/17/attw:0                [18, 1, 1]           18
+gen/LSTM/18/FC/W:0                [100, 100]        10000
+gen/LSTM/18/FC/b:0                [100]               100
+gen/LSTM/18/FC2/W:0               [100, 1]            100
+gen/LSTM/18/FC2/b:0               [1]                   1
+gen/LSTM/18/attw:0                [19, 1, 1]           19
+gen/LSTM/19/FC/W:0                [100, 100]        10000
+gen/LSTM/19/FC/b:0                [100]               100
+gen/LSTM/19/FC2/W:0               [100, 5]            500
+gen/LSTM/19/FC2/b:0               [5]                   5
+gen/LSTM/19/FC3/W:0               [5, 100]            500
+gen/LSTM/19/FC3/b:0               [100]               100
+gen/LSTM/19/attw:0                [20, 1, 1]           20
+gen/LSTM/20/FC/W:0                [100, 100]        10000
+gen/LSTM/20/FC/b:0                [100]               100
+gen/LSTM/20/FC2/W:0               [100, 1]            100
+gen/LSTM/20/FC2/b:0               [1]                   1
+gen/LSTM/20/attw:0                [21, 1, 1]           21
+gen/LSTM/21/FC/W:0                [100, 100]        10000
+gen/LSTM/21/FC/b:0                [100]               100
+gen/LSTM/21/FC2/W:0               [100, 5]            500
+gen/LSTM/21/FC2/b:0               [5]                   5
+gen/LSTM/21/FC3/W:0               [5, 100]            500
+gen/LSTM/21/FC3/b:0               [100]               100
+gen/LSTM/21/attw:0                [22, 1, 1]           22
+gen/LSTM/22/FC/W:0                [100, 100]        10000
+gen/LSTM/22/FC/b:0                [100]               100
+gen/LSTM/22/FC2/W:0               [100, 1]            100
+gen/LSTM/22/FC2/b:0               [1]                   1
+gen/LSTM/22/attw:0                [23, 1, 1]           23
+gen/LSTM/23/FC/W:0                [100, 100]        10000
+gen/LSTM/23/FC/b:0                [100]               100
+gen/LSTM/23/FC2/W:0               [100, 5]            500
+gen/LSTM/23/FC2/b:0               [5]                   5
+gen/LSTM/23/FC3/W:0               [5, 100]            500
+gen/LSTM/23/FC3/b:0               [100]               100
+gen/LSTM/23/attw:0                [24, 1, 1]           24
+gen/LSTM/24/FC/W:0                [100, 100]        10000
+gen/LSTM/24/FC/b:0                [100]               100
+gen/LSTM/24/FC2/W:0               [100, 6]            600
+gen/LSTM/24/FC2/b:0               [6]                   6
+gen/LSTM/24/FC3/W:0               [6, 100]            600
+gen/LSTM/24/FC3/b:0               [100]               100
+gen/LSTM/24/attw:0                [25, 1, 1]           25
+gen/LSTM/25/FC/W:0                [100, 100]        10000
+gen/LSTM/25/FC/b:0                [100]               100
+gen/LSTM/25/FC2/W:0               [100, 6]            600
+gen/LSTM/25/FC2/b:0               [6]                   6
+gen/LSTM/25/FC3/W:0               [6, 100]            600
+gen/LSTM/25/FC3/b:0               [100]               100
+gen/LSTM/25/attw:0                [26, 1, 1]           26
+gen/LSTM/26/FC/W:0                [100, 100]        10000
+gen/LSTM/26/FC/b:0                [100]               100
+gen/LSTM/26/FC2/W:0               [100, 51]          5100
+gen/LSTM/26/FC2/b:0               [51]                 51
+gen/LSTM/26/FC3/W:0               [51, 100]          5100
+gen/LSTM/26/FC3/b:0               [100]               100
+gen/LSTM/26/attw:0                [27, 1, 1]           27
+gen/LSTM/27/FC/W:0                [100, 100]        10000
+gen/LSTM/27/FC/b:0                [100]               100
+gen/LSTM/27/FC2/W:0               [100, 38]          3800
+gen/LSTM/27/FC2/b:0               [38]                 38
+gen/LSTM/27/FC3/W:0               [38, 100]          3800
+gen/LSTM/27/FC3/b:0               [100]               100
+gen/LSTM/27/attw:0                [28, 1, 1]           28
+gen/LSTM/28/FC/W:0                [100, 100]        10000
+gen/LSTM/28/FC/b:0                [100]               100
+gen/LSTM/28/FC2/W:0               [100, 8]            800
+gen/LSTM/28/FC2/b:0               [8]                   8
+gen/LSTM/28/FC3/W:0               [8, 100]            800
+gen/LSTM/28/FC3/b:0               [100]               100
+gen/LSTM/28/attw:0                [29, 1, 1]           29
+gen/LSTM/29/FC/W:0                [100, 100]        10000
+gen/LSTM/29/FC/b:0                [100]               100
+gen/LSTM/29/FC2/W:0               [100, 10]          1000
+gen/LSTM/29/FC2/b:0               [10]                 10
+gen/LSTM/29/FC3/W:0               [10, 100]          1000
+gen/LSTM/29/FC3/b:0               [100]               100
+gen/LSTM/29/attw:0                [30, 1, 1]           30
+gen/LSTM/30/FC/W:0                [100, 100]        10000
+gen/LSTM/30/FC/b:0                [100]               100
+gen/LSTM/30/FC2/W:0               [100, 9]            900
+gen/LSTM/30/FC2/b:0               [9]                   9
+gen/LSTM/30/FC3/W:0               [9, 100]            900
+gen/LSTM/30/FC3/b:0               [100]               100
+gen/LSTM/30/attw:0                [31, 1, 1]           31
+gen/LSTM/31/FC/W:0                [100, 100]        10000
+gen/LSTM/31/FC/b:0                [100]               100
+gen/LSTM/31/FC2/W:0               [100, 10]          1000
+gen/LSTM/31/FC2/b:0               [10]                 10
+gen/LSTM/31/FC3/W:0               [10, 100]          1000
+gen/LSTM/31/FC3/b:0               [100]               100
+gen/LSTM/31/attw:0                [32, 1, 1]           32
+gen/LSTM/32/FC/W:0                [100, 100]        10000
+gen/LSTM/32/FC/b:0                [100]               100
+gen/LSTM/32/FC2/W:0               [100, 3]            300
+gen/LSTM/32/FC2/b:0               [3]                   3
+gen/LSTM/32/FC3/W:0               [3, 100]            300
+gen/LSTM/32/FC3/b:0               [100]               100
+gen/LSTM/32/attw:0                [33, 1, 1]           33
+gen/LSTM/33/FC/W:0                [100, 100]        10000
+gen/LSTM/33/FC/b:0                [100]               100
+gen/LSTM/33/FC2/W:0               [100, 4]            400
+gen/LSTM/33/FC2/b:0               [4]                   4
+gen/LSTM/33/FC3/W:0               [4, 100]            400
+gen/LSTM/33/FC3/b:0               [100]               100
+gen/LSTM/33/attw:0                [34, 1, 1]           34
+gen/LSTM/34/FC/W:0                [100, 100]        10000
+gen/LSTM/34/FC/b:0                [100]               100
+gen/LSTM/34/FC2/W:0               [100, 1]            100
+gen/LSTM/34/FC2/b:0               [1]                   1
+gen/LSTM/34/attw:0                [35, 1, 1]           35
+gen/LSTM/35/FC/W:0                [100, 100]        10000
+gen/LSTM/35/FC/b:0                [100]               100
+gen/LSTM/35/FC2/W:0               [100, 5]            500
+gen/LSTM/35/FC2/b:0               [5]                   5
+gen/LSTM/35/FC3/W:0               [5, 100]            500
+gen/LSTM/35/FC3/b:0               [100]               100
+gen/LSTM/35/attw:0                [36, 1, 1]           36
+gen/LSTM/36/FC/W:0                [100, 100]        10000
+gen/LSTM/36/FC/b:0                [100]               100
+gen/LSTM/36/FC2/W:0               [100, 5]            500
+gen/LSTM/36/FC2/b:0               [5]                   5
+gen/LSTM/36/FC3/W:0               [5, 100]            500
+gen/LSTM/36/FC3/b:0               [100]               100
+gen/LSTM/36/attw:0                [37, 1, 1]           37
+gen/LSTM/37/FC/W:0                [100, 100]        10000
+gen/LSTM/37/FC/b:0                [100]               100
+gen/LSTM/37/FC2/W:0               [100, 43]          4300
+gen/LSTM/37/FC2/b:0               [43]                 43
+gen/LSTM/37/FC3/W:0               [43, 100]          4300
+gen/LSTM/37/FC3/b:0               [100]               100
+gen/LSTM/37/attw:0                [38, 1, 1]           38
+gen/LSTM/38/FC/W:0                [100, 100]        10000
+gen/LSTM/38/FC/b:0                [100]               100
+gen/LSTM/38/FC2/W:0               [100, 43]          4300
+gen/LSTM/38/FC2/b:0               [43]                 43
+gen/LSTM/38/FC3/W:0               [43, 100]          4300
+gen/LSTM/38/FC3/b:0               [100]               100
+gen/LSTM/38/attw:0                [39, 1, 1]           39
+gen/LSTM/39/FC/W:0                [100, 100]        10000
+gen/LSTM/39/FC/b:0                [100]               100
+gen/LSTM/39/FC2/W:0               [100, 43]          4300
+gen/LSTM/39/FC2/b:0               [43]                 43
+gen/LSTM/39/FC3/W:0               [43, 100]          4300
+gen/LSTM/39/FC3/b:0               [100]               100
+gen/LSTM/39/attw:0                [40, 1, 1]           40
+gen/LSTM/40/FC/W:0                [100, 100]        10000
+gen/LSTM/40/FC/b:0                [100]               100
+gen/LSTM/40/FC2/W:0               [100, 5]            500
+gen/LSTM/40/FC2/b:0               [5]                   5
+gen/LSTM/40/FC3/W:0               [5, 100]            500
+gen/LSTM/40/FC3/b:0               [100]               100
+gen/LSTM/40/attw:0                [41, 1, 1]           41
+gen/LSTM/41/FC/W:0                [100, 100]        10000
+gen/LSTM/41/FC/b:0                [100]               100
+gen/LSTM/41/FC2/W:0               [100, 3]            300
+gen/LSTM/41/FC2/b:0               [3]                   3
+gen/LSTM/41/FC3/W:0               [3, 100]            300
+gen/LSTM/41/FC3/b:0               [100]               100
+gen/LSTM/41/attw:0                [42, 1, 1]           42
+gen/LSTM/42/FC/W:0                [100, 100]        10000
+gen/LSTM/42/FC/b:0                [100]               100
+gen/LSTM/42/FC2/W:0               [100, 3]            300
+gen/LSTM/42/FC2/b:0               [3]                   3
+gen/LSTM/42/FC3/W:0               [3, 100]            300
+gen/LSTM/42/FC3/b:0               [100]               100
+gen/LSTM/42/attw:0                [43, 1, 1]           43
+gen/LSTM/43/FC/W:0                [100, 100]        10000
+gen/LSTM/43/FC/b:0                [100]               100
+gen/LSTM/43/FC2/W:0               [100, 3]            300
+gen/LSTM/43/FC2/b:0               [3]                   3
+gen/LSTM/43/FC3/W:0               [3, 100]            300
+gen/LSTM/43/FC3/b:0               [100]               100
+gen/LSTM/43/attw:0                [44, 1, 1]           44
+gen/LSTM/44/FC/W:0                [100, 100]        10000
+gen/LSTM/44/FC/b:0                [100]               100
+gen/LSTM/44/FC2/W:0               [100, 1]            100
+gen/LSTM/44/FC2/b:0               [1]                   1
+gen/LSTM/44/attw:0                [45, 1, 1]           45
+gen/LSTM/45/FC/W:0                [100, 100]        10000
+gen/LSTM/45/FC/b:0                [100]               100
+gen/LSTM/45/FC2/W:0               [100, 5]            500
+gen/LSTM/45/FC2/b:0               [5]                   5
+gen/LSTM/45/FC3/W:0               [5, 100]            500
+gen/LSTM/45/FC3/b:0               [100]               100
+gen/LSTM/45/attw:0                [46, 1, 1]           46
+gen/LSTM/46/FC/W:0                [100, 100]        10000
+gen/LSTM/46/FC/b:0                [100]               100
+gen/LSTM/46/FC2/W:0               [100, 2]            200
+gen/LSTM/46/FC2/b:0               [2]                   2
+gen/LSTM/46/FC3/W:0               [2, 100]            200
+gen/LSTM/46/FC3/b:0               [100]               100
+gen/LSTM/46/attw:0                [47, 1, 1]           47
+gen/LSTM/47/FC/W:0                [100, 100]        10000
+gen/LSTM/47/FC/b:0                [100]               100
+gen/LSTM/47/FC2/W:0               [100, 2]            200
+gen/LSTM/47/FC2/b:0               [2]                   2
+gen/LSTM/47/FC3/W:0               [2, 100]            200
+gen/LSTM/47/FC3/b:0               [100]               100
+gen/LSTM/47/attw:0                [48, 1, 1]           48
+discrim/dis_fc0/fc/W:0            [547, 100]        54700
+discrim/dis_fc0/fc/b:0            [100]               100
+discrim/dis_fc0/fc_diversity/W:0  [100, 100]        10000
+discrim/dis_fc0/fc_diversity/b:0  [100]               100
+discrim/dis_fc0/bn/beta:0         [110]               110
+discrim/dis_fc_top/W:0            [110, 1]            110
+discrim/dis_fc_top/b:0            [1]                   1[36m
+Number of trainable variables: 332
+Number of parameters (elements): 864944
+Storage space needed for all trainable variables: 3.30MB[0m
+[32m[0824 18:05:58 @base.py:209][0m Setup callbacks graph ...
+[32m[0824 18:05:59 @summary.py:46][0m [MovingAverageSummary] 6 operations in collection 'MOVING_SUMMARY_OPS' will be run with session hooks.
+[32m[0824 18:05:59 @summary.py:93][0m Summarizing collection 'summaries' of size 9.
+[32m[0824 18:05:59 @graph.py:98][0m Applying collection UPDATE_OPS of 4 ops.
+[32m[0824 18:06:03 @base.py:230][0m Creating the session ...
+[32m[0824 18:06:08 @base.py:236][0m Initializing the session ...
+[32m[0824 18:06:08 @base.py:243][0m Graph Finalized.
+[32m[0824 18:06:09 @concurrency.py:38][0m Starting EnqueueThread QueueInput/input_queue ...
+[32m[0824 18:06:11 @base.py:275][0m Start Epoch 1 ...
+[32m[0824 18:07:18 @base.py:293][0m Detected Ctrl-C and exiting main loop.
