@@ -107,7 +107,7 @@ synthpop_report = get_performance_report(model_nr='rf', model_type='synthpop',
                                         nr_synthetic_fraud_training = [0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=synthpop_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision',model='synthpop')
+                      parameter='recall',model='synthpop')
 
 
 
@@ -117,7 +117,7 @@ GAN_report = get_performance_report(model_nr='rf', model_type='GAN',
                                     nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=GAN_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision', model='GAN')
+                      parameter='recall', model='GAN')
 
 
 
@@ -127,7 +127,7 @@ cGAN_report = get_performance_report(model_nr='rf', model_type='cGAN',
                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=cGAN_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision', model='cGAN')
+                      parameter='recall', model='cGAN')
 
 
 
@@ -137,7 +137,7 @@ WGAN_report = get_performance_report(model_nr='rf', model_type='WGAN',
                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=WGAN_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision', model='WGAN')
+                      parameter='recall', model='WGAN')
 
 
 
@@ -147,7 +147,7 @@ WcGAN_report = get_performance_report(model_nr='rf', model_type='WcGAN',
                                       nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=WcGAN_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision', model='WcGAN')
+                      parameter='recall', model='WcGAN')
 
 
 
@@ -157,7 +157,7 @@ tGAN_report = get_performance_report(model_nr='rf', model_type='tGAN',
                                      nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=tGAN_report, fraud_par='fraud', normal_par='normal',
-                      parameter='precision', model='tGAN')
+                      parameter='recall', model='tGAN')
 
 
 
