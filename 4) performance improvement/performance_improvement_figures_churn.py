@@ -4,7 +4,8 @@ from dtreeplt import dtreeplt
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.utils.multiclass import unique_labels
+from sklearn.utils.multiclass \
+    import unique_labels
 from sklearn.metrics import confusion_matrix, classification_report
 from global_functions import get_model_performance
 from global_functions import plot_confusion_matrix, cm_analysis
