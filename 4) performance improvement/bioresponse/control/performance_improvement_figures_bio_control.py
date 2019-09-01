@@ -53,25 +53,64 @@ def get_performance_report(dataset='credit card fraud', model_nr='rf', model_typ
 ############################# extract performance parameters and plot########################
 
 
+# # plot real and sythetic fraud only plot
+# def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=dict(), fraud_par='fraud', normal_par='normal',
+#                       parameter='recall', model='GAN'):
+#
+#     y_values = list()
+#     keys = list(report_dict.keys())
+#     for i in range(0, len(keys)):
+#         y_values.append(report_dict[keys[i]][fraud_par][parameter])
+#
+#     for x, y in zip(x_axis_steps, y_values):
+#         label = "{:.2f}".format(y)
+#
+#         plt.annotate(label,  # this is the text
+#                      (x, y),  # this is the point to label
+#                      textcoords="offset points",  # how to position the text
+#                      xytext=(0, 2),  # distance from text to points (x,y)
+#                      ha='center')
+#
+#     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for class1')
+#
+#
+#     y_values = list()
+#     keys = list(report_dict.keys())
+#     for i in range(0, len(keys)):
+#         y_values.append(report_dict[keys[i]][normal_par][parameter])
+#
+#     for x, y in zip(x_axis_steps, y_values):
+#         label = "{:.2f}".format(y)
+#
+#         plt.annotate(label,  # this is the text
+#                      (x, y),  # this is the point to label
+#                      textcoords="offset points",  # how to position the text
+#                      xytext=(0, 2),  # distance from text to points (x,y)
+#                      ha='center')
+#
+#     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for class0')
+#
+#
+#     plt.ylabel(parameter)
+#     plt.xlabel('# duplicated class 1 data')
+#     plt.title('The effect of adding duplicated bioresponse data on '+parameter)
+#     plt.grid()
+#     plt.legend()
+#     plt.savefig('4) performance improvement/bioresponse/control/figures/plots/'+parameter+'_'+keys[len(keys)-1]+'.png')
+#     plt.close()
+
+f, a = plt.subplots(1, 2, figsize=(4.25, 2.5), sharey=True, sharex=True, constrained_layout=True)
 # plot real and sythetic fraud only plot
-def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], report_dict=dict(), fraud_par='fraud', normal_par='normal',
-                      parameter='recall', model='GAN'):
+def plot_performance3(x_axis_steps=[0, 100, 200, 300, 381], report_dict=dict(), fraud_par='fraud', normal_par='normal',
+                      parameter='recall', model='GAN', fig_nr=[0,0], save=False):
 
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][fraud_par][parameter])
 
-    for x, y in zip(x_axis_steps, y_values):
-        label = "{:.2f}".format(y)
 
-        plt.annotate(label,  # this is the text
-                     (x, y),  # this is the point to label
-                     textcoords="offset points",  # how to position the text
-                     xytext=(0, 2),  # distance from text to points (x,y)
-                     ha='center')
-
-    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for class1')
+    a[fig_nr[1]].plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
 
 
     y_values = list()
@@ -79,25 +118,24 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 2000, 3000, 4000, 5000], repor
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][normal_par][parameter])
 
-    for x, y in zip(x_axis_steps, y_values):
-        label = "{:.2f}".format(y)
 
-        plt.annotate(label,  # this is the text
-                     (x, y),  # this is the point to label
-                     textcoords="offset points",  # how to position the text
-                     xytext=(0, 2),  # distance from text to points (x,y)
-                     ha='center')
+    a[fig_nr[1]].plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
 
-    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for class0')
+    a[fig_nr[1]].set_title('control', fontsize=10)
+    a[fig_nr[1]].grid()
+    a[fig_nr[1]].set_xlabel("# duplicated class1", fontsize=9)
+    a[fig_nr[1]].set_ylabel(parameter, fontsize=9)
+    plt.setp(a, yticks=[0,0.2,0.4,0.6,0.8,1])
+    #plt.xticks(np.arange(0,5001,step=1000),('0','1','2','3','4','5'))
+    plt.suptitle('The effect of adding duplicated\nbioresponse data on recall/precision', fontsize=10)
 
+    import matplotlib.lines as mlines
+    blue_line = mlines.Line2D([], [], color='steelblue', marker='o',markersize=5, label='class1')
+    orange_line = mlines.Line2D([], [], color='darkorange', marker='o',markersize=5, label='class0')
+    f.legend(handles=[orange_line, blue_line],loc='upper left', fontsize='small')
 
-    plt.ylabel(parameter)
-    plt.xlabel('# duplicated class 1 data')
-    plt.title('The effect of adding duplicated bioresponse data on '+parameter)
-    plt.grid()
-    plt.legend()
-    plt.savefig('4) performance improvement/bioresponse/control/figures/plots/'+parameter+'_'+keys[len(keys)-1]+'.png')
-    plt.close()
+    if save == True:
+        f.savefig('4) performance improvement/bioresponse/control/figures/plots/one_figure_for_all_precision&recall.png')
 
 ###################################### run the functions ###################################
 
@@ -108,7 +146,7 @@ control_report = get_performance_report(dataset='bioresponse', model_nr='rf', mo
                                         nr_synthetic_fraud_training=[0, 400, 800, 1200, 1600, 2000])
 
 plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=control_report, fraud_par='class1', normal_par='class0',
-                  parameter='f1-score', model='control_bio')
+                  parameter='recall', model='control_bio',fig_nr=[1,0])
 
 control_report = get_performance_report(dataset='bioresponse', model_nr='rf', model_type='control_bio',
                                         nr_normal_training=[2034, 2034, 2034, 2034, 2034, 2034],
@@ -116,12 +154,4 @@ control_report = get_performance_report(dataset='bioresponse', model_nr='rf', mo
                                         nr_synthetic_fraud_training=[0, 400, 800, 1200, 1600, 2000])
 
 plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=control_report, fraud_par='class1', normal_par='class0',
-                  parameter='recall', model='control_bio')
-
-control_report = get_performance_report(dataset='bioresponse', model_nr='rf', model_type='control_bio',
-                                        nr_normal_training=[2034, 2034, 2034, 2034, 2034, 2034],
-                                        nr_fraud_training=[350, 350, 350, 350, 350, 350],
-                                        nr_synthetic_fraud_training=[0, 400, 800, 1200, 1600, 2000])
-
-plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=control_report, fraud_par='class1', normal_par='class0',
-                  parameter='precision', model='control_bio')
+                  parameter='precision', model='control_bio',fig_nr=[1,1],save=True)
