@@ -102,6 +102,7 @@ plt.title('Distance between real and synthetic feature importance scores\nfor fr
 plt.ylabel('normalised distance')
 plt.xlabel('data generator')
 a = plt.bar(x, distance)
+print(distance)
 plt.xticks(x, ('synthpop', 'GAN', 'cGAN', 'WGAN', 'WcGAN', 'tGAN'))
 plt.tight_layout()
 a[0].set_color('lightseagreen')
