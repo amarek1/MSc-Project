@@ -107,7 +107,7 @@ synthpop_report = get_performance_report(model_nr='real&syn', model_type='synthp
                                         nr_synthetic_fraud_training = [0, 400, 800, 1200, 1600, 2000])
 
 plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=synthpop_report, fraud_par='class1', normal_par='class0',
-                      parameter='f1-score',model='synthpop')
+                      parameter='precision',model='synthpop')
 
 
 
@@ -137,7 +137,7 @@ WGAN_report = get_performance_report(model_nr='real&syn', model_type='WGAN',
                                      nr_synthetic_fraud_training=[0, 400, 800, 1200, 1600, 2000])
 
 plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=WGAN_report, fraud_par='class1', normal_par='class0',
-                      parameter='f1-score', model='WGAN')
+                      parameter='precision', model='WGAN')
 
 
 
@@ -147,7 +147,7 @@ WcGAN_report = get_performance_report(model_nr='real&syn', model_type='WcGAN',
                                       nr_synthetic_fraud_training=[0, 400, 800, 1200, 1600, 2000])
 
 plot_performance3(x_axis_steps=[0, 400, 800, 1200, 1600, 2000], report_dict=WcGAN_report, fraud_par='class1', normal_par='class0',
-                      parameter='f1-score', model='WcGAN')
+                      parameter='precision', model='WcGAN')
 
 
 
