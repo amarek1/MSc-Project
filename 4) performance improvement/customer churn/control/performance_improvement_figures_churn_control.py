@@ -60,25 +60,64 @@ real_and_syn_report = get_performance_report(dataset='customer churn', model_nr=
                                              nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 
+# # plot real and sythetic fraud only plot
+# def plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=real_and_syn_report, fraud_par='fraud', normal_par='normal',
+#                       parameter='recall', model='GAN'):
+#
+#     y_values = list()
+#     keys = list(report_dict.keys())
+#     for i in range(0, len(keys)):
+#         y_values.append(report_dict[keys[i]][fraud_par][parameter])
+#
+#     for x, y in zip(x_axis_steps, y_values):
+#         label = "{:.2f}".format(y)
+#
+#         plt.annotate(label,  # this is the text
+#                      (x, y),  # this is the point to label
+#                      textcoords="offset points",  # how to position the text
+#                      xytext=(0, 2),  # distance from text to points (x,y)
+#                      ha='center')
+#
+#     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
+#
+#
+#     y_values = list()
+#     keys = list(report_dict.keys())
+#     for i in range(0, len(keys)):
+#         y_values.append(report_dict[keys[i]][normal_par][parameter])
+#
+#     for x, y in zip(x_axis_steps, y_values):
+#         label = "{:.2f}".format(y)
+#
+#         plt.annotate(label,  # this is the text
+#                      (x, y),  # this is the point to label
+#                      textcoords="offset points",  # how to position the text
+#                      xytext=(0, 2),  # distance from text to points (x,y)
+#                      ha='center')
+#
+#     plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
+#
+#
+#     plt.ylabel(parameter)
+#     plt.xlabel('# duplicated churn data')
+#     plt.title('The effect of adding duplicated churn data on '+parameter)
+#     plt.grid()
+#     plt.legend()
+#     plt.savefig('4) performance improvement/customer churn/control/figures/plots/'+parameter+'_'+keys[len(keys)-1]+'.png')
+#     plt.close()
+
+f, a = plt.subplots(1, 2, figsize=(4, 2.5), sharey=True, sharex=True, constrained_layout=True)
 # plot real and sythetic fraud only plot
-def plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=real_and_syn_report, fraud_par='fraud', normal_par='normal',
-                      parameter='recall', model='GAN'):
+def plot_performance3(x_axis_steps=[0, 100, 200, 300, 381], report_dict=dict(), fraud_par='fraud', normal_par='normal',
+                      parameter='recall', model='GAN', fig_nr=[0,0], save=False):
 
     y_values = list()
     keys = list(report_dict.keys())
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][fraud_par][parameter])
 
-    for x, y in zip(x_axis_steps, y_values):
-        label = "{:.2f}".format(y)
 
-        plt.annotate(label,  # this is the text
-                     (x, y),  # this is the point to label
-                     textcoords="offset points",  # how to position the text
-                     xytext=(0, 2),  # distance from text to points (x,y)
-                     ha='center')
-
-    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
+    a[fig_nr[1]].plot(x_axis_steps, y_values, marker='o', label=parameter+' for fraud')
 
 
     y_values = list()
@@ -86,25 +125,25 @@ def plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict
     for i in range(0, len(keys)):
         y_values.append(report_dict[keys[i]][normal_par][parameter])
 
-    for x, y in zip(x_axis_steps, y_values):
-        label = "{:.2f}".format(y)
 
-        plt.annotate(label,  # this is the text
-                     (x, y),  # this is the point to label
-                     textcoords="offset points",  # how to position the text
-                     xytext=(0, 2),  # distance from text to points (x,y)
-                     ha='center')
+    a[fig_nr[1]].plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
 
-    plt.plot(x_axis_steps, y_values, marker='o', label=parameter+' for normal')
+    a[fig_nr[1]].set_title('control', fontsize=10)
+    a[fig_nr[1]].grid()
+    a[fig_nr[1]].set_xlabel("# duplicated churn", fontsize=9)
+    a[fig_nr[1]].set_ylabel(parameter, fontsize=9)
+    plt.setp(a, yticks=[0.5,0.6,0.7,0.8,0.9,1])
+    #plt.xticks(np.arange(0,5001,step=1000),('0','1','2','3','4','5'))
+    plt.suptitle('The effect of adding duplicated\nchurn data on recall/precision', fontsize=10)
 
+    import matplotlib.lines as mlines
+    blue_line = mlines.Line2D([], [], color='steelblue', marker='o',markersize=5, label='churn')
+    orange_line = mlines.Line2D([], [], color='darkorange', marker='o',markersize=5, label='normal')
+    f.legend(handles=[orange_line, blue_line],loc='upper left', fontsize='small')
 
-    plt.ylabel(parameter)
-    plt.xlabel('# duplicated churn data')
-    plt.title('The effect of adding duplicated churn data on '+parameter)
-    plt.grid()
-    plt.legend()
-    plt.savefig('4) performance improvement/customer churn/control/figures/plots/'+parameter+'_'+keys[len(keys)-1]+'.png')
-    plt.close()
+    if save == True:
+        f.savefig('4) performance improvement/customer churn/control/figures/plots/one_figure_for_all_precision&recall.png')
+
 
 ###################################### run the functions ###################################
 
@@ -114,7 +153,7 @@ control_report = get_performance_report(dataset='customer churn', model_nr='rf',
                                         nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=control_report, fraud_par='fraud', normal_par='normal',
-                  parameter='f1-score', model='control_fraud')
+                  parameter='recall', model='control_fraud',fig_nr=[1,0])
 
 control_report = get_performance_report(dataset='customer churn', model_nr='rf', model_type='control_churn',
                                         nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
@@ -122,14 +161,4 @@ control_report = get_performance_report(dataset='customer churn', model_nr='rf',
                                         nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
 
 plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=control_report, fraud_par='fraud', normal_par='normal',
-                  parameter='precision', model='control_fraud')
-
-control_report = get_performance_report(dataset='customer churn', model_nr='rf', model_type='control_churn',
-                                        nr_normal_training=[3847, 3847, 3847, 3847, 3847, 3847],
-                                        nr_fraud_training=[1435, 1435, 1435, 1435, 1435, 1435],
-                                        nr_synthetic_fraud_training=[0, 500, 1000, 1500, 2000, 2500])
-
-plot_performance3(x_axis_steps=[0, 500, 1000, 1500, 2000, 2500], report_dict=control_report, fraud_par='fraud', normal_par='normal',
-                  parameter='recall', model='control_fraud')
-
-
+                  parameter='precision', model='control_fraud',fig_nr=[1,1],save=True)
