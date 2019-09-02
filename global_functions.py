@@ -144,7 +144,7 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     return ax
 
 
-def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(3.5,3.75), title='Confusion matrix'):
+def cm_analysis(y_true, y_pred, filename, labels, ymap=None, figsize=(2.75,3), title='Confusion matrix'):
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
