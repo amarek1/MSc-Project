@@ -67,11 +67,11 @@ plt.scatter(row_names_tGAN, FI_tGAN.loc[:, 'importance'], s=25, c='dodgerblue', 
 plt.scatter(row_names_WcGAN, FI_WcGAN.loc[:, 'importance'], s=25, c='mediumvioletred', marker='o', label='WcGAN')
 
 
-plt.xlabel('features', fontsize=10)
-plt.ylabel('importance score (x$10^-2$)', fontsize=10)
+plt.xlabel('features', fontsize=12)
+plt.ylabel('importance score (x$10^-2$)', fontsize=12)
 plt.legend(loc='upper right')
 plt.xticks(fontsize=8, rotation=80)
-plt.title('Random forest feature importance scores\nfor fraud dataset')
+plt.title('Random forest feature importance\nscores for fraud dataset', fontsize=18)
 plt.grid()
 plt.tight_layout()
 plt.savefig('3) data quality evaluation/feature importance/figures/credit card fraud/FI_scatterplot.png')
@@ -98,11 +98,10 @@ dist_tGAN = float(sum(abs(FI_real.values-FI_tGAN.values)/FI_real.values)/len(FI_
 fig = plt.figure()
 x = np.arange(6)
 distance = [dist_synthpop, dist_GAN, dist_cGAN, dist_WGAN, dist_WcGAN, dist_tGAN]
-plt.title('Distance between real and synthetic feature importance scores\nfor fraud dataset')
+plt.title('Distance between real and synthetic feature importance\nscores for fraud dataset')
 plt.ylabel('normalised distance')
 plt.xlabel('data generator')
 a = plt.bar(x, distance)
-print(distance)
 plt.xticks(x, ('synthpop', 'GAN', 'cGAN', 'WGAN', 'WcGAN', 'tGAN'))
 plt.tight_layout()
 a[0].set_color('lightseagreen')
