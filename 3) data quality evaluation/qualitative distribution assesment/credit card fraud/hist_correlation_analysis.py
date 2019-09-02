@@ -13,16 +13,16 @@ file_name = 'data/credit card fraud/data_creditcard.pkl'  # set working director
 real_data = pd.read_pickle(file_name)
 
 # # load synthetic fraud examples
-# file_name = '2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_492_Adam_l1_.pkl'
+# file_name = '2) synthetic data generation/GAN/credit card fraud/GAN_fraud_492.pkl'
 # syn_fraud = pd.read_pickle(file_name)
 
-# # load the synthetic data
-# file_name = 'C:/Users/amarek/Desktop/R/synthpop/syntpop_data_cart_fo.csv'
-# syn_fraud = pd.read_csv(file_name)
+# load the synthetic data
+file_name = 'C:/Users/amarek/Desktop/R/synthpop/syntpop_data_cart_fo.csv'
+syn_fraud = pd.read_csv(file_name)
 
-# load synthetic fraud examples
-file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_50002.pkl'
-syn_fraud = pd.read_pickle(file_name)
+# # load synthetic fraud examples
+# file_name = '2) synthetic data generation/tGAN/customer churn/churn/tGAN_churn_50002.pkl'
+# syn_fraud = pd.read_pickle(file_name)
 
 
 real_fraud = real_data.loc[real_data.loc[:, 'class'] == 1, :]
@@ -61,7 +61,7 @@ def get_ks_test_results(data1, data2):
 
 # function to plot correlation matrix
 def correlation_matrix(df, title, file=""):
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(10, 10))
     corr_plot = sns.heatmap(df, annot=False, square=True, cmap='coolwarm', vmax=0.5, vmin=-0.5).set_title(title, fontsize=20)
 
     if file != "":
@@ -90,7 +90,7 @@ def rescale_0_1(data_array):
 # generator and path are strings
 def compare_data(real_data, synthetic_data, datatype, generator):
 
-    f, axes = plt.subplots(n_features, figsize=(9, 100))
+    f, axes = plt.subplots(n_features, figsize=(5.5, 100))
     axes[0].set_title('Real and synthetic data histograms for '+generator, fontsize='x-large')
     plt.tight_layout()
     pearsonrs = []
@@ -98,10 +98,10 @@ def compare_data(real_data, synthetic_data, datatype, generator):
     method = []
 
     for i in cols:
-        s = sns.distplot(real_data.iloc[:, i], hist=False, rug=False, label="Synthetic-" + str(i), ax=axes[i],
+        s = sns.distplot(real_data.iloc[:, i], hist=False, rug=False, label="Synthetic - V" + str(i), ax=axes[i],
                          kde_kws={'linestyle': '-', 'linewidth': 4})
 
-        sns.distplot(synthetic_data.iloc[:, i], hist=False, rug=False, label="Real-" + str(i), ax=axes[i],
+        sns.distplot(synthetic_data.iloc[:, i], hist=False, rug=False, label="Real - V" + str(i), ax=axes[i],
                      kde_kws={'linestyle': '--', 'linewidth': 2})
 
         o_hist, _ = np.histogram(real_data.iloc[:, i], bins=100)
@@ -133,7 +133,7 @@ def compare_data(real_data, synthetic_data, datatype, generator):
                verticalalignment='center',
                transform=axes[i].transAxes)
 
-    f.savefig('3) data quality evaluation/qualitative distribution assesment/credit card fraud/histograms/histograms_' + generator + '.png', bbox_inches='tight')
+    f.savefig('3) data quality evaluation/qualitative distribution assesment/credit card fraud/histograms/histograms_dissertation_' + generator + '.png', bbox_inches='tight')
 
 
     real_corr = real_data.iloc[:, :-1].corr()
@@ -143,8 +143,8 @@ def compare_data(real_data, synthetic_data, datatype, generator):
 
     correlation_matrix(synthetic_corr, datatype + 'Generated Data ' + generator)
 
-    correlation_matrix(real_corr - synthetic_corr, 'Correlation Difference for ' + generator+'\n Absolute mean correlation difference: '+ str(abs_mean_corr),
-                       '3) data quality evaluation/qualitative distribution assesment/credit card fraud/correlation plots/correlation_' + generator)
+    correlation_matrix(real_corr - synthetic_corr, 'Correlation Matrix Difference for ' + generator,
+                       '3) data quality evaluation/qualitative distribution assesment/credit card fraud/correlation plots/correlation_dissertation' + generator)
 
     summary_df = pd.DataFrame(data={'method': method,
                                     'feature': cols,
@@ -160,7 +160,7 @@ def compare_data(real_data, synthetic_data, datatype, generator):
 def get_scatters(real_data, synthetic_data, datatype, generator, feature_position):
 
     names = real_data.columns
-    fig, axs = plt.subplots(len(cols), 2, figsize=(9, 110))  # sharex=True, sharey=True)
+    fig, axs = plt.subplots(len(cols), 2, figsize=(8, 110))  # sharex=True, sharey=True)
     fig.suptitle('Scatter plots for the feature '+names[feature_position] + ' and generator ' + generator,
                  fontsize='x-large')
 
@@ -178,7 +178,7 @@ def get_scatters(real_data, synthetic_data, datatype, generator, feature_positio
         axs[i, 1].grid()
 
     fig.tight_layout(rect=[0, 0.01, 1, 0.97])
-    fig.savefig('3) data quality evaluation/qualitative distribution assesment/credit card fraud/scatter plots/scatter_plots_'+names[feature_position] + '_' + generator + '.png')
+    fig.savefig('3) data quality evaluation/qualitative distribution assesment/credit card fraud/scatter plots/scatter_plots_dissertation'+names[feature_position] + '_' + generator + '.png')
     plt.close(fig)
 
 
@@ -189,13 +189,13 @@ def get_scatters(real_data, synthetic_data, datatype, generator, feature_positio
 real_fraud_i = real_fraud + 0.000001  # correct singular matrix error
 syn_fraud_i = syn_fraud + 0.000001
 
-compare_data(real_fraud_i, syn_fraud_i, 'fraud', 'tGAN_test')
+compare_data(real_fraud_i, syn_fraud_i, 'fraud', 'synthpop')
 
-# real_data = rescale_0_1(real_data)
-# syn_data = rescale_0_1(syn_data)
-
-# for i in range(0, 31):
-#     get_scatters(real_data, syn_data, 'f+nf', 'synthpop_lin_reg', i)
+# real_data = rescale_0_1(real_fraud)
+# syn_data = rescale_0_1(syn_fraud)
+#
+# for i in range(0, 2):
+#     get_scatters(real_data, syn_data, 'f+nf', 'GAN', i)
 
 
 # real_fraud = rescale_0_1(real_fraud)
