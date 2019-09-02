@@ -13,7 +13,7 @@ from sklearn.preprocessing import RobustScaler
 np.random.seed(7)
 
 # load the data
-file_name = 'data/bioresponse/bio_short.pkl'  # set working directory to MSc Project
+file_name = 'data/bioresponse/bio_clean.pkl'  # set working directory to MSc Project
 data = pd.read_pickle(file_name)
 
 # unbalanced data
@@ -38,13 +38,13 @@ X_train_balanced = scaler.transform(X_train_balanced)
 X_test_balanced = scaler.transform(X_test_balanced)
 
 # unpack unbalanced model
-path1 = '1) classification algorithms/neural networks/bioresponse/model_NN_unbalanced_bio_short.pkl'
+path1 = '1) classification algorithms/neural networks/bioresponse/model_NN_unbalanced_bio.pkl'
 # with open(path, 'rb') as file:
 #     unbalanced_model = pickle.load(file)
 unbalanced_model = load_model(path1)
 
 # unpack balanced model
-path2 = '1) classification algorithms/neural networks/bioresponse/model_NN_balanced_bio_short.pkl'
+path2 = '1) classification algorithms/neural networks/bioresponse/model_NN_balanced_bio.pkl'
 # with open(path, 'rb') as file:
 #     balanced_model = pickle.load(file)
 balanced_model = load_model(path2)
