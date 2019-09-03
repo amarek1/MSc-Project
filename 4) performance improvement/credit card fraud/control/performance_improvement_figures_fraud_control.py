@@ -138,7 +138,7 @@ def plot_performance3(x_axis_steps=[0, 100, 200, 300, 381], report_dict=dict(), 
         f.savefig('4) performance improvement/credit card fraud/control/figures/plots/one_figure_for_all_precision&recall.png')
 
 
-###################################### run the functions ###################################
+###################################### run the functions ###################################4.4
 
 control_report = get_performance_report(dataset='credit card fraud', model_nr='rf', model_type='control_fraud',
                                         nr_normal_training=[5381, 5381, 5381, 5381, 5381, 5381, 5381],
