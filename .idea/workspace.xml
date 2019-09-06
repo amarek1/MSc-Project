@@ -9,23 +9,134 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../data_lab/data generation/GANs/GAN code.py">
+        <entry file="file://$PROJECT_DIR$/4) performance improvement/control_one_for_all.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="101">
+              <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1290" />
-    <option name="width" value="922" />
-    <option name="height" value="495" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>np.reshape</find>
+      <find>pkl</find>
+      <find>credi</find>
+      <find>fraud</find>
+      <find>categ</find>
+      <find>get_model_per</find>
+      <find>adversarial</find>
+      <find>generator</find>
+      <find>xgboo</find>
+      <find>xgb</find>
+      <find>labels</find>
+      <find>WGAN</find>
+      <find>critic</find>
+      <find>loss</find>
+      <find>get_ba;</find>
+      <find>get_balan</find>
+      <find>get_model</find>
+      <find>inter</find>
+      <find>get</find>
+      <find>get_bal</find>
+      <find>synthetic</find>
+      <find>real onl</find>
+      <find>folder</find>
+      <find>tf</find>
+      <find>gpu</find>
+      <find>tganmo</find>
+      <find>cuda</find>
+      <find>credit ct</find>
+      <find>correlation</find>
+      <find>correlation_matri</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="WARN_ABOUT_CRLF" value="false" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
+    <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
+    <option name="ADD_SUFFIX_TO_CHERRY_PICKS_OF_PUBLISHED_COMMITS" value="false" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/figures/satisfaction/forest_feature_importance.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/control/model_training_control_fraud.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/control/performance_improvement_figures_fraud_control.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/synthetic only/model_training_synthetic_only_fraud.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/real and synthetic/model_training_real_and_synthetic_fraud.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/real only/performance_improvement_figures_fraud_real_only.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/rescale_satisfaction.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/cGAN/satisfaction/cGAN_code_sat.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/WGAN/satisfaction/WGAN_code_sat.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/WcGAN/satisfaction/WcGAN_code_sat.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/tGAN/tGAN_code.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/real only/model_training_real_only_fraud.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/control/model_training_control_sat.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/real and synthetic/model_training_real_and_synthetic_sat.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/GAN/satisfaction/GAN_code_sat.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/synthetic only/model_training_synthetic_only_sat.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/synthetic only/performance_improvement_figures_fraud_sat_only.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/models/satisfaction/model_training_FI.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/competition measure/satisfaction/competition_measure_code_synthpop.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_code_synthpop.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_code_GAN.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_code_cGAN.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_code_WGAN.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_plot.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/satisfaction/propensity_score_code_WcGAN.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/tGAN/bioresponse/tGAN_code_bio.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/tGAN/customer churn/tGAN_code.py" />
+        <option value="$PROJECT_DIR$/2) synthetic data generation/tGAN/satisfaction/churn/tGAN_code_sat.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/performance_improvement_figures_churn.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/performance_improvement_figures_fraud_real_and_synthetic.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/performance_improvement_figures_fraud_real_and_synthetic.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/bioresponse/real and synthetic/performance_improvement_figures_bio_real_and_synthetic.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/real and synthetic/performance_improvement_figures_sat_real_and_synthetic.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/customer churn/control/performance_improvement_figures_churn_control.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/bioresponse/control/performance_improvement_figures_bio_control.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/satisfaction/control/performance_improvement_figures_sat_control.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/competition measure/figure_for_all.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/propensity score/figure_for_all.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/correlation_for_all.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/poster_plot.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/figures/credit card fraud/forest_feature_importance.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/figures/customer churn/forest_feature_importance_churn.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/figures/bioresponse/forest_feature_importance.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/feature importance/figure_for_all.py" />
+        <option value="$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/hist_correlation_analysis.py" />
+        <option value="$PROJECT_DIR$/1) classification algorithms/assess model performance/credit card fraud/figures/summary_figure.py" />
+        <option value="$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/assess_model_performance_NN.py" />
+        <option value="$PROJECT_DIR$/global_functions.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/credit card fraud/control/performance_improvement_figures_fraud_control.py" />
+        <option value="$PROJECT_DIR$/4) performance improvement/control_one_for_all.py" />
+        <option value="$PROJECT_DIR$/ReadMe" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="332" />
+    <option name="y" value="181" />
+    <option name="width" value="1242" />
+    <option name="height" value="672" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -35,13 +146,76 @@
         <subPane>
           <expand>
             <path>
-              <item name="data_lab_clean" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data_lab" type="462c0819:PsiDirectoryNode" />
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="data_lab_clean" type="b2602c69:ProjectViewProjectNode" />
-              <item name="data_lab" type="462c0819:PsiDirectoryNode" />
-              <item name="global functions" type="462c0819:PsiDirectoryNode" />
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WcGAN" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WcGAN" type="462c0819:PsiDirectoryNode" />
+              <item name="bioresponse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WcGAN" type="462c0819:PsiDirectoryNode" />
+              <item name="credit card fraud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WcGAN" type="462c0819:PsiDirectoryNode" />
+              <item name="customer churn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WGAN" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="2) synthetic data generation" type="462c0819:PsiDirectoryNode" />
+              <item name="WGAN" type="462c0819:PsiDirectoryNode" />
+              <item name="customer churn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="bioresponse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="credit card fraud" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MSc Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MSc Project" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="customer churn" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -61,8 +235,26 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/syntehtic_data_clean2" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/2) synthetic data generation/tGAN/customer churn" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\2) synthetic data generation\GAN\satisfaction" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\4) performance improvement\bioresponse\control\figures\plots" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\1) classification algorithms\assess model performance\bioresponse" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\1) classification algorithms\neural networks\bioresponse" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\4) performance improvement\credit card fraud\control" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\2) synthetic data generation\tGAN\customer churn" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\3) data quality evaluation\propensity score\satisfaction" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\2) synthetic data generation\GAN\satisfaction" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\4) performance improvement\satisfaction" />
+      <recent name="C:\Users\amarek\PycharmProjects\MSc Project\3) data quality evaluation\feature importance\figures\satisfaction" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -76,8 +268,131 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Python.control_one_for_all">
+    <configuration name="asses_model_performance_RF (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_lab_clean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/asses_model_performance_RF.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="asses_model_performance_RF" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_lab_clean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1) classification algorithms/assess model performance/customer churn/asses_model_performance_RF.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="asses_model_performance_SVM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_lab_clean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1) classification algorithms/assess model performance/customer churn/asses_model_performance_SVM.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="control_one_for_all" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_lab_clean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/4) performance improvement/control_one_for_all.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="figure_for_all" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="data_lab_clean" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/3) data quality evaluation/competition measure/figure_for_all.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.asses_model_performance_RF (1)" />
+      <item itemvalue="Python.asses_model_performance_RF" />
+      <item itemvalue="Python.asses_model_performance_SVM" />
+      <item itemvalue="Python.figure_for_all" />
+      <item itemvalue="Python.control_one_for_all" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.control_one_for_all" />
+        <item itemvalue="Python.figure_for_all" />
+        <item itemvalue="Python.asses_model_performance_SVM" />
+        <item itemvalue="Python.asses_model_performance_RF" />
+        <item itemvalue="Python.asses_model_performance_RF (1)" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\amarek\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,35 +405,285 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.23712021" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49894625" weight="0.23185265" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8606341" visible="true" weight="0.17538896" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" visible="true" weight="0.22426869" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.13936591" side_tool="true" weight="0.46817538" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.042432815" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.23972602" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49894625" weight="0.23185265" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8606341" visible="true" weight="0.27193934" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.13936591" side_tool="true" weight="0.46817538" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.20693392" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="false" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="false" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="false" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="false" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../data_lab/global functions/global_functions1.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/figures/cm_rf_unbalanced_bio.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../data_lab/data generation/GANs/GAN code.py">
+    <entry file="file://$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/figures/cm_rf_balanced_bio.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/figures/cm_nn_balanced_bio_short.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/histograms/histograms_dissertation_synthpop.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/scatter plots/scatter_plots_dissertationV1_synthpop.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/scatter plots/scatter_plots_dissertationV1_GAN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/histograms/histograms_dissertation_GAN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/correlation_all.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/feature importance/FI_all.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/poster_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/competition measure/SRA_all.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/competition measure/figure_for_all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="66" column="14" lean-forward="true" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/propensity score/propensity_score_all.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/figures/plots/one_figure_for_all_precision&amp;recall.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/control/figures/plots/one_figure_for_all_precision&amp;recall.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/control/figures/plots/one_figure_for_all_precision&amp;recall.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/one_figure_for_all_precision&amp;recall.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/hist_correlation_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/control/performance_improvement_figures_churn_control.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="164" lean-forward="true" selection-start-line="108" selection-end-line="164" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/bioresponse/control/performance_improvement_figures_bio_control.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="157" selection-start-line="103" selection-end-line="157" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/feature importance/figure_for_all.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/propensity score/figure_for_all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918">
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/control/performance_improvement_figures_fraud_control.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="140" column="95" selection-start-line="140" selection-start-column="95" selection-end-line="140" selection-end-column="95" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/model_training_real_and_synthetic_fraud.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1428" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/bioresponse/real and synthetic/model_training_real_and_synthetic_bio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1683" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/figures/plots/precision_m1_WcGAN_5381_381_5000_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/figures/plots/recall_m1_tGAN_5381_381_5000_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/figures/plots/recall_m1_synthpop_5381_381_5000_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_m1_synthpop_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_synthpop_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_synthpop_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_GAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_GAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_cGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_cGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_WGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_WGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/credit card fraud/real and synthetic/performance_improvement_figures_fraud_real_and_synthetic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="108" column="35" lean-forward="true" selection-start-line="108" selection-start-column="35" selection-end-line="108" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_WcGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_WcGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/control_for_all_precision&amp;recall.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/precision_rf_tGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/customer churn/real and synthetic/figures/plots/recall_rf_tGAN_3847_1435_2500_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/bioresponse/real and synthetic/figures/plots/precision_real&amp;syn_synthpop_2034_350_2000_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/bioresponse/real and synthetic/figures/plots/recall_real&amp;syn_synthpop_2034_350_2000_ts0.25.pkl.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1) classification algorithms/assess model performance/bioresponse/figures/PRcurve_rf_unbalanced_bio.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2) synthetic data generation/WcGAN/credit card fraud/WcGAN results/WcGAN_fraud_492_Adam.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/3) data quality evaluation/qualitative distribution assesment/credit card fraud/correlation plots/correlation_dissertationsynthpop.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReadMe">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/4) performance improvement/control_one_for_all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

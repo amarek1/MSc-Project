@@ -1,0 +1,17 @@
+*.pyc
+*.xml
+*model_weights*
+*losses_step*
+*.txt
+output*
+*.h5
+*summary_stats_*
+*.png
+*logs
+*model
+*.csv
+*.pkl
+GAN training*
+
+
+
