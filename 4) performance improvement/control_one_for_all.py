@@ -78,7 +78,7 @@ def plot_performance3(x_axis_steps=[0, 100, 200, 300, 381], report_dict=dict(), 
     plt.suptitle('Control for various datasets\n-real data duplicated', fontsize=10)
 
     import matplotlib.lines as mlines
-    blue_line = mlines.Line2D([], [], color='steelblue', marker='o',markersize=5, label='fraud')
+    blue_line = mlines.Line2D([], [], color='steelblue', marker='o',markersize=5, label='fraud/churn/class1')
     orange_line = mlines.Line2D([], [], color='darkorange', marker='o',markersize=5, label='normal')
     f.legend(handles=[orange_line, blue_line],loc='upper left', fontsize='small')
 
