@@ -8,12 +8,12 @@ plt.suptitle('Synthetic data quality evaluation', fontsize=14)
 
 # SRA
 
-score_synthpop = 0.0486
-score_GAN = 0.3
-score_cGAN = 0.25
-score_WGAN = 0.062
-score_WcGAN = 0.0551
-score_tGAN = 0.101
+score_synthpop = 1
+score_GAN = 0.8
+score_cGAN = 0.9
+score_WGAN = 1
+score_WcGAN = 1
+score_tGAN = 0.3
 x = np.arange(6)
 distance = [score_synthpop, score_GAN, score_cGAN, score_WGAN, score_WcGAN, score_tGAN]
 
