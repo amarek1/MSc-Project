@@ -1,0 +1,25 @@
+This code is part of the dissertation 'Synthetic Data in Machine Learning' by Anna Marek
+
+This code is divided into 6 sections:
+
+0) Data pre-processing specific to datasets used in this project
+
+1) classification algorithms
+ - contains code for neural networks, random forest and SVM classifier
+ - contains code used to assess performance of classifiers by producing confusion matrices and precision-recall curves
+
+ 2) synthetic data generation
+ - contains code used to synthesise data using GAN, cGAN, WGAN, WcGAN and tGAN
+
+ 3) data quality evaluation
+ - contains code for SRA, feature importance, propensity score, histograms, scatterplots and confusion matrices
+
+ 4) performance improvement
+ - contains code used to train random forest models and produce figures for control and results
+
+ data
+ -contains original datasets used in the project: Credit Card Fraud, Customer Churn and Bioresponse
+
+ GAN_global_functions.py and global_functions.py are used by many scripts and should be placed in the main directory,
+ not subfolders - eg. straight into the MSc Project directory. The way paths are set up requires these functions to
+ be in this specific place
